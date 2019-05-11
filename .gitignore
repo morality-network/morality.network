@@ -9,6 +9,8 @@
 geth.exe
 
 # Config
+*App.config
+*Web.config
 *.jfm
 # NuGet Packages
 *.nupkg
