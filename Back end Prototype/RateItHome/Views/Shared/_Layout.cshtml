@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/voteStar.css")
+    @Styles.Render("~/Content/fontawesome-all.css")
+    @Styles.Render("~/images/icons/favicon.ico")
+    @Styles.Render("~/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/fonts/font-awesome-4.7.0/css/font-awesome.min.css")
+    @Styles.Render("~/fonts/iconic/css/material-design-iconic-font.min.css")
+</head>
+<body>
+
+    <div class="simple-linear">
+        @Html.Partial("_Sidebar")
+        @Html.Partial("_Logout")
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.voteStar.js")
+    @Scripts.Render("~/Scripts/jquery.canvasjs.min.js")
+    @Scripts.Render("~/Scripts/jquery.sparkline.min.js")
+    
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿@model System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<int, string>>
+
+<div class="select @ViewBag.CSS">
+    <span class="placeholder"> </span>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li data-value="@item.Key">@item.Value</li>
+        }
+    </ul>
+    <input type="hidden" name="changeme" />
+</div>
+

@@ -1,0 +1,162 @@
+﻿@using RateItWebApi.Models;
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="simple-linear">
+    <div id="mySidenav" class="sidenav">
+        <div class="side-menu-item"><i class="fa icon-img fa-home selected"></i><div href="" class="selected">Home</div></div>
+        <a href=""><i class="fa icon-img fa-user profile"></i>Profile</a>
+        <a href=""><i class="fa icon-img fa-credit-card wallet"></i>Wallet</a>
+        <a href=""><i class="fa icon-img fa-lock security"></i>Security</a>
+        <a href=""><i class="fa icon-img fa-question-circle support"></i>Support</a>
+        <a href=""><i class="fa icon-img fa-upload upload"></i>Upload</a>
+    </div>
+    <div class="user-menu">
+        <span class="user-controls">
+            <span class="green-circle"></span>
+            <a href="#" class="logout">Logout</a>
+        </span>
+    </div>
+    <div id="main">
+        <div class="top-bar">
+
+        </div>
+        <div class="item-tiles">
+            <div class="home-tile top-tile-1">
+                <div class="" style="position: absolute;width: 35%;">
+                    <h3>Notifications</h3>
+                    <div style="height:100%">
+                        @foreach (var notification in (IList<Notification>)ViewBag.Model.Notifications)
+                        {
+                            <div class="note-item">
+                                <div class="main-note-item">
+                                    <div class="main-notification-text" title="@notification.Action">
+                                        @notification.Action
+                                    </div>
+                                    <a href="javascript:void(0)" class="closebtn cross" onclick="closeNav()">&times;</a>
+                                </div>
+                                <a href="">Block Url</a>
+                                <div class="small-date-text">
+                                    @notification.DateTimeFormatted
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    <button type="button" class="btn see-notes">See all notifications</button>
+                </div>
+            </div>
+
+            <div class="home-tile top-tile-2">
+                <div class="" style="position: absolute;width: 35%;">
+                    <h3>Transactions</h3>
+                    <div style="height:100%">
+                        @foreach (var transaction in (IList<Transaction>)ViewBag.Model.Transactions)
+                        {
+                            <div class="trans-item">
+                                <div class="main-trans-item @transaction.ActionType.ToString()">
+                                    @{var displayText = transaction.ActionType.ToString() + ": " + transaction.Amount + " Mo";}
+
+                                    <div class="main-trans-text" title="@displayText">
+                                        @displayText
+                                    </div>
+                                </div>
+
+                                <div class="small-date-text hide-overflow">
+                                    @transaction.FormattedTimestamp
+                                </div>
+
+                            </div>
+                                        }
+                    </div>
+                    <button type="button" class="btn see-trans">See all transactions</button>
+                </div>
+            </div>
+            <div class="home-tile top-tile-1">
+                <div class="" style="position: absolute;width: 35%;">
+                    <h3>Your Activity</h3>
+                    <div style="height:100%">
+                        @foreach (var activity in (IList<Activity>)ViewBag.Model.Activities)
+                        {
+                            <div class="note-item">
+                                <div class="main-activity-item @activity.ActionType.ToString()">
+
+                                    <div class="main-notification-text" title="@activity.ActionText">
+                                        @activity.ActionText
+                                    </div>
+                                </div>
+
+                                <div class="small-date-text">
+                                    @activity.FormattedTimestamp
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    <button type="button" class="btn see-trans">See all activity</button>
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="home-tile bottom-tile-1">
+                <div class="" style="position: absolute;width: 220px;">
+                    <h3>Avg Vote</h3>
+                    <div style="height:100%">
+                        <div>
+                            <div class="event_star star_in star_animate rate-ri-stars star-placement" data-starnum="0"><i class=""></i></div>
+                        </div>
+                        <div class="super-rate-text">
+                            @ViewBag.Model.AvgScore
+                        </div>
+                        <div class="super-rate-text-explain">
+                            Is your average score of the internet
+                        </div>
+                        <button type="button" class="btn see-avg">See all votes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="home-tile bottom-tile-2">
+                <div class="" style="position: absolute;width: 645px;">
+                    <h3>Earned</h3>
+                    <div style="height:100%;margin-top: -10px;">
+
+                        <!--<div id="chartContainer" style="height: 135px; max-width: 520px; margin: 0px auto;"></div>-->
+                        <div id="sparkline"></div>
+                        <button type="button" class="btn see-graph">See all Earned</button>
+                    </div>
+                </div>
+            </div>
+            <div class="home-tile bottom-tile-1">
+                <div class="" style="position: absolute;width: 220px;">
+                    <h3>Chat History</h3>
+                    <div style="height:100%;">
+                        @foreach (var chatHistory in (IList<string>)ViewBag.Model.ChatHistory)
+                        {
+                            <div class="parent-chat">
+                                <!--<div class="img-chat"><img src="http://example.com.img1.png" /></div>-->
+                                <div class="circle">
+
+                                </div>
+                                <div class="text-chat hide-overflow"><a href="">@chatHistory</a></div>
+                            </div>
+
+                        }
+                        <button type="button" class="btn see-ch">See all Chats</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/jquery.voteStar.js")
+@Styles.Render("~/Content/voteStar.css")
+@Scripts.Render("~/Scripts/jquery.canvasjs.min.js")
+@Scripts.Render("~/Scripts/jquery.sparkline.min.js")
+@Scripts.Render("~/Scripts/home.js")

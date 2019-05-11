@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[SubDirectorys]
+(
+	[Id] BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [SiteId] BIGINT NOT NULL, 
+    [Name] NVARCHAR(MAX) NOT NULL, 
+    [Timestamp] DATETIME NOT NULL DEFAULT GETDATE(), 
+    CONSTRAINT [FK_SubDirectorys_ToSites] FOREIGN KEY ([SiteId]) REFERENCES [Sites]([Id])
+)

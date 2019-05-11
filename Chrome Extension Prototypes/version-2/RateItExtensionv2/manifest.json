@@ -1,0 +1,46 @@
+{
+    "name": "Rate it",
+	"background": {
+		"scripts": [
+			"background/js/background.js"
+		]
+    },
+	"browser_action": {
+	   "default_icon": "img/logo.png"
+    },
+    "description": "Rate it",
+    "version": "1",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+
+            "matches": [ "<all_urls>"],
+            "css":[
+			"css/fa-regular.css",
+			"css/fontawesome.css",
+			"css/style.css"
+			],
+            "js":[
+			"js/jquery-1.9.1.js",
+			"js/jquery-ui.js",
+			"background/js/balance_runner.js",
+			"js/config.js",
+			"js/jquery.sparkline.min.js",
+			"index.js"
+			]
+        }
+    ],
+	"web_accessible_resources": [
+		"background/js/*",
+		"js/*",
+		"css/*",
+		"img/*"
+    ],
+    "permissions": [ 
+		"<all_urls>", 
+		"storage",
+		"tabs", 
+        "http://*/*", 
+		"identity",
+        "identity.email" ]
+}

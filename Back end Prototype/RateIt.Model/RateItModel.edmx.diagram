@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e71756003ae74e508b16abfbc15efe98" Name="Diagram1" ZoomLevel="11">
+        <EntityTypeShape EntityType="MoralityNetworkModel.Account" Width="1.5" PointX="11.875" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Activity" Width="1.5" PointX="11.875" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Comment" Width="1.5" PointX="14.875" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Content" Width="1.5" PointX="14.625" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.ContentTransaction" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.ContentType" Width="1.5" PointX="12.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.CreditTransaction" Width="1.5" PointX="11.875" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.CreditWallet" Width="1.5" PointX="14.125" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.CrowdfundingCampaign" Width="1.5" PointX="11.875" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Currency" Width="1.5" PointX="14.125" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Investigation" Width="1.5" PointX="17.125" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Log" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Notification" Width="1.5" PointX="14.875" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.NotificationType" Width="1.5" PointX="12.625" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.PaymentChunk" Width="1.5" PointX="16.375" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.PaymentTransfer" Width="1.5" PointX="26.375" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.PaymentType" Width="1.5" PointX="9.625" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.PollAnswer" Width="1.5" PointX="20.125" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Poll" Width="1.5" PointX="17.875" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Rating" Width="1.5" PointX="9.625" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.ReportClaim" Width="1.5" PointX="20.125" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.ReportConfirm" Width="1.5" PointX="20.375" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Site" Width="1.5" PointX="10.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.SubDirectory" Width="1.5" PointX="12.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Survey" Width="1.5" PointX="16.875" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.SystemNotification" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.SystemValue" Width="1.5" PointX="45.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Transaction" Width="1.5" PointX="37.625" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.Upvote" Width="1.5" PointX="19.125" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.UserContentValidation" Width="1.5" PointX="17.875" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.UserMessage" Width="1.5" PointX="50.125" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.UserPollingAnswer" Width="1.5" PointX="23.125" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.UserRating" Width="1.5" PointX="11.875" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.User" Width="1.5" PointX="9.625" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.WithdrawTransfer" Width="1.5" PointX="32" PointY="23" IsExpanded="true" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Account_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_CreditWallets_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Currencys_ToAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Activitys_ToComments" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Activitys_ToSubDirectorys" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Activitys_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Comments_ToComments" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Comments_ToContents" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Comments_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Investigations_ToComments" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_ReportClaims_ToComments" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Upvotes_ToComments" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Contents_ToContentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Contents_ToSubDirectorys" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_CrowdfundingCampaign_ToContents" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Notifications_ToContents" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Polls_ToContents" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Surveys_ToContents" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserContentValidations_ToContents" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_CreditTransactions_FromUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_CreditTransactions_ToPaymentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_CreditTransactions_ToUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_PaymentChunks_ToCreditWallets" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_CrowdfundingCampaign_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_ReportConfirm_ToInvestigations" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Notifications_ToNotificationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Notifications_ToSubDirectorys" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Notifications_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_PaymentTransfer_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_PollAnswers_ToPolls" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Polls_ToSurveys" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Polls_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserPollingAnswers_ToPolls" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Ratings_ToSubDirectory" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserRatings_ToRatings" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_ReportClaims_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_ReportConfirm_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_SubDirectorys_ToSites" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Surveys_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_SystemValues_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Transactions_ToUsersFrom" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Transactions_ToUsersTo" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Upvotes_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserContentValidations_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserMessages_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserPollingAnswers_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_UserRatings_ToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_WithdrawTransfers_ToUsers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.ActivityType" Width="1.5" PointX="3.375" PointY="3.75" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Activitys_ToActivityTypes" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Activitys_ToContents" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.PublisherChannel" Width="1.5" PointX="14.125" PointY="33.25" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_PublisherChannel_ToAccounts" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_Contents_ToPublisherChannel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,230 @@
+﻿@using RateItHome.Models
+@model TransactionViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main col-sm-12" class="black-background">
+    @Html.Partial("_MenuBar")
+    <div class="margin-for-menu">
+        <div id="notifications" class="mining-item-tiles">
+
+            <div class="home-tile review-tile-1">
+
+                <h3 style="top: -55px; position: relative;">Transactions</h3>
+
+                @Html.Partial("_CurrencyDropdown", new CurrencyModel() { Currencies = ViewBag.AllCurrencies })
+
+                <div class="ideticon-icon">
+                    <svg id="marker" class="user-icon" width="35" height="35" data-jdenticon-value="user100">
+                    </svg>
+                    <span class="tran-balance">
+                        23647867866342243434343
+                    </span>
+                </div>
+                <div class="select-all-cb">
+                    @Html.Label("SelectAll", "Select All")
+                    @Html.CheckBox("SelectAll", new { @class = "" })
+                </div>
+                <div class="transaction-list">
+                    @for (int i = 0; i < 20; i++)
+                    {
+                        <div class="transaction-row">
+                           
+                                @if (i % 3 == 0)
+                                {
+                                    <div class="transaction-type black-btn">
+                                        <div class="">
+                                            Swap
+                                        </div>
+                                    </div>
+                                }
+                                else if (i % 2 == 0)
+                                {
+                                    <div class="transaction-type black-btn">
+                                        <div class="">
+                                            Incoming
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="transaction-type black-btn">
+                                        <div class="">
+                                            Outgoing
+                                        </div>
+                                    </div>
+                                }
+                                            
+                            <div>
+                                <div class="transaction-date">
+                                    23 Jan 2017 23:33
+                                </div>
+                            </div>
+                            <span class="transaction-help">
+                                @Html.LabelFor(m => m.Save, "", new { @class = "review-choice" })
+                                @Html.CheckBoxFor(m => m.Save, new { @class = "ctrl-cb-review" })
+                            </span>
+                        </div>
+                    }
+                </div>
+                <div class="copy-values"><button id="review" type="button" class="btn dark-button">Copy</button></div>
+            </div>
+            <div class="net-stats">
+                <div class="home-tile trans-tile-2" style="height: 300px;">
+
+                    <h3 style="top: -55px; position: relative;">Make Transaction</h3>
+
+                    <div class=""><button id="review" type="button" class="btn dark-button tran-btn">Make Transaction</button></div>
+
+                    @Html.Partial("_CurrencyDropdown", new CurrencyModel() { Currencies = ViewBag.AllCurrencies })
+
+                    <div class="main-tran-details">
+                        <label class="override-label" for="address">Address</label> 
+                        <div id="address" class="custom-tb grey-btn">
+
+                        </div>
+                        <label class="override-label" for="amount">Amount</label>
+                        <div id="amount" class="custom-tb grey-btn">
+                        </div>
+                        <label class="override-label" for="gas">Gas</label>
+                        <div id="gas" class="custom-tb grey-btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="home-tile trans-tile-2" style="height: 213px;">
+
+                    <h3 style="top: -55px; position: relative;">Swap</h3>
+
+                    <div class="swap-ctrl">
+                        @Html.Partial("_CurrencyDropdown", new CurrencyModel() { Currencies = ViewBag.OwnedCurrencies, CSS = "trans-dd-swap" })
+                        <button id="review" type="button" class="btn dark-button swap-btn">Swap</button>
+                    </div>
+                    <div class="swap-tile">
+
+                        <div class="container-pb">
+                            <ul class="progressbar">
+                                <li class="active">login</li>
+                                <li>choose interest</li>
+                                <li>add friends</li>
+                                <li>View map</li>
+                            </ul>
+                        </div>
+                        <br />
+                        <div class="swap-panels">
+                            <div class="swap-pan swap-left grey-btn">
+                              
+                                    @Html.TextBox("left-side-swap", "Enter Amount...", new { @class= "swap-textbox" })
+                   
+                            </div>
+                            <div class="swap-pan swap-middle" style="background-image:url('../images/icons/arrow-4-32.png');background-size: cover;"></div>
+                            <div class="swap-pan swap-right grey-btn">
+    
+                                    @Html.TextBox("right-side-swap", "NaN", new { @class = "swap-textbox" })
+                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Styles.Render("~/Content/slide-style.css")
+@Styles.Render("~/Content/dd-style.css")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/jquery.voteStar.js")
+@Scripts.Render("~/Scripts/jquery.canvasjs.min.js")
+@Scripts.Render("~/Scripts/jquery.sparkline.min.js")
+@Scripts.Render("~/Scripts/jquery.sparkline.min.js")
+@Scripts.Render("~/Scripts/jdenticon-1.8.0.js")
+@Scripts.Render("~/Scripts/mo.js")
+@Scripts.Render("~/Scripts/transactions.js")
+@Scripts.Render("~/Scripts/slide-index.js")
+@Scripts.Render("~/Scripts/dd-style.js")
+
+
+<!--
+ <div class="tabs">
+
+                    <div class="tab">
+                        <input type="radio" id="tab-1" name="tab-group-1" checked>
+                        <label for="tab-1">Mo</label>
+
+                        <div class="content">
+                            <h4>Transactions</h4>
+                            <div class="trans-content">
+                                <div class="tran-items">
+
+                                    <table id="report-table" class="table-dark">
+
+                                        <tr class="report-table-header">
+                                            <td>From</td>
+                                            <td>To</td>
+                                            <td>Amount</td>
+                                            <td>Gas</td>
+                                            <td>Timestamp</td>
+                                        </tr>
+                                        @for (int i = 0; i < Model.Transactions.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td class="i-time">@Model.Transactions[i].address_from</td>
+                                                <td class="i-time">@Model.Transactions[i].address_to</td>
+                                                <td class="i-time">@Model.Transactions[i].amount_to_send_value</td>
+                                                <td class="i-time">@Model.Transactions[i].gas_amount_value</td>
+                                                <td class="i-time">@Model.Transactions[i].timestamp</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab">
+                        <input type="radio" id="tab-2" name="tab-group-1">
+                        <label for="tab-2">Mo Credit</label>
+
+                        <div class="content">
+                            <h4>Credit Transactions</h4>
+                            <div class="trans-content">
+                                <div class="tran-items">
+                                    <table id="report-table" class="table-dark">
+
+                                        <tr class="report-table-header">
+                                            <td>From</td>
+                                            <td>To</td>
+                                            <td>Amount</td>
+                                            <td>Type</td>
+                                            <td>Timestamp</td>
+                                        </tr>
+                                        @for (int i = 0; i < Model.CreditTransactions.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td class="i-time">@Model.CreditTransactions[i].from_id</td>
+                                                <td class="i-time">@Model.CreditTransactions[i].to_id</td>
+                                                <td class="i-time">@Model.CreditTransactions[i].amount</td>
+                                                @if (@Model.CreditTransactions[i].linked_comment_id != null)
+                                                {
+                                                    <td class="i-time">Comment Tip</td>
+                                                }
+                                                else if (@Model.CreditTransactions[i].linked_investion_id != null)
+                                                {
+                                                    <td class="i-time">Investigation Tip</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="i-time">Transfer</td>
+                                                }
+                                                <td class="i-time">@Model.CreditTransactions[i].timestamp</td>
+                                            </tr>
+                                        }
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+-->

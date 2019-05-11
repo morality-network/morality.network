@@ -1,0 +1,3271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MoralityNetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EthereumAddress" Type="nvarchar" MaxLength="42" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LastEdit" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="Notes" Type="text" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Activitys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubDirectoryId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="CommentId" Type="bigint" Nullable="false" />
+          <Property Name="ActivityText" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="bigint" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivityTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedAt" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+          <Property Name="Pings" Type="bigint" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProfilePictureUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedByAdmin" Type="bit" Nullable="false" />
+          <Property Name="Upvotes" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="bigint" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Sitename" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FlagCount" Type="bigint" Nullable="false" />
+          <Property Name="TipAmount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="SubDirectoryId" Type="bigint" Nullable="false" />
+          <Property Name="ExistsOnBlockChain" Type="bit" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AppliedForPersistence" Type="bit" Nullable="false" />
+          <Property Name="AppliedForPersistencedAt" Type="datetime" />
+          <Property Name="EligableForPersistance" Type="bit" Nullable="false" />
+          <Property Name="EligableForPersistanceAt" Type="datetime" />
+          <Property Name="ContentTypeId" Type="bigint" Nullable="false" />
+          <Property Name="PublisherChannelId" Type="bigint" />
+          <Property Name="ValidationRunCount" Type="int" Nullable="false" />
+          <Property Name="ReferredViaValidationToAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContentTransactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+          <Property Name="TransactionHash" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditTransactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="bigint" Nullable="false" />
+          <Property Name="ToUserId" Type="bigint" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="AdminNotes" Type="nvarchar" MaxLength="500" />
+          <Property Name="Notes" Type="nchar" MaxLength="500" />
+          <Property Name="LinkedId" Type="bigint" />
+          <Property Name="PaymentTypeId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditWallets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentAmount" Type="float" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="AccountId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CrowdfundingCampaign">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="TargetAmountMo" Type="float" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="42" Nullable="false" />
+          <Property Name="Abi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsTest" Type="bit" Nullable="false" />
+          <Property Name="Network" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="AdminId" Type="bigint" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Investigations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="bigint" Nullable="false" />
+          <Property Name="OverallRemove" Type="int" Nullable="false" />
+          <Property Name="OverallKeep" Type="int" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Resolved" Type="bit" Nullable="false" />
+          <Property Name="PassCounter" Type="int" Nullable="false" />
+          <Property Name="Removed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AssociatedEmail" Type="nvarchar" MaxLength="300" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubDirectoryId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="NotificationText" Type="nvarchar" MaxLength="500" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="NotificationTypeId" Type="int" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentChunks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalAllowenceInMo" Type="float" Nullable="false" />
+          <Property Name="TotalValueOfEachParticipation" Type="float" Nullable="false" />
+          <Property Name="TotalAllowenceInMoLeft" Type="float" Nullable="false" />
+          <Property Name="CreditWalletId" Type="bigint" Nullable="false" />
+          <Property Name="IssuedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExternalTransactionId" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="TransferFee" Type="float" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PollAnswers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PollId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Polls">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurveyId" Type="bigint" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ExpiresAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PublisherChannel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="UniqueDomain" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Tips" Type="float" Nullable="false" />
+          <Property Name="PersonalWebsiteUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="LogoUrl" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RatingValue" Type="float" Nullable="false" />
+          <Property Name="SubDirectoryId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="bigint" Nullable="false" />
+          <Property Name="ByUser" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportConfirm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="InvestigationId" Type="bigint" Nullable="false" />
+          <Property Name="Remove" Type="tinyint" Nullable="false" />
+          <Property Name="Toxic" Type="bit" Nullable="false" />
+          <Property Name="Racism" Type="bit" Nullable="false" />
+          <Property Name="Obscene" Type="bit" Nullable="false" />
+          <Property Name="Threat" Type="bit" Nullable="false" />
+          <Property Name="Insult" Type="bit" Nullable="false" />
+          <Property Name="Hate" Type="bit" Nullable="false" />
+          <Property Name="Spam" Type="bit" Nullable="false" />
+          <Property Name="RemoveComment" Type="bit" Nullable="false" />
+          <Property Name="IsDeactivated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountId" Type="bigint" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubDirectorys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Surveys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="AdditionalText" Type="nvarchar(max)" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ExpiresAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SystemNotifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmountToPayForTraining" Type="float" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="AdminUserId" Type="bigint" Nullable="false" />
+          <Property Name="AirdropMaxGiveAway" Type="bigint" Nullable="false" />
+          <Property Name="AirdropDailyDistributeAmount" Type="bigint" Nullable="false" />
+          <Property Name="AirdropThresholdBigPrizeGiveAway" Type="bigint" Nullable="false" />
+          <Property Name="AirdropRandomDistribution" Type="bigint" Nullable="false" />
+          <Property Name="AirdropMaxRandomAmount" Type="bigint" Nullable="false" />
+          <Property Name="AirdropTotalUserCountMinThreshold" Type="int" Nullable="false" />
+          <Property Name="AirdropMinThresholdUserPercent" Type="int" Nullable="false" />
+          <Property Name="AirdropMaxThresholdUserPercent" Type="int" Nullable="false" />
+          <Property Name="ValidationUserMaxCount" Type="int" Nullable="false" />
+          <Property Name="ValidationUserThresholdPercent" Type="float" Nullable="false" />
+          <Property Name="ValidationUserMaxRunCount" Type="int" Nullable="false" />
+          <Property Name="AmountToPayForUserValidation" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressFrom" Type="nvarchar" MaxLength="42" Nullable="false" />
+          <Property Name="AddressTo" Type="nvarchar" MaxLength="42" Nullable="false" />
+          <Property Name="Fee" Type="float" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="CurrencyId" Type="bigint" Nullable="false" />
+          <Property Name="TransactionHash" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserFrom" Type="bigint" Nullable="false" />
+          <Property Name="UserTo" Type="bigint" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Confirmed" Type="bit" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="BlockNumber" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Upvotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="CommentId" Type="bigint" Nullable="false" />
+          <Property Name="Vote" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserContentValidations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="ContentId" Type="bigint" Nullable="false" />
+          <Property Name="ShouldBePersisted" Type="bit" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPollingAnswers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="PollId" Type="bigint" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRatings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="RatingId" Type="bigint" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProfilePictureUrl" Type="nvarchar(max)" />
+          <Property Name="LastLogin" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Bio" Type="nvarchar(max)" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CurrentApp" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OverallRating" Type="float" Nullable="false" />
+          <Property Name="OverallReportCount" Type="float" Nullable="false" />
+          <Property Name="OverallRatingCount" Type="float" Nullable="false" />
+          <Property Name="OverallCommentCount" Type="float" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="LastActiveAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WithdrawTransfers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExternalTransactionId" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="TransferFee" Type="float" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToActivityTypes">
+          <End Role="ActivityTypes" Type="Self.ActivityTypes" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToComments">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToSubDirectorys">
+          <End Role="SubDirectorys" Type="Self.SubDirectorys" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_ToComments">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="0..1" />
+          <End Role="Comments1" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contents_ToContentTypes">
+          <End Role="ContentTypes" Type="Self.ContentTypes" Multiplicity="1" />
+          <End Role="Contents" Type="Self.Contents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contents">
+              <PropertyRef Name="ContentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contents_ToPublisherChannel">
+          <End Role="PublisherChannel" Type="Self.PublisherChannel" Multiplicity="0..1" />
+          <End Role="Contents" Type="Self.Contents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublisherChannel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contents">
+              <PropertyRef Name="PublisherChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contents_ToSubDirectorys">
+          <End Role="SubDirectorys" Type="Self.SubDirectorys" Multiplicity="1" />
+          <End Role="Contents" Type="Self.Contents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contents">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransactions_FromUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CreditTransactions" Type="Self.CreditTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditTransactions">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransactions_ToPaymentTypes">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1" />
+          <End Role="CreditTransactions" Type="Self.CreditTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditTransactions">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransactions_ToUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CreditTransactions" Type="Self.CreditTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditTransactions">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditWallets_ToUsers">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="CreditWallets" Type="Self.CreditWallets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditWallets">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrowdfundingCampaign_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="CrowdfundingCampaign" Type="Self.CrowdfundingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CrowdfundingCampaign">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrowdfundingCampaign_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CrowdfundingCampaign" Type="Self.CrowdfundingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CrowdfundingCampaign">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currencys_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Currencys" Type="Self.Currencys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencys">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investigations_ToComments">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+          <End Role="Investigations" Type="Self.Investigations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investigations">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToNotificationTypes">
+          <End Role="NotificationTypes" Type="Self.NotificationTypes" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="NotificationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToSubDirectorys">
+          <End Role="SubDirectorys" Type="Self.SubDirectorys" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentChunks_ToCreditWallets">
+          <End Role="CreditWallets" Type="Self.CreditWallets" Multiplicity="1" />
+          <End Role="PaymentChunks" Type="Self.PaymentChunks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditWallets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentChunks">
+              <PropertyRef Name="CreditWalletId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentTransfer_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PaymentTransfer" Type="Self.PaymentTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentTransfer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PollAnswers_ToPolls">
+          <End Role="Polls" Type="Self.Polls" Multiplicity="1" />
+          <End Role="PollAnswers" Type="Self.PollAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polls">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PollAnswers">
+              <PropertyRef Name="PollId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polls_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="Polls" Type="Self.Polls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Polls">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polls_ToSurveys">
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="0..1" />
+          <End Role="Polls" Type="Self.Polls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Surveys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Polls">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polls_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Polls" Type="Self.Polls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Polls">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublisherChannel_ToAccounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="PublisherChannel" Type="Self.PublisherChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublisherChannel">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ratings_ToSubDirectory">
+          <End Role="SubDirectorys" Type="Self.SubDirectorys" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportClaims_ToComments">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+          <End Role="ReportClaims" Type="Self.ReportClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportClaims">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportClaims_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ReportClaims" Type="Self.ReportClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportClaims">
+              <PropertyRef Name="ByUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportConfirm_ToInvestigations">
+          <End Role="Investigations" Type="Self.Investigations" Multiplicity="1" />
+          <End Role="ReportConfirm" Type="Self.ReportConfirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportConfirm">
+              <PropertyRef Name="InvestigationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportConfirm_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ReportConfirm" Type="Self.ReportConfirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportConfirm">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubDirectorys_ToSites">
+          <End Role="Sites" Type="Self.Sites" Multiplicity="1" />
+          <End Role="SubDirectorys" Type="Self.SubDirectorys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubDirectorys">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemValues_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SystemValues" Type="Self.SystemValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SystemValues">
+              <PropertyRef Name="AdminUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_ToUsersFrom">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="UserFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_ToUsersTo">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="UserTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upvotes_ToComments">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+          <End Role="Upvotes" Type="Self.Upvotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Upvotes">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upvotes_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Upvotes" Type="Self.Upvotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Upvotes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserContentValidations_ToContents">
+          <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
+          <End Role="UserContentValidations" Type="Self.UserContentValidations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserContentValidations">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserContentValidations_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserContentValidations" Type="Self.UserContentValidations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserContentValidations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMessages_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserMessages" Type="Self.UserMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMessages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPollingAnswers_ToPolls">
+          <End Role="Polls" Type="Self.Polls" Multiplicity="1" />
+          <End Role="UserPollingAnswers" Type="Self.UserPollingAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polls">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPollingAnswers">
+              <PropertyRef Name="PollId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPollingAnswers_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserPollingAnswers" Type="Self.UserPollingAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPollingAnswers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRatings_ToRatings">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="1" />
+          <End Role="UserRatings" Type="Self.UserRatings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRatings">
+              <PropertyRef Name="RatingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRatings_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRatings" Type="Self.UserRatings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRatings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WithdrawTransfers_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="WithdrawTransfers" Type="Self.WithdrawTransfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WithdrawTransfers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MoralityNetworkModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Activitys" EntityType="Self.Activitys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityTypes" EntityType="Self.ActivityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contents" EntityType="Self.Contents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContentTransactions" EntityType="Self.ContentTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContentTypes" EntityType="Self.ContentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditTransactions" EntityType="Self.CreditTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditWallets" EntityType="Self.CreditWallets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CrowdfundingCampaign" EntityType="Self.CrowdfundingCampaign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencys" EntityType="Self.Currencys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Investigations" EntityType="Self.Investigations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentChunks" EntityType="Self.PaymentChunks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTransfer" EntityType="Self.PaymentTransfer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PollAnswers" EntityType="Self.PollAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polls" EntityType="Self.Polls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublisherChannel" EntityType="Self.PublisherChannel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportClaims" EntityType="Self.ReportClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportConfirm" EntityType="Self.ReportConfirm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sites" EntityType="Self.Sites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubDirectorys" EntityType="Self.SubDirectorys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemNotifications" EntityType="Self.SystemNotifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemValues" EntityType="Self.SystemValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Upvotes" EntityType="Self.Upvotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserContentValidations" EntityType="Self.UserContentValidations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMessages" EntityType="Self.UserMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPollingAnswers" EntityType="Self.UserPollingAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRatings" EntityType="Self.UserRatings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WithdrawTransfers" EntityType="Self.WithdrawTransfers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_ToUsers" Association="Self.FK_Account_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToActivityTypes" Association="Self.FK_Activitys_ToActivityTypes">
+            <End Role="ActivityTypes" EntitySet="ActivityTypes" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToComments" Association="Self.FK_Activitys_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToContents" Association="Self.FK_Activitys_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToSubDirectorys" Association="Self.FK_Activitys_ToSubDirectorys">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToUsers" Association="Self.FK_Activitys_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_ToComments" Association="Self.FK_Comments_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Comments1" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_ToContents" Association="Self.FK_Comments_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_ToUsers" Association="Self.FK_Comments_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contents_ToContentTypes" Association="Self.FK_Contents_ToContentTypes">
+            <End Role="ContentTypes" EntitySet="ContentTypes" />
+            <End Role="Contents" EntitySet="Contents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contents_ToPublisherChannel" Association="Self.FK_Contents_ToPublisherChannel">
+            <End Role="PublisherChannel" EntitySet="PublisherChannel" />
+            <End Role="Contents" EntitySet="Contents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contents_ToSubDirectorys" Association="Self.FK_Contents_ToSubDirectorys">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Contents" EntitySet="Contents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransactions_FromUser" Association="Self.FK_CreditTransactions_FromUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CreditTransactions" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransactions_ToPaymentTypes" Association="Self.FK_CreditTransactions_ToPaymentTypes">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="CreditTransactions" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransactions_ToUser" Association="Self.FK_CreditTransactions_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CreditTransactions" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditWallets_ToUsers" Association="Self.FK_CreditWallets_ToUsers">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="CreditWallets" EntitySet="CreditWallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrowdfundingCampaign_ToContents" Association="Self.FK_CrowdfundingCampaign_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="CrowdfundingCampaign" EntitySet="CrowdfundingCampaign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrowdfundingCampaign_ToUsers" Association="Self.FK_CrowdfundingCampaign_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CrowdfundingCampaign" EntitySet="CrowdfundingCampaign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currencys_ToAccounts" Association="Self.FK_Currencys_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Currencys" EntitySet="Currencys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investigations_ToComments" Association="Self.FK_Investigations_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Investigations" EntitySet="Investigations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToContents" Association="Self.FK_Notifications_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToNotificationTypes" Association="Self.FK_Notifications_ToNotificationTypes">
+            <End Role="NotificationTypes" EntitySet="NotificationTypes" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToSubDirectorys" Association="Self.FK_Notifications_ToSubDirectorys">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToUsers" Association="Self.FK_Notifications_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentChunks_ToCreditWallets" Association="Self.FK_PaymentChunks_ToCreditWallets">
+            <End Role="CreditWallets" EntitySet="CreditWallets" />
+            <End Role="PaymentChunks" EntitySet="PaymentChunks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentTransfer_ToUsers" Association="Self.FK_PaymentTransfer_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PaymentTransfer" EntitySet="PaymentTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PollAnswers_ToPolls" Association="Self.FK_PollAnswers_ToPolls">
+            <End Role="Polls" EntitySet="Polls" />
+            <End Role="PollAnswers" EntitySet="PollAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polls_ToContents" Association="Self.FK_Polls_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Polls" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polls_ToSurveys" Association="Self.FK_Polls_ToSurveys">
+            <End Role="Surveys" EntitySet="Surveys" />
+            <End Role="Polls" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polls_ToUsers" Association="Self.FK_Polls_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Polls" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublisherChannel_ToAccounts" Association="Self.FK_PublisherChannel_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="PublisherChannel" EntitySet="PublisherChannel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ratings_ToSubDirectory" Association="Self.FK_Ratings_ToSubDirectory">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportClaims_ToComments" Association="Self.FK_ReportClaims_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="ReportClaims" EntitySet="ReportClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportClaims_ToUsers" Association="Self.FK_ReportClaims_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReportClaims" EntitySet="ReportClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportConfirm_ToInvestigations" Association="Self.FK_ReportConfirm_ToInvestigations">
+            <End Role="Investigations" EntitySet="Investigations" />
+            <End Role="ReportConfirm" EntitySet="ReportConfirm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportConfirm_ToUsers" Association="Self.FK_ReportConfirm_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReportConfirm" EntitySet="ReportConfirm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubDirectorys_ToSites" Association="Self.FK_SubDirectorys_ToSites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_ToContents" Association="Self.FK_Surveys_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_ToUsers" Association="Self.FK_Surveys_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemValues_ToUsers" Association="Self.FK_SystemValues_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SystemValues" EntitySet="SystemValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_ToUsersFrom" Association="Self.FK_Transactions_ToUsersFrom">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_ToUsersTo" Association="Self.FK_Transactions_ToUsersTo">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upvotes_ToComments" Association="Self.FK_Upvotes_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Upvotes" EntitySet="Upvotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upvotes_ToUsers" Association="Self.FK_Upvotes_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Upvotes" EntitySet="Upvotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserContentValidations_ToContents" Association="Self.FK_UserContentValidations_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="UserContentValidations" EntitySet="UserContentValidations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserContentValidations_ToUsers" Association="Self.FK_UserContentValidations_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserContentValidations" EntitySet="UserContentValidations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMessages_ToUsers" Association="Self.FK_UserMessages_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserMessages" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPollingAnswers_ToPolls" Association="Self.FK_UserPollingAnswers_ToPolls">
+            <End Role="Polls" EntitySet="Polls" />
+            <End Role="UserPollingAnswers" EntitySet="UserPollingAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPollingAnswers_ToUsers" Association="Self.FK_UserPollingAnswers_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPollingAnswers" EntitySet="UserPollingAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRatings_ToRatings" Association="Self.FK_UserRatings_ToRatings">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="UserRatings" EntitySet="UserRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRatings_ToUsers" Association="Self.FK_UserRatings_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRatings" EntitySet="UserRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WithdrawTransfers_ToUsers" Association="Self.FK_WithdrawTransfers_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WithdrawTransfers" EntitySet="WithdrawTransfers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MoralityNetworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EthereumAddress" Type="String" MaxLength="42" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastEdit" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Account_ToUsers" FromRole="Accounts" ToRole="Users" />
+          <NavigationProperty Name="CreditWallets" Relationship="Self.FK_CreditWallets_ToUsers" FromRole="Accounts" ToRole="CreditWallets" />
+          <NavigationProperty Name="Currencys" Relationship="Self.FK_Currencys_ToAccounts" FromRole="Accounts" ToRole="Currencys" />
+          <NavigationProperty Name="PublisherChannels" Relationship="MoralityNetworkModel.FK_PublisherChannel_ToAccounts" FromRole="Account" ToRole="PublisherChannel" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubDirectoryId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="CommentId" Type="Int64" Nullable="false" />
+          <Property Name="ActivityText" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Activitys_ToComments" FromRole="Activitys" ToRole="Comments" />
+          <NavigationProperty Name="SubDirectory" Relationship="Self.FK_Activitys_ToSubDirectorys" FromRole="Activitys" ToRole="SubDirectorys" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Activitys_ToUsers" FromRole="Activitys" ToRole="Users" />
+          <Property Name="ActivityTypeId" Type="Int64" Nullable="false" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ActivityType" Relationship="MoralityNetworkModel.FK_Activitys_ToActivityTypes" FromRole="Activity" ToRole="ActivityType" />
+          <NavigationProperty Name="Content" Relationship="MoralityNetworkModel.FK_Activitys_ToContents" FromRole="Activity" ToRole="Content" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="Pings" Type="Int64" Nullable="false" />
+          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProfilePictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedByAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="Upvotes" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int64" Nullable="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Sitename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Activitys" Relationship="Self.FK_Activitys_ToComments" FromRole="Comments" ToRole="Activitys" />
+          <NavigationProperty Name="Comments1" Relationship="Self.FK_Comments_ToComments" FromRole="Comments" ToRole="Comments1" />
+          <NavigationProperty Name="Comment1" Relationship="Self.FK_Comments_ToComments" FromRole="Comments1" ToRole="Comments" />
+          <NavigationProperty Name="Content1" Relationship="Self.FK_Comments_ToContents" FromRole="Comments" ToRole="Contents" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comments_ToUsers" FromRole="Comments" ToRole="Users" />
+          <NavigationProperty Name="Investigations" Relationship="Self.FK_Investigations_ToComments" FromRole="Comments" ToRole="Investigations" />
+          <NavigationProperty Name="ReportClaims" Relationship="Self.FK_ReportClaims_ToComments" FromRole="Comments" ToRole="ReportClaims" />
+          <NavigationProperty Name="Upvotes1" Relationship="Self.FK_Upvotes_ToComments" FromRole="Comments" ToRole="Upvotes" />
+          <Property Name="FlagCount" Type="Int64" Nullable="false" />
+          <Property Name="TipAmount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubDirectoryId" Type="Int64" Nullable="false" />
+          <Property Name="ExistsOnBlockChain" Type="Boolean" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AppliedForPersistence" Type="Boolean" Nullable="false" />
+          <Property Name="AppliedForPersistencedAt" Type="DateTime" Precision="3" />
+          <Property Name="EligableForPersistance" Type="Boolean" Nullable="false" />
+          <Property Name="EligableForPersistanceAt" Type="DateTime" Precision="3" />
+          <Property Name="ContentTypeId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Comments1" Relationship="Self.FK_Comments_ToContents" FromRole="Contents" ToRole="Comments" />
+          <NavigationProperty Name="ContentType" Relationship="Self.FK_Contents_ToContentTypes" FromRole="Contents" ToRole="ContentTypes" />
+          <NavigationProperty Name="SubDirectory" Relationship="Self.FK_Contents_ToSubDirectorys" FromRole="Contents" ToRole="SubDirectorys" />
+          <NavigationProperty Name="CrowdfundingCampaigns" Relationship="Self.FK_CrowdfundingCampaign_ToContents" FromRole="Contents" ToRole="CrowdfundingCampaign" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_ToContents" FromRole="Contents" ToRole="Notifications" />
+          <NavigationProperty Name="Polls" Relationship="Self.FK_Polls_ToContents" FromRole="Contents" ToRole="Polls" />
+          <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_ToContents" FromRole="Contents" ToRole="Surveys" />
+          <NavigationProperty Name="UserContentValidations" Relationship="Self.FK_UserContentValidations_ToContents" FromRole="Contents" ToRole="UserContentValidations" />
+          <NavigationProperty Name="Activitys" Relationship="MoralityNetworkModel.FK_Activitys_ToContents" FromRole="Content" ToRole="Activity" />
+          <Property Name="PublisherChannelId" Type="Int64" />
+          <NavigationProperty Name="PublisherChannel" Relationship="MoralityNetworkModel.FK_Contents_ToPublisherChannel" FromRole="Content" ToRole="PublisherChannel" />
+          <Property Name="ValidationRunCount" Type="Int32" Nullable="false" />
+          <Property Name="ReferredViaValidationToAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContentTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="TransactionHash" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ContentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contents" Relationship="Self.FK_Contents_ToContentTypes" FromRole="ContentTypes" ToRole="Contents" />
+        </EntityType>
+        <EntityType Name="CreditTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="Int64" Nullable="false" />
+          <Property Name="ToUserId" Type="Int64" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdminNotes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="LinkedId" Type="Int64" />
+          <Property Name="PaymentTypeId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CreditTransactions_FromUser" FromRole="CreditTransactions" ToRole="Users" />
+          <NavigationProperty Name="PaymentType" Relationship="Self.FK_CreditTransactions_ToPaymentTypes" FromRole="CreditTransactions" ToRole="PaymentTypes" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_CreditTransactions_ToUser" FromRole="CreditTransactions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="CreditWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentAmount" Type="Double" Nullable="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="AccountId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_CreditWallets_ToUsers" FromRole="CreditWallets" ToRole="Accounts" />
+          <NavigationProperty Name="PaymentChunks" Relationship="Self.FK_PaymentChunks_ToCreditWallets" FromRole="CreditWallets" ToRole="PaymentChunks" />
+        </EntityType>
+        <EntityType Name="CrowdfundingCampaign">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TargetAmountMo" Type="Double" Nullable="false" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="Self.FK_CrowdfundingCampaign_ToContents" FromRole="CrowdfundingCampaign" ToRole="Contents" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CrowdfundingCampaign_ToUsers" FromRole="CrowdfundingCampaign" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="42" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Abi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsTest" Type="Boolean" Nullable="false" />
+          <Property Name="Network" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdminId" Type="Int64" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Currencys_ToAccounts" FromRole="Currencys" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Investigation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int64" Nullable="false" />
+          <Property Name="OverallRemove" Type="Int32" Nullable="false" />
+          <Property Name="OverallKeep" Type="Int32" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Resolved" Type="Boolean" Nullable="false" />
+          <Property Name="PassCounter" Type="Int32" Nullable="false" />
+          <Property Name="Removed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Investigations_ToComments" FromRole="Investigations" ToRole="Comments" />
+          <NavigationProperty Name="ReportConfirms" Relationship="Self.FK_ReportConfirm_ToInvestigations" FromRole="Investigations" ToRole="ReportConfirm" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AssociatedEmail" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubDirectoryId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="NotificationText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotificationTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="Self.FK_Notifications_ToContents" FromRole="Notifications" ToRole="Contents" />
+          <NavigationProperty Name="NotificationType" Relationship="Self.FK_Notifications_ToNotificationTypes" FromRole="Notifications" ToRole="NotificationTypes" />
+          <NavigationProperty Name="SubDirectory" Relationship="Self.FK_Notifications_ToSubDirectorys" FromRole="Notifications" ToRole="SubDirectorys" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Notifications_ToUsers" FromRole="Notifications" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="NotificationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_ToNotificationTypes" FromRole="NotificationTypes" ToRole="Notifications" />
+        </EntityType>
+        <EntityType Name="PaymentChunk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalAllowenceInMo" Type="Double" Nullable="false" />
+          <Property Name="TotalValueOfEachParticipation" Type="Double" Nullable="false" />
+          <Property Name="TotalAllowenceInMoLeft" Type="Double" Nullable="false" />
+          <Property Name="CreditWalletId" Type="Int64" Nullable="false" />
+          <Property Name="IssuedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CreditWallet" Relationship="Self.FK_PaymentChunks_ToCreditWallets" FromRole="PaymentChunks" ToRole="CreditWallets" />
+        </EntityType>
+        <EntityType Name="PaymentTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExternalTransactionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="TransferFee" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_PaymentTransfer_ToUsers" FromRole="PaymentTransfer" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CreditTransactions" Relationship="Self.FK_CreditTransactions_ToPaymentTypes" FromRole="PaymentTypes" ToRole="CreditTransactions" />
+        </EntityType>
+        <EntityType Name="PollAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PollId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Poll" Relationship="Self.FK_PollAnswers_ToPolls" FromRole="PollAnswers" ToRole="Polls" />
+        </EntityType>
+        <EntityType Name="Poll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurveyId" Type="Int64" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ExpiresAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Content" Relationship="Self.FK_Polls_ToContents" FromRole="Polls" ToRole="Contents" />
+          <NavigationProperty Name="PollAnswers" Relationship="Self.FK_PollAnswers_ToPolls" FromRole="Polls" ToRole="PollAnswers" />
+          <NavigationProperty Name="Survey" Relationship="Self.FK_Polls_ToSurveys" FromRole="Polls" ToRole="Surveys" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Polls_ToUsers" FromRole="Polls" ToRole="Users" />
+          <NavigationProperty Name="UserPollingAnswers" Relationship="Self.FK_UserPollingAnswers_ToPolls" FromRole="Polls" ToRole="UserPollingAnswers" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RatingValue" Type="Double" Nullable="false" />
+          <Property Name="SubDirectoryId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="SubDirectory" Relationship="Self.FK_Ratings_ToSubDirectory" FromRole="Ratings" ToRole="SubDirectorys" />
+          <NavigationProperty Name="UserRatings" Relationship="Self.FK_UserRatings_ToRatings" FromRole="Ratings" ToRole="UserRatings" />
+        </EntityType>
+        <EntityType Name="ReportClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int64" Nullable="false" />
+          <Property Name="ByUser" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_ReportClaims_ToComments" FromRole="ReportClaims" ToRole="Comments" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ReportClaims_ToUsers" FromRole="ReportClaims" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ReportConfirm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="InvestigationId" Type="Int64" Nullable="false" />
+          <Property Name="Remove" Type="Byte" Nullable="false" />
+          <Property Name="Toxic" Type="Boolean" Nullable="false" />
+          <Property Name="Racism" Type="Boolean" Nullable="false" />
+          <Property Name="Obscene" Type="Boolean" Nullable="false" />
+          <Property Name="Threat" Type="Boolean" Nullable="false" />
+          <Property Name="Insult" Type="Boolean" Nullable="false" />
+          <Property Name="Hate" Type="Boolean" Nullable="false" />
+          <Property Name="Spam" Type="Boolean" Nullable="false" />
+          <Property Name="RemoveComment" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeactivated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Investigation" Relationship="Self.FK_ReportConfirm_ToInvestigations" FromRole="ReportConfirm" ToRole="Investigations" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ReportConfirm_ToUsers" FromRole="ReportConfirm" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="Int64" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SubDirectorys" Relationship="Self.FK_SubDirectorys_ToSites" FromRole="Sites" ToRole="SubDirectorys" />
+        </EntityType>
+        <EntityType Name="SubDirectory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Activitys" Relationship="Self.FK_Activitys_ToSubDirectorys" FromRole="SubDirectorys" ToRole="Activitys" />
+          <NavigationProperty Name="Contents" Relationship="Self.FK_Contents_ToSubDirectorys" FromRole="SubDirectorys" ToRole="Contents" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_ToSubDirectorys" FromRole="SubDirectorys" ToRole="Notifications" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_ToSubDirectory" FromRole="SubDirectorys" ToRole="Ratings" />
+          <NavigationProperty Name="Site" Relationship="Self.FK_SubDirectorys_ToSites" FromRole="SubDirectorys" ToRole="Sites" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ExpiresAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Content" Relationship="Self.FK_Surveys_ToContents" FromRole="Surveys" ToRole="Contents" />
+          <NavigationProperty Name="Polls" Relationship="Self.FK_Polls_ToSurveys" FromRole="Surveys" ToRole="Polls" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Surveys_ToUsers" FromRole="Surveys" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="SystemNotification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmountToPayForTraining" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdminUserId" Type="Int64" Nullable="false" />
+          <Property Name="AirdropMaxGiveAway" Type="Int64" Nullable="false" />
+          <Property Name="AirdropDailyDistributeAmount" Type="Int64" Nullable="false" />
+          <Property Name="AirdropThresholdBigPrizeGiveAway" Type="Int64" Nullable="false" />
+          <Property Name="AirdropRandomDistribution" Type="Int64" Nullable="false" />
+          <Property Name="AirdropMaxRandomAmount" Type="Int64" Nullable="false" />
+          <Property Name="AirdropTotalUserCountMinThreshold" Type="Int32" Nullable="false" />
+          <Property Name="AirdropMinThresholdUserPercent" Type="Int32" Nullable="false" />
+          <Property Name="AirdropMaxThresholdUserPercent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SystemValues_ToUsers" FromRole="SystemValues" ToRole="Users" />
+          <Property Name="ValidationUserMaxCount" Type="Int32" Nullable="false" />
+          <Property Name="ValidationUserThresholdPercent" Type="Double" Nullable="false" />
+          <Property Name="ValidationUserMaxRunCount" Type="Int32" Nullable="false" />
+          <Property Name="AmountToPayForUserValidation" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressFrom" Type="String" MaxLength="42" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressTo" Type="String" MaxLength="42" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fee" Type="Double" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int64" Nullable="false" />
+          <Property Name="TransactionHash" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserFrom" Type="Int64" Nullable="false" />
+          <Property Name="UserTo" Type="Int64" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Transactions_ToUsersFrom" FromRole="Transactions" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Transactions_ToUsersTo" FromRole="Transactions" ToRole="Users" />
+          <Property Name="BlockNumber" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Upvote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="CommentId" Type="Int64" Nullable="false" />
+          <Property Name="Vote" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Upvotes_ToComments" FromRole="Upvotes" ToRole="Comments" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Upvotes_ToUsers" FromRole="Upvotes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserContentValidation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="ShouldBePersisted" Type="Boolean" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Content" Relationship="Self.FK_UserContentValidations_ToContents" FromRole="UserContentValidations" ToRole="Contents" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserContentValidations_ToUsers" FromRole="UserContentValidations" ToRole="Users" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserMessages_ToUsers" FromRole="UserMessages" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserPollingAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="PollId" Type="Int64" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Poll" Relationship="Self.FK_UserPollingAnswers_ToPolls" FromRole="UserPollingAnswers" ToRole="Polls" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPollingAnswers_ToUsers" FromRole="UserPollingAnswers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserRating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="RatingId" Type="Int64" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Rating1" Relationship="Self.FK_UserRatings_ToRatings" FromRole="UserRatings" ToRole="Ratings" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserRatings_ToUsers" FromRole="UserRatings" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdentityId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProfilePictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentApp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OverallRating" Type="Double" Nullable="false" />
+          <Property Name="OverallReportCount" Type="Double" Nullable="false" />
+          <Property Name="OverallRatingCount" Type="Double" Nullable="false" />
+          <Property Name="OverallCommentCount" Type="Double" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActiveAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_ToUsers" FromRole="Users" ToRole="Accounts" />
+          <NavigationProperty Name="Activitys" Relationship="Self.FK_Activitys_ToUsers" FromRole="Users" ToRole="Activitys" />
+          <NavigationProperty Name="Comments1" Relationship="Self.FK_Comments_ToUsers" FromRole="Users" ToRole="Comments" />
+          <NavigationProperty Name="CreditTransactions" Relationship="Self.FK_CreditTransactions_FromUser" FromRole="Users" ToRole="CreditTransactions" />
+          <NavigationProperty Name="CreditTransactions1" Relationship="Self.FK_CreditTransactions_ToUser" FromRole="Users" ToRole="CreditTransactions" />
+          <NavigationProperty Name="CrowdfundingCampaigns" Relationship="Self.FK_CrowdfundingCampaign_ToUsers" FromRole="Users" ToRole="CrowdfundingCampaign" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_ToUsers" FromRole="Users" ToRole="Notifications" />
+          <NavigationProperty Name="PaymentTransfers" Relationship="Self.FK_PaymentTransfer_ToUsers" FromRole="Users" ToRole="PaymentTransfer" />
+          <NavigationProperty Name="Polls" Relationship="Self.FK_Polls_ToUsers" FromRole="Users" ToRole="Polls" />
+          <NavigationProperty Name="ReportClaims" Relationship="Self.FK_ReportClaims_ToUsers" FromRole="Users" ToRole="ReportClaims" />
+          <NavigationProperty Name="ReportConfirms" Relationship="Self.FK_ReportConfirm_ToUsers" FromRole="Users" ToRole="ReportConfirm" />
+          <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_ToUsers" FromRole="Users" ToRole="Surveys" />
+          <NavigationProperty Name="SystemValues" Relationship="Self.FK_SystemValues_ToUsers" FromRole="Users" ToRole="SystemValues" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_ToUsersFrom" FromRole="Users" ToRole="Transactions" />
+          <NavigationProperty Name="Transactions1" Relationship="Self.FK_Transactions_ToUsersTo" FromRole="Users" ToRole="Transactions" />
+          <NavigationProperty Name="Upvotes" Relationship="Self.FK_Upvotes_ToUsers" FromRole="Users" ToRole="Upvotes" />
+          <NavigationProperty Name="UserContentValidations" Relationship="Self.FK_UserContentValidations_ToUsers" FromRole="Users" ToRole="UserContentValidations" />
+          <NavigationProperty Name="UserMessages" Relationship="Self.FK_UserMessages_ToUsers" FromRole="Users" ToRole="UserMessages" />
+          <NavigationProperty Name="UserPollingAnswers" Relationship="Self.FK_UserPollingAnswers_ToUsers" FromRole="Users" ToRole="UserPollingAnswers" />
+          <NavigationProperty Name="UserRatings" Relationship="Self.FK_UserRatings_ToUsers" FromRole="Users" ToRole="UserRatings" />
+          <NavigationProperty Name="WithdrawTransfers" Relationship="Self.FK_WithdrawTransfers_ToUsers" FromRole="Users" ToRole="WithdrawTransfers" />
+        </EntityType>
+        <EntityType Name="WithdrawTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExternalTransactionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="TransferFee" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_WithdrawTransfers_ToUsers" FromRole="WithdrawTransfers" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Account_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditWallets_ToUsers">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="CreditWallets" Type="Self.CreditWallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditWallets">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currencys_ToAccounts">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Currencys" Type="Self.Currency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencys">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToComments">
+          <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToSubDirectorys">
+          <End Role="SubDirectorys" Type="Self.SubDirectory" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Activitys" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activitys">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_ToComments">
+          <End Role="Comments" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="Comments1" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_ToContents">
+          <End Role="Contents" Type="Self.Content" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investigations_ToComments">
+          <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Investigations" Type="Self.Investigation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investigations">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportClaims_ToComments">
+          <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+          <End Role="ReportClaims" Type="Self.ReportClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportClaims">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upvotes_ToComments">
+          <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Upvotes" Type="Self.Upvote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Upvotes">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contents_ToContentTypes">
+          <End Role="ContentTypes" Type="Self.ContentType" Multiplicity="1" />
+          <End Role="Contents" Type="Self.Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contents">
+              <PropertyRef Name="ContentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contents_ToSubDirectorys">
+          <End Role="SubDirectorys" Type="Self.SubDirectory" Multiplicity="1" />
+          <End Role="Contents" Type="Self.Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contents">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrowdfundingCampaign_ToContents">
+          <End Role="Contents" Type="Self.Content" Multiplicity="1" />
+          <End Role="CrowdfundingCampaign" Type="Self.CrowdfundingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CrowdfundingCampaign">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToContents">
+          <End Role="Contents" Type="Self.Content" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polls_ToContents">
+          <End Role="Contents" Type="Self.Content" Multiplicity="1" />
+          <End Role="Polls" Type="Self.Poll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Polls">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_ToContents">
+          <End Role="Contents" Type="Self.Content" Multiplicity="1" />
+          <End Role="Surveys" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserContentValidations_ToContents">
+          <End Role="Contents" Type="Self.Content" Multiplicity="1" />
+          <End Role="UserContentValidations" Type="Self.UserContentValidation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserContentValidations">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransactions_FromUser">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="CreditTransactions" Type="Self.CreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditTransactions">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransactions_ToPaymentTypes">
+          <End Role="PaymentTypes" Type="Self.PaymentType" Multiplicity="1" />
+          <End Role="CreditTransactions" Type="Self.CreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditTransactions">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditTransactions_ToUser">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="CreditTransactions" Type="Self.CreditTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditTransactions">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentChunks_ToCreditWallets">
+          <End Role="CreditWallets" Type="Self.CreditWallet" Multiplicity="1" />
+          <End Role="PaymentChunks" Type="Self.PaymentChunk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditWallets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentChunks">
+              <PropertyRef Name="CreditWalletId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrowdfundingCampaign_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="CrowdfundingCampaign" Type="Self.CrowdfundingCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CrowdfundingCampaign">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportConfirm_ToInvestigations">
+          <End Role="Investigations" Type="Self.Investigation" Multiplicity="1" />
+          <End Role="ReportConfirm" Type="Self.ReportConfirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportConfirm">
+              <PropertyRef Name="InvestigationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToNotificationTypes">
+          <End Role="NotificationTypes" Type="Self.NotificationType" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="NotificationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToSubDirectorys">
+          <End Role="SubDirectorys" Type="Self.SubDirectory" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentTransfer_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="PaymentTransfer" Type="Self.PaymentTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentTransfer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PollAnswers_ToPolls">
+          <End Role="Polls" Type="Self.Poll" Multiplicity="1" />
+          <End Role="PollAnswers" Type="Self.PollAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polls">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PollAnswers">
+              <PropertyRef Name="PollId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polls_ToSurveys">
+          <End Role="Surveys" Type="Self.Survey" Multiplicity="0..1" />
+          <End Role="Polls" Type="Self.Poll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Surveys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Polls">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polls_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Polls" Type="Self.Poll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Polls">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPollingAnswers_ToPolls">
+          <End Role="Polls" Type="Self.Poll" Multiplicity="1" />
+          <End Role="UserPollingAnswers" Type="Self.UserPollingAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polls">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPollingAnswers">
+              <PropertyRef Name="PollId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ratings_ToSubDirectory">
+          <End Role="SubDirectorys" Type="Self.SubDirectory" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDirectorys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="SubDirectoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRatings_ToRatings">
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="1" />
+          <End Role="UserRatings" Type="Self.UserRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRatings">
+              <PropertyRef Name="RatingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportClaims_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="ReportClaims" Type="Self.ReportClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportClaims">
+              <PropertyRef Name="ByUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportConfirm_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="ReportConfirm" Type="Self.ReportConfirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportConfirm">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubDirectorys_ToSites">
+          <End Role="Sites" Type="Self.Site" Multiplicity="1" />
+          <End Role="SubDirectorys" Type="Self.SubDirectory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubDirectorys">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Surveys" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemValues_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="SystemValues" Type="Self.SystemValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SystemValues">
+              <PropertyRef Name="AdminUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_ToUsersFrom">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="UserFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_ToUsersTo">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="UserTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upvotes_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Upvotes" Type="Self.Upvote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Upvotes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserContentValidations_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserContentValidations" Type="Self.UserContentValidation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserContentValidations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMessages_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserMessages" Type="Self.UserMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMessages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPollingAnswers_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPollingAnswers" Type="Self.UserPollingAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPollingAnswers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRatings_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRatings" Type="Self.UserRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRatings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WithdrawTransfers_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="WithdrawTransfers" Type="Self.WithdrawTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WithdrawTransfers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MoralityNetworkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Activitys" EntityType="Self.Activity" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Contents" EntityType="Self.Content" />
+          <EntitySet Name="ContentTransactions" EntityType="Self.ContentTransaction" />
+          <EntitySet Name="ContentTypes" EntityType="Self.ContentType" />
+          <EntitySet Name="CreditTransactions" EntityType="Self.CreditTransaction" />
+          <EntitySet Name="CreditWallets" EntityType="Self.CreditWallet" />
+          <EntitySet Name="CrowdfundingCampaigns" EntityType="Self.CrowdfundingCampaign" />
+          <EntitySet Name="Currencys" EntityType="Self.Currency" />
+          <EntitySet Name="Investigations" EntityType="Self.Investigation" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationType" />
+          <EntitySet Name="PaymentChunks" EntityType="Self.PaymentChunk" />
+          <EntitySet Name="PaymentTransfers" EntityType="Self.PaymentTransfer" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
+          <EntitySet Name="PollAnswers" EntityType="Self.PollAnswer" />
+          <EntitySet Name="Polls" EntityType="Self.Poll" />
+          <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <EntitySet Name="ReportClaims" EntityType="Self.ReportClaim" />
+          <EntitySet Name="ReportConfirms" EntityType="Self.ReportConfirm" />
+          <EntitySet Name="Sites" EntityType="Self.Site" />
+          <EntitySet Name="SubDirectorys" EntityType="Self.SubDirectory" />
+          <EntitySet Name="Surveys" EntityType="Self.Survey" />
+          <EntitySet Name="SystemNotifications" EntityType="Self.SystemNotification" />
+          <EntitySet Name="SystemValues" EntityType="Self.SystemValue" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <EntitySet Name="Upvotes" EntityType="Self.Upvote" />
+          <EntitySet Name="UserContentValidations" EntityType="Self.UserContentValidation" />
+          <EntitySet Name="UserMessages" EntityType="Self.UserMessage" />
+          <EntitySet Name="UserPollingAnswers" EntityType="Self.UserPollingAnswer" />
+          <EntitySet Name="UserRatings" EntityType="Self.UserRating" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="WithdrawTransfers" EntityType="Self.WithdrawTransfer" />
+          <AssociationSet Name="FK_Account_ToUsers" Association="Self.FK_Account_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditWallets_ToUsers" Association="Self.FK_CreditWallets_ToUsers">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="CreditWallets" EntitySet="CreditWallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currencys_ToAccounts" Association="Self.FK_Currencys_ToAccounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Currencys" EntitySet="Currencys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToComments" Association="Self.FK_Activitys_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToSubDirectorys" Association="Self.FK_Activitys_ToSubDirectorys">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToUsers" Association="Self.FK_Activitys_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Activitys" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_ToComments" Association="Self.FK_Comments_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Comments1" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_ToContents" Association="Self.FK_Comments_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_ToUsers" Association="Self.FK_Comments_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investigations_ToComments" Association="Self.FK_Investigations_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Investigations" EntitySet="Investigations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportClaims_ToComments" Association="Self.FK_ReportClaims_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="ReportClaims" EntitySet="ReportClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upvotes_ToComments" Association="Self.FK_Upvotes_ToComments">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Upvotes" EntitySet="Upvotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contents_ToContentTypes" Association="Self.FK_Contents_ToContentTypes">
+            <End Role="ContentTypes" EntitySet="ContentTypes" />
+            <End Role="Contents" EntitySet="Contents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contents_ToSubDirectorys" Association="Self.FK_Contents_ToSubDirectorys">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Contents" EntitySet="Contents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrowdfundingCampaign_ToContents" Association="Self.FK_CrowdfundingCampaign_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="CrowdfundingCampaign" EntitySet="CrowdfundingCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToContents" Association="Self.FK_Notifications_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polls_ToContents" Association="Self.FK_Polls_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Polls" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_ToContents" Association="Self.FK_Surveys_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserContentValidations_ToContents" Association="Self.FK_UserContentValidations_ToContents">
+            <End Role="Contents" EntitySet="Contents" />
+            <End Role="UserContentValidations" EntitySet="UserContentValidations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransactions_FromUser" Association="Self.FK_CreditTransactions_FromUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CreditTransactions" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransactions_ToPaymentTypes" Association="Self.FK_CreditTransactions_ToPaymentTypes">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="CreditTransactions" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditTransactions_ToUser" Association="Self.FK_CreditTransactions_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CreditTransactions" EntitySet="CreditTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentChunks_ToCreditWallets" Association="Self.FK_PaymentChunks_ToCreditWallets">
+            <End Role="CreditWallets" EntitySet="CreditWallets" />
+            <End Role="PaymentChunks" EntitySet="PaymentChunks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrowdfundingCampaign_ToUsers" Association="Self.FK_CrowdfundingCampaign_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CrowdfundingCampaign" EntitySet="CrowdfundingCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportConfirm_ToInvestigations" Association="Self.FK_ReportConfirm_ToInvestigations">
+            <End Role="Investigations" EntitySet="Investigations" />
+            <End Role="ReportConfirm" EntitySet="ReportConfirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToNotificationTypes" Association="Self.FK_Notifications_ToNotificationTypes">
+            <End Role="NotificationTypes" EntitySet="NotificationTypes" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToSubDirectorys" Association="Self.FK_Notifications_ToSubDirectorys">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_ToUsers" Association="Self.FK_Notifications_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentTransfer_ToUsers" Association="Self.FK_PaymentTransfer_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PaymentTransfer" EntitySet="PaymentTransfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PollAnswers_ToPolls" Association="Self.FK_PollAnswers_ToPolls">
+            <End Role="Polls" EntitySet="Polls" />
+            <End Role="PollAnswers" EntitySet="PollAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polls_ToSurveys" Association="Self.FK_Polls_ToSurveys">
+            <End Role="Surveys" EntitySet="Surveys" />
+            <End Role="Polls" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polls_ToUsers" Association="Self.FK_Polls_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Polls" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPollingAnswers_ToPolls" Association="Self.FK_UserPollingAnswers_ToPolls">
+            <End Role="Polls" EntitySet="Polls" />
+            <End Role="UserPollingAnswers" EntitySet="UserPollingAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ratings_ToSubDirectory" Association="Self.FK_Ratings_ToSubDirectory">
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRatings_ToRatings" Association="Self.FK_UserRatings_ToRatings">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="UserRatings" EntitySet="UserRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportClaims_ToUsers" Association="Self.FK_ReportClaims_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReportClaims" EntitySet="ReportClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportConfirm_ToUsers" Association="Self.FK_ReportConfirm_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReportConfirm" EntitySet="ReportConfirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubDirectorys_ToSites" Association="Self.FK_SubDirectorys_ToSites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="SubDirectorys" EntitySet="SubDirectorys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_ToUsers" Association="Self.FK_Surveys_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemValues_ToUsers" Association="Self.FK_SystemValues_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SystemValues" EntitySet="SystemValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_ToUsersFrom" Association="Self.FK_Transactions_ToUsersFrom">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_ToUsersTo" Association="Self.FK_Transactions_ToUsersTo">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upvotes_ToUsers" Association="Self.FK_Upvotes_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Upvotes" EntitySet="Upvotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserContentValidations_ToUsers" Association="Self.FK_UserContentValidations_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserContentValidations" EntitySet="UserContentValidations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMessages_ToUsers" Association="Self.FK_UserMessages_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserMessages" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPollingAnswers_ToUsers" Association="Self.FK_UserPollingAnswers_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPollingAnswers" EntitySet="UserPollingAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRatings_ToUsers" Association="Self.FK_UserRatings_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRatings" EntitySet="UserRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WithdrawTransfers_ToUsers" Association="Self.FK_WithdrawTransfers_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WithdrawTransfers" EntitySet="WithdrawTransfers" />
+          </AssociationSet>
+          <EntitySet Name="ActivityTypes" EntityType="MoralityNetworkModel.ActivityType" />
+          <AssociationSet Name="FK_Activitys_ToActivityTypes" Association="MoralityNetworkModel.FK_Activitys_ToActivityTypes">
+            <End Role="ActivityType" EntitySet="ActivityTypes" />
+            <End Role="Activity" EntitySet="Activitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activitys_ToContents" Association="MoralityNetworkModel.FK_Activitys_ToContents">
+            <End Role="Content" EntitySet="Contents" />
+            <End Role="Activity" EntitySet="Activitys" />
+          </AssociationSet>
+          <EntitySet Name="PublisherChannels" EntityType="MoralityNetworkModel.PublisherChannel" />
+          <AssociationSet Name="FK_PublisherChannel_ToAccounts" Association="MoralityNetworkModel.FK_PublisherChannel_ToAccounts">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="PublisherChannel" EntitySet="PublisherChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contents_ToPublisherChannel" Association="MoralityNetworkModel.FK_Contents_ToPublisherChannel">
+            <End Role="PublisherChannel" EntitySet="PublisherChannels" />
+            <End Role="Content" EntitySet="Contents" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activitys" Relationship="MoralityNetworkModel.FK_Activitys_ToActivityTypes" FromRole="ActivityType" ToRole="Activity" />
+        </EntityType>
+        <Association Name="FK_Activitys_ToActivityTypes">
+          <End Type="MoralityNetworkModel.ActivityType" Role="ActivityType" Multiplicity="1" />
+          <End Type="MoralityNetworkModel.Activity" Role="Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ActivityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activitys_ToContents">
+          <End Type="MoralityNetworkModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="MoralityNetworkModel.Activity" Role="Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PublisherChannel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueDomain" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tips" Type="Double" Nullable="false" />
+          <Property Name="PersonalWebsiteUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="LogoUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="MoralityNetworkModel.FK_PublisherChannel_ToAccounts" FromRole="PublisherChannel" ToRole="Account" />
+          <NavigationProperty Name="Contents" Relationship="MoralityNetworkModel.FK_Contents_ToPublisherChannel" FromRole="PublisherChannel" ToRole="Content" />
+        </EntityType>
+        <Association Name="FK_PublisherChannel_ToAccounts">
+          <End Type="MoralityNetworkModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="MoralityNetworkModel.PublisherChannel" Role="PublisherChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublisherChannel">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contents_ToPublisherChannel">
+          <End Type="MoralityNetworkModel.PublisherChannel" Role="PublisherChannel" Multiplicity="0..1" />
+          <End Type="MoralityNetworkModel.Content" Role="Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublisherChannel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Content">
+              <PropertyRef Name="PublisherChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MoralityNetworkModelStoreContainer" CdmEntityContainer="MoralityNetworkEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EthereumAddress" ColumnName="EthereumAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Activitys">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Activity">
+              <MappingFragment StoreEntitySet="Activitys">
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubDirectoryId" ColumnName="SubDirectoryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="ActivityText" ColumnName="ActivityText" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="TipAmount" ColumnName="TipAmount" />
+                <ScalarProperty Name="FlagCount" ColumnName="FlagCount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ModifiedAt" ColumnName="ModifiedAt" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Pings" ColumnName="Pings" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
+                <ScalarProperty Name="CreatedByAdmin" ColumnName="CreatedByAdmin" />
+                <ScalarProperty Name="Upvotes" ColumnName="Upvotes" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Sitename" ColumnName="Sitename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contents">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Content">
+              <MappingFragment StoreEntitySet="Contents">
+                <ScalarProperty Name="ReferredViaValidationToAdmin" ColumnName="ReferredViaValidationToAdmin" />
+                <ScalarProperty Name="ValidationRunCount" ColumnName="ValidationRunCount" />
+                <ScalarProperty Name="PublisherChannelId" ColumnName="PublisherChannelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="SubDirectoryId" ColumnName="SubDirectoryId" />
+                <ScalarProperty Name="ExistsOnBlockChain" ColumnName="ExistsOnBlockChain" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AppliedForPersistence" ColumnName="AppliedForPersistence" />
+                <ScalarProperty Name="AppliedForPersistencedAt" ColumnName="AppliedForPersistencedAt" />
+                <ScalarProperty Name="EligableForPersistance" ColumnName="EligableForPersistance" />
+                <ScalarProperty Name="EligableForPersistanceAt" ColumnName="EligableForPersistanceAt" />
+                <ScalarProperty Name="ContentTypeId" ColumnName="ContentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContentTransactions">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.ContentTransaction">
+              <MappingFragment StoreEntitySet="ContentTransactions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="TransactionHash" ColumnName="TransactionHash" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContentTypes">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.ContentType">
+              <MappingFragment StoreEntitySet="ContentTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditTransactions">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.CreditTransaction">
+              <MappingFragment StoreEntitySet="CreditTransactions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="AdminNotes" ColumnName="AdminNotes" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="LinkedId" ColumnName="LinkedId" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditWallets">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.CreditWallet">
+              <MappingFragment StoreEntitySet="CreditWallets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrentAmount" ColumnName="CurrentAmount" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CrowdfundingCampaigns">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.CrowdfundingCampaign">
+              <MappingFragment StoreEntitySet="CrowdfundingCampaign">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="TargetAmountMo" ColumnName="TargetAmountMo" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencys">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Currency">
+              <MappingFragment StoreEntitySet="Currencys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Abi" ColumnName="Abi" />
+                <ScalarProperty Name="IsTest" ColumnName="IsTest" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investigations">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Investigation">
+              <MappingFragment StoreEntitySet="Investigations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="OverallRemove" ColumnName="OverallRemove" />
+                <ScalarProperty Name="OverallKeep" ColumnName="OverallKeep" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Resolved" ColumnName="Resolved" />
+                <ScalarProperty Name="PassCounter" ColumnName="PassCounter" />
+                <ScalarProperty Name="Removed" ColumnName="Removed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LogText" ColumnName="LogText" />
+                <ScalarProperty Name="AssociatedEmail" ColumnName="AssociatedEmail" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubDirectoryId" ColumnName="SubDirectoryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NotificationText" ColumnName="NotificationText" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationTypes">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.NotificationType">
+              <MappingFragment StoreEntitySet="NotificationTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentChunks">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.PaymentChunk">
+              <MappingFragment StoreEntitySet="PaymentChunks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TotalAllowenceInMo" ColumnName="TotalAllowenceInMo" />
+                <ScalarProperty Name="TotalValueOfEachParticipation" ColumnName="TotalValueOfEachParticipation" />
+                <ScalarProperty Name="TotalAllowenceInMoLeft" ColumnName="TotalAllowenceInMoLeft" />
+                <ScalarProperty Name="CreditWalletId" ColumnName="CreditWalletId" />
+                <ScalarProperty Name="IssuedAt" ColumnName="IssuedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTransfers">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.PaymentTransfer">
+              <MappingFragment StoreEntitySet="PaymentTransfer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExternalTransactionId" ColumnName="ExternalTransactionId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TransferFee" ColumnName="TransferFee" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PollAnswers">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.PollAnswer">
+              <MappingFragment StoreEntitySet="PollAnswers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PollId" ColumnName="PollId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polls">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Poll">
+              <MappingFragment StoreEntitySet="Polls">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ExpiresAt" ColumnName="ExpiresAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Rating">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RatingValue" ColumnName="RatingValue" />
+                <ScalarProperty Name="SubDirectoryId" ColumnName="SubDirectoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportClaims">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.ReportClaim">
+              <MappingFragment StoreEntitySet="ReportClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="ByUser" ColumnName="ByUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportConfirms">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.ReportConfirm">
+              <MappingFragment StoreEntitySet="ReportConfirm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InvestigationId" ColumnName="InvestigationId" />
+                <ScalarProperty Name="Remove" ColumnName="Remove" />
+                <ScalarProperty Name="Toxic" ColumnName="Toxic" />
+                <ScalarProperty Name="Racism" ColumnName="Racism" />
+                <ScalarProperty Name="Obscene" ColumnName="Obscene" />
+                <ScalarProperty Name="Threat" ColumnName="Threat" />
+                <ScalarProperty Name="Insult" ColumnName="Insult" />
+                <ScalarProperty Name="Hate" ColumnName="Hate" />
+                <ScalarProperty Name="Spam" ColumnName="Spam" />
+                <ScalarProperty Name="RemoveComment" ColumnName="RemoveComment" />
+                <ScalarProperty Name="IsDeactivated" ColumnName="IsDeactivated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Site">
+              <MappingFragment StoreEntitySet="Sites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubDirectorys">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.SubDirectory">
+              <MappingFragment StoreEntitySet="SubDirectorys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Surveys">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Survey">
+              <MappingFragment StoreEntitySet="Surveys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AdditionalText" ColumnName="AdditionalText" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ExpiresAt" ColumnName="ExpiresAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemNotifications">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.SystemNotification">
+              <MappingFragment StoreEntitySet="SystemNotifications">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemValues">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.SystemValue">
+              <MappingFragment StoreEntitySet="SystemValues">
+                <ScalarProperty Name="AmountToPayForUserValidation" ColumnName="AmountToPayForUserValidation" />
+                <ScalarProperty Name="ValidationUserMaxRunCount" ColumnName="ValidationUserMaxRunCount" />
+                <ScalarProperty Name="ValidationUserThresholdPercent" ColumnName="ValidationUserThresholdPercent" />
+                <ScalarProperty Name="ValidationUserMaxCount" ColumnName="ValidationUserMaxCount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AmountToPayForTraining" ColumnName="AmountToPayForTraining" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+                <ScalarProperty Name="AirdropMaxGiveAway" ColumnName="AirdropMaxGiveAway" />
+                <ScalarProperty Name="AirdropDailyDistributeAmount" ColumnName="AirdropDailyDistributeAmount" />
+                <ScalarProperty Name="AirdropThresholdBigPrizeGiveAway" ColumnName="AirdropThresholdBigPrizeGiveAway" />
+                <ScalarProperty Name="AirdropRandomDistribution" ColumnName="AirdropRandomDistribution" />
+                <ScalarProperty Name="AirdropMaxRandomAmount" ColumnName="AirdropMaxRandomAmount" />
+                <ScalarProperty Name="AirdropTotalUserCountMinThreshold" ColumnName="AirdropTotalUserCountMinThreshold" />
+                <ScalarProperty Name="AirdropMinThresholdUserPercent" ColumnName="AirdropMinThresholdUserPercent" />
+                <ScalarProperty Name="AirdropMaxThresholdUserPercent" ColumnName="AirdropMaxThresholdUserPercent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AddressFrom" ColumnName="AddressFrom" />
+                <ScalarProperty Name="AddressTo" ColumnName="AddressTo" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="TransactionHash" ColumnName="TransactionHash" />
+                <ScalarProperty Name="UserFrom" ColumnName="UserFrom" />
+                <ScalarProperty Name="UserTo" ColumnName="UserTo" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Upvotes">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.Upvote">
+              <MappingFragment StoreEntitySet="Upvotes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="Vote" ColumnName="Vote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserContentValidations">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.UserContentValidation">
+              <MappingFragment StoreEntitySet="UserContentValidations">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="ShouldBePersisted" ColumnName="ShouldBePersisted" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMessages">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.UserMessage">
+              <MappingFragment StoreEntitySet="UserMessages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPollingAnswers">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.UserPollingAnswer">
+              <MappingFragment StoreEntitySet="UserPollingAnswers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PollId" ColumnName="PollId" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRatings">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.UserRating">
+              <MappingFragment StoreEntitySet="UserRatings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CurrentApp" ColumnName="CurrentApp" />
+                <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+                <ScalarProperty Name="OverallReportCount" ColumnName="OverallReportCount" />
+                <ScalarProperty Name="OverallRatingCount" ColumnName="OverallRatingCount" />
+                <ScalarProperty Name="OverallCommentCount" ColumnName="OverallCommentCount" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastActiveAt" ColumnName="LastActiveAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WithdrawTransfers">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.WithdrawTransfer">
+              <MappingFragment StoreEntitySet="WithdrawTransfers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExternalTransactionId" ColumnName="ExternalTransactionId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TransferFee" ColumnName="TransferFee" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityTypes">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.ActivityType">
+              <MappingFragment StoreEntitySet="ActivityTypes">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublisherChannels">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.PublisherChannel">
+              <MappingFragment StoreEntitySet="PublisherChannel">
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="PersonalWebsiteUrl" ColumnName="PersonalWebsiteUrl" />
+                <ScalarProperty Name="Tips" ColumnName="Tips" />
+                <ScalarProperty Name="UniqueDomain" ColumnName="UniqueDomain" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

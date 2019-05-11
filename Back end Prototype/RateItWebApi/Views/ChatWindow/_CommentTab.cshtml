@@ -1,0 +1,32 @@
+﻿@model RateItWebApi.Models.AppModel
+
+<div id="cmt--2033295929" class="comment-section">
+    <div id="cb-cmt-@Model.PageId" class="comment-section-cb" value="@Model.PageId">
+        <div id="ltc-cmt--2033295929" class="comment-section-ltc">
+            <div id="host-cmt--2033295929" class="comment-section-host"><span class="comment-window-title">@Model.PageName</span></div>
+            <div id="hdesc-cmt--2033295929" class="comment-section-hdesc"><span class="comment-window-desc">@Model.PageDescription</span></div>
+        </div>
+        <div id="rtc-cmt--2033295929" class="comment-section-rtc">
+            <input type="text" class="searchTerm-cmt" placeholder="Search Comments..">
+            <div id="btn-bar-2033295929" class="btn-bar"><span class="cmt-filter-az small-btn"><i class="material-icons">sort_by_alpha</i></span><span class="cmt-refresh small-btn"><i class="material-icons">loop</i></span></div>
+        </div>
+    </div>
+
+    @Html.Partial("_CommentsList", @Model.Comments)
+
+    <div id="cmt-post-hdr-2033295929" class="cmt-post-hdr">
+        <div id="cmt-write" class="cmt-write">
+            <div class="emotion">
+                <div id="cmt-cb-w" class="input" contenteditable="true" placeholder="Enter text here..."></div>
+                <div class="emotion-Icon">
+                    <i class="fa fa-smile-o" aria-hidden="true"></i>
+                </div>
+            </div>
+             <div class="emotion-area emotion-area-menu" style="display:none;"></div>
+        </div>
+        <div class="post-btn" type="button" value="Post">Post</div>
+        <div id="word-counter" class="word-counter">
+            0/250
+        </div>
+    </div>
+</div>

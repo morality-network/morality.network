@@ -1,0 +1,79 @@
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.select {
+  color: white;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 175px;
+    /* color: #ccc; */
+    vertical-align: middle;
+    text-align: left;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+.select .placeholder {
+  position: relative;
+  display: block;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+      min-height: 45px;
+}
+.select .placeholder:hover {
+  background: #34383c;
+}
+.select .placeholder:after {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'FontAwesome';
+  content: '\f078';
+  z-index: 10;
+}
+.select.is-open .placeholder:after {
+  content: '\f077';
+}
+.select.is-open ul {
+  display: block;
+}
+.select.select--white .placeholder {
+  background: #fff;
+  color: #999;
+}
+.select.select--white .placeholder:hover {
+  background: #fafafa;
+}
+.select ul {
+  display: none;
+    position: absolute;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    margin: 5px 0 0 0;
+    padding: 0;
+    z-index: 100;
+    max-height: 150px;
+}
+.select ul li {
+  display: block;
+  text-align: left;
+  padding: 0.8em 1em 0.8em 1em;
+  color: #999;
+  cursor: pointer;
+}
+.select ul li:hover {
+  background: #4ebbf0;
+  color: #fff;
+}

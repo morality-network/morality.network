@@ -1,0 +1,51 @@
+﻿<div id="mySidenav" style="background-image: url('/images/back.png');background-position: -2448px -124px; background-repeat: no-repeat;  background-attachment: fixed;" class="sidenav">
+    @{var controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();}
+    @if (controllerName == "Dashboard")
+    {
+        <div class="side-menu-item"><i class="fa icon-img fa-home selected"></i><div href="" class="selected">Home</div></div>
+    }
+    else
+    {
+        <a href="/Dashboard/Index"><i class="fa icon-img fa icon-img fa-home"></i>Home</a>
+    }
+    @if (controllerName == "Profile")
+    {
+        <div class="side-menu-item"><i class="fa icon-img fa-user profile selected"></i><div href="" class="selected">Profile</div></div>
+    }
+    else
+    {
+        <a href=""><i class="fa icon-img fa-user profile"></i>Profile</a>
+    }
+    @if (controllerName == "Transaction")
+    {
+        <div class="side-menu-item"><i class="fa icon-img fa-credit-card wallet  selected"></i><div href="" class="selected">Wallet</div></div>
+    }
+    else
+    {
+        <a href="/Transaction/Index"><i class="fa icon-img fa-credit-card wallet"></i>Wallet</a>
+    }
+    @if (controllerName == "Security")
+    {
+        <div class="side-menu-item"><i class="fa icon-img fa-lock security selected"></i><div href="" class="selected">Security</div></div>
+    }
+    else
+    {
+        <a href=""><i class="fa icon-img fa-lock security"></i>Security</a>
+    }
+    @if (controllerName == "Support")
+    {
+        <div class="side-menu-item"><i class="fa icon-img fa-question-circle support selected"></i><div href="" class="selected">Support</div></div>
+    }
+    else
+    {
+        <a href=""><i class="fa icon-img fa-question-circle support"></i>Support</a>
+    }
+    @if (controllerName == "Mining")
+    {
+        <div class="side-menu-item"><i class="fa icon-img fa-upload upload selected"></i><div href="" class="selected">Mining</div></div>
+    }
+    else
+    {
+        <a href="/Mining/Index"><i class="fa icon-img fa-upload upload"></i>Mining</a>
+    }
+</div>

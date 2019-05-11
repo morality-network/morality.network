@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Logs]
+(
+	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [LogText] NVARCHAR(MAX) NOT NULL, 
+	[AssociatedEmail] NVARCHAR(300) NULL,
+    [Timestamp] DATETIME NOT NULL DEFAULT GETDATE()
+)

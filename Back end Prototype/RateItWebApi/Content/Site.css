@@ -1,0 +1,503 @@
+﻿body {
+    background: #202020;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.profile{
+    margin-left: 2px;
+}
+.wallet{
+    margin-left: -3px;
+}
+.security{
+        margin-left: 4px;
+}
+.support{
+    margin-left: -1px;
+}
+.upload{
+    margin-left: -2px;
+}
+
+.icon-img{
+    font-size: 1.4em;
+    margin-right:15px;
+}
+
+.menu-item-list{
+    margin-top: 87px;
+        margin-left: 4px;
+    font-size: 14pt;
+    
+     list-style-type: none;
+}
+
+.menu-item-list > li{
+    margin-top: 24px;
+}
+
+.menu-item-list > li > a{
+    color:white;
+}
+
+.notification{
+    height:36px;
+
+}
+
+.Outgoing{
+    background: red;
+}
+.Incoming{
+    background: green;
+}
+
+.see-notes{
+    margin-top: 21px;
+    margin-left: 20px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.see-trans{
+    margin-top: 20px;
+    margin-left: 20px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.see-avg{
+    margin-top: 27px;
+    margin-left: 16px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.see-graph{
+    margin-top: 8px;
+    margin-left: 16px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+    margin-top: 16px;
+}
+
+.see-ch{
+    margin-left: 16px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+    margin-top: 30px;
+}
+
+
+.circle{
+    border-radius:50%;
+    background-color: buttonface;
+    width:30px;
+    height:30px; /* you can change height */
+    vertical-align:middle;
+}
+
+.green-circle{
+    border-radius:50%;
+    width:6px;
+    height:6px; /* you can change height */
+    vertical-align:middle;
+    background-color: lime;
+    float: left;
+    margin-top: 8px;
+    margin-right: 6px;
+}
+
+.user-controls{
+    float: right;
+    margin-right: 5px;
+    margin-top: 18px;
+}
+
+.parent-chat:hover{
+       background-color: rgb(244,244,244);
+       transition: 0.3s;
+}
+
+#sparkline{
+    margin-left: 64px;
+    margin-top: 30px;
+}
+
+div.parent-chat{ 
+    /*border:solid buttonface 1px;*/
+    display:table;
+    padding:5px; 
+    width:150px;
+    margin-left:14px;
+}
+div.text-chat{ 
+    vertical-align:middle;
+    display:table-cell;
+    text-align:justify;
+    padding-left: 10px;
+    max-width: 150px;
+    min-width: 150px;
+}
+div.parent-chat .img{
+    vertical-align:middle;
+    display:table-cell;
+    padding-right:5px;
+    width:50px; /* you can change width */
+}
+div.img-chat img{ 
+    width:30px;
+    height:30px; /* you can change height */
+    vertical-align:middle;
+}
+
+.grad{width:20px;height:20px;border-radius:50px;background:linear-gradient(to bottom, #40b3ff, #09f)}
+
+.chat-item{
+    width:100px;
+    height:26px;
+    background:white;
+    display:block;
+    margin-left: 18px;
+    margin-top: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.small-date-text{
+    font-size:10px;
+    margin-left:20px;
+    margin-bottom:3px;
+    clear:both;
+}
+
+h3{
+    font-weight: bold;
+    font-size:14pt;
+    margin-left:20px;
+}
+
+.main-note-item{
+    float:left;
+    border :1px solid #87CEFA;
+    background: #87CEFA;
+    border-radius: 5px;
+    height:26px;
+    margin-left:20px;
+    width: 343px;
+    margin-right: 8px;
+}
+
+.main-activity-item{
+    float:left;
+    border :1px solid #87CEFA;
+    background: #87CEFA;
+    border-radius: 5px;
+    height:26px;
+    margin-left:20px;
+    width: 402px;
+    margin-right: 8px;
+}
+
+.rate-ri-stars{
+	float: right;
+    margin-right: 0px;
+    right: 15px;
+    top: 4px;
+    position: absolute;
+    width: 145px;
+	height: 16px;
+}
+.rate-usr-ri{
+	float: right;
+    display: block;
+    /* clear: both; */
+    margin-right: 19px;
+    right: 0px;
+    top: 38px;
+    position: absolute;
+}
+
+.super-rate-text-explain{
+    font-size: 8pt;
+    text-align: center;
+    margin-top: -31px;
+    font-weight: 700;
+}
+
+.super-rate-text{
+    margin-top: -22px;
+    font-size: 82pt;
+    text-align: center;
+}
+
+.main-notification-text{
+    padding-left: 10px;
+    padding-left: 10px;
+    max-width: 327px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.note-item{
+    min-width: 427px;
+    max-height: 10%;
+    display: block;
+ 
+}
+
+
+.main-trans-item{
+    float:left;
+    border-radius: 5px;
+    height:26px;
+    margin-left:20px;
+    width: 143px;
+    margin-right: 8px;
+}
+
+.hide-overflow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 128px;
+}
+
+.main-trans-text{
+    padding-left: 10px;
+    padding-left: 10px;
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: white;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.trans{
+    min-width: 427px;
+    max-height: 10%;
+    display: block;
+ 
+}
+
+.simple-linear {
+  background: #202020;
+  width:100%;
+  height:100vh;
+}
+
+.home-tile{
+    border-radius: 7px;
+    display:inline-block;
+    background: white;
+}
+
+.spacer{
+    clear:both;
+}
+
+.top-tile-1{
+    width: 39%;
+    height: 54%;
+    margin-top: 15px;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-height: 332px;
+    min-width: 439px;
+}
+.top-tile-2{
+    margin-top: 15px;
+    width: 16%;
+    height: 54%;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-height: 332px;
+    min-width: 186px;
+}
+
+.bottom-tile-1{
+    width: 19%;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-width: 216px;
+    min-height: 211px;
+    height: 247px;
+}
+.bottom-tile-2{
+    width: 56%;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-width: 633px;
+    min-height: 211px;
+    height: 247px;
+}
+
+.item-tiles{
+    display:inline-block;
+    width: 88%;
+    height:93vh;
+    margin-left: 183px;
+    margin-top: 1px;
+}
+
+.selected{
+    display: inline;
+    color:orange;
+}
+
+.top-bar{
+    display:block;
+    float:right;
+    height: 11px;
+}
+
+.left-menu{
+    display:block;
+    float:left;
+    height:100vh;
+    min-width:14%;
+}
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    overflow:hidden;
+}
+
+.content {
+    position:absolute;
+    height:80%; /* = 100% - 2*10% padding */
+    width:90%; /* = 100% - 2*5% padding */
+    padding: 10% 5%;
+}
+
+/**/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 181px;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background: #202020;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    padding-top: 80px;
+    padding-left: 5px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu-item {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.cross{
+    text-decoration: none !important;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    position: relative;
+    left: 94%;
+    top: -24px;
+    width: 20px;
+    height: 30px;
+}
+
+.logout{
+    color: white;
+    margin-right: 34px;
+}
+.logout:hover{
+    color: white;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.arrow-down-dd   {
+    width: 0;
+    height: 0;
+    content: '';
+    border-width: 50px;
+    border-style: solid;
+    border-color: #ddd transparent transparent transparent;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.sub-comments {
+    float: right;
+    clear: both;
+    display: inline;
+    margin-right: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+

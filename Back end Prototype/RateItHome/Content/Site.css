@@ -1,0 +1,1267 @@
+﻿body {
+    background: #202020;
+}
+
+.black-background {
+    background: #202020;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #202020;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.profile {
+    margin-left: 2px;
+}
+
+.wallet {
+    margin-left: -3px;
+}
+
+.security {
+    margin-left: 4px;
+}
+
+.support {
+    margin-left: -1px;
+}
+
+.upload {
+    margin-left: -2px;
+}
+
+.icon-img {
+    font-size: 1.4em;
+    margin-right: 15px;
+}
+
+.menu-item-list {
+    margin-top: 87px;
+    margin-left: 4px;
+    font-size: 14pt;
+    list-style-type: none;
+}
+
+    .menu-item-list > li {
+        margin-top: 24px;
+    }
+
+        .menu-item-list > li > a {
+            color: white;
+        }
+
+.notification {
+    height: 36px;
+}
+
+.Outgoing {
+    background: red;
+    border: 1px solid orange;
+}
+
+.Incoming {
+    background: green;
+    border: 1px solid lightgreen;
+}
+
+.see-notes {
+    margin-top: 21px;
+    margin-left: 20px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+    background: rgb(65,65,65);
+    color: white;
+}
+
+.b-btn {
+    background: rgb(65,65,65) !important;
+    color: white !important;
+}
+
+.mo-login {
+    margin-left: 21px;
+    position: relative;
+    top: -60px;
+}
+
+.map {
+    min-width: 135px;
+}
+
+.balance-box {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.topbar-menu {
+    display: inline-flex;
+    color: white;
+    margin-left: 209px;
+    margin-top: 17px;
+    height: 27px;
+    width: 55%;
+}
+
+.user-icon {
+    margin-left: 22px;
+    top: -5px;
+    position: relative;
+}
+
+.see-trans {
+    cursor: pointer;
+    margin-top: 6px;
+    margin-left: 20px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+    background: rgb(65,65,65);
+    color: white;
+}
+
+.see-avg {
+    margin-top: 15px !important;
+    margin-left: 16px;
+    bottom: 8px;
+    display: table-cell;
+    vertical-align: bottom;
+    background: rgb(65,65,65);
+    color: white;
+}
+
+.see-graph {
+    margin-top: 22px !important;
+    margin-left: 16px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align: bottom;
+    margin-top: 21px;
+    background: rgb(65,65,65);
+    color: white;
+}
+
+.see-ch {
+    margin-left: 16px;
+    bottom: 0px;
+    margin-top: 29px !important;
+    display: table-cell;
+    vertical-align: bottom;
+    background: rgb(65,65,65);
+    color: white;
+}
+
+
+.circle {
+    border-radius: 50%;
+    background-color: buttonface;
+    width: 30px;
+    height: 30px; /* you can change height */
+    vertical-align: middle;
+}
+
+.green-circle {
+    border-radius: 50%;
+    width: 6px;
+    height: 6px; /* you can change height */
+    vertical-align: middle;
+    background-color: lime;
+    float: left;
+    margin-top: 10px;
+    margin-right: 9px;
+}
+
+.user-controls {
+    float: right;
+    margin-right: 5px;
+    margin-top: 18px;
+}
+
+.parent-chat:hover {
+    background-color: rgb(244,244,244);
+    transition: 0.3s;
+}
+
+#sparkline {
+    margin-left: 130px;
+    margin-top: 43px;
+}
+
+div.parent-chat {
+    /*border:solid buttonface 1px;*/
+    display: table;
+    padding: 5px;
+    width: 150px;
+    margin-left: 14px;
+}
+
+div.text-chat {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: justify;
+    padding-left: 10px;
+    max-width: 150px;
+    min-width: 150px;
+}
+
+div.parent-chat .img {
+    vertical-align: middle;
+    display: table-cell;
+    padding-right: 5px;
+    width: 50px; /* you can change width */
+}
+
+div.img-chat img {
+    width: 30px;
+    height: 30px; /* you can change height */
+    vertical-align: middle;
+}
+
+.grad {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: linear-gradient(to bottom, #40b3ff, #09f);
+}
+
+.chat-item {
+    width: 100px;
+    height: 26px;
+    background: white;
+    display: block;
+    margin-left: 18px;
+    margin-top: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.small-date-text {
+    font-size: 10px;
+    margin-left: 20px;
+    margin-bottom: 3px;
+    clear: both;
+    color: white;
+}
+
+.error-text {
+    color: indianred;
+    font-size: 18pt;
+    font-weight: 400;
+}
+
+h3 {
+    font-weight: bold !important;
+    font-size: 14pt !important;
+    margin-left: 20px !important;
+    color: white !important;
+    margin-bottom: 22px !important;
+}
+
+.main-note-item {
+    float: left;
+    border: 1px solid #87CEFA;
+    background: #1794e2;
+    border-radius: 5px;
+    height: 32px;
+    margin-left: 20px;
+    width: 385px;
+    margin-right: 8px;
+}
+
+.main-activity-item {
+    float: left;
+    border: 1px solid #87CEFA;
+    background: #87CEFA;
+    border-radius: 5px;
+    height: 32px;
+    margin-left: 20px;
+    width: 402px;
+    margin-right: 8px;
+}
+
+.rate-ri-stars {
+    float: right;
+    margin-right: 0px;
+    left: 96px;
+    top: 35px;
+    position: absolute;
+    width: 145px;
+    height: 16px;
+}
+
+.rate-usr-ri {
+    float: right;
+    display: block;
+    /* clear: both; */
+    margin-right: 19px;
+    right: 0px;
+    top: 38px;
+    position: absolute;
+}
+
+.super-rate-text-explain {
+    font-size: 8pt;
+    text-align: center;
+    margin-top: -12px;
+    font-weight: 700;
+    margin-left: 21px;
+}
+
+.super-rate-text {
+    margin-top: -38px;
+    font-size: 82pt;
+    margin-left: 24px;
+    text-align: center;
+}
+
+.main-notification-text {
+    padding-left: 10px;
+    padding-left: 10px;
+    max-width: 355px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.note-item {
+    min-width: 427px;
+    max-height: 10%;
+    display: block;
+}
+
+.note-items {
+    height: 100%;
+    margin-top: 35px;
+}
+
+.main-trans-item {
+    float: left;
+    border-radius: 5px;
+    height: 32px;
+    margin-left: 20px;
+    width: 211px;
+    margin-right: 8px;
+}
+
+.account-marker {
+    margin-left: 200px;
+    margin-top: 13px;
+    position: absolute;
+    display: inline-block;
+}
+
+
+.bottom-right {
+    display: inline;
+    width: 400px;
+    height: 35px;
+    background-color: #FD5A5A;
+    float: right;
+    bottom: 0;
+    margin-top: 69px;
+}
+
+.balance-bar {
+    margin-left: 241px;
+    cursor: default;
+    margin-top: 18px;
+    position: absolute;
+    display: inline-block;
+    height: 21px;
+}
+
+.hide-overflow {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 128px;
+}
+
+.hide-overflow-big {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 400px;
+}
+
+.main-trans-text {
+    padding-left: 10px;
+    padding-left: 10px;
+    max-width: 204px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: white;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.trans {
+    min-width: 427px;
+    max-height: 10%;
+    display: block;
+}
+
+.simple-linear {
+    background: #202020;
+    width: 100%;
+    height: 100vh;
+}
+
+.home-tile {
+    border-radius: 7px;
+    display: inline-block;
+    /*background: white;*/
+    padding-top: 19px;
+}
+
+.spacer {
+    clear: both;
+}
+
+.top-tile-1 {
+    background: rgb(50,50,50);
+    margin-top: 15px;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-height: 368px;
+    min-width: 492px;
+}
+
+.top-tile-2 {
+    background: rgb(50,50,50);
+    margin-top: 15px;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-height: 368px;
+    min-width: 257px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(60,60,60);
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(70,70,70);
+}
+
+.table-dark {
+    width: 100%;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+}
+
+.title-margin-right {
+    margin-right: 8px;
+}
+
+.chart-center {
+    position: absolute;
+    margin-left: 15px;
+}
+
+.chart-text-abs-t {
+    position: absolute;
+    margin-top: 135px;
+    font-weight: 700;
+    margin-left: 13px;
+    color: white;
+}
+
+.chart-text-abs-v {
+    position: absolute;
+    margin-top: 151px;
+    margin-left: 13px;
+    color: white;
+}
+
+.report-table-header {
+    background: rgb(90,90,90) !important;
+}
+
+.tran-items {
+    top: 1px;
+    margin-left: -16px;
+    height: 95%;
+    background: rgb(70,70,70);
+    width: 634px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.report-review-items {
+    background: rgb(70,70,70);
+    width: 637px;
+    top: -31px;
+    margin-left: 12px;
+    position: relative;
+    height: 54%;
+    overflow-y: auto;
+}
+
+.review-ctrl-filter {
+    max-width: 130px;
+    float: right;
+    margin-top: 5px;
+}
+
+
+.review-table-control {
+    width: 100%;
+    height: 36px;
+    background: rgb(50,50,50);
+}
+
+.highlight {
+    background: white !important;
+}
+
+tr:hover {
+    background-color: rgb(90,90,90);
+    cursor: pointer;
+}
+
+.review-real-text {
+    overflow-y: scroll;
+    /* margin-top: 43px; */
+    clear: both;
+    max-height: 145px;
+    margin-left: 10px;
+    color: white;
+}
+
+.ctrl-cb-review {
+    margin-right: 9px;
+}
+
+.review-choice {
+    color: white;
+    font-weight: 700;
+}
+
+.report-review-control-text {
+    width: 638px;
+    margin-left: 12px;
+    top: -50px;
+    position: relative;
+    height: 176px;
+}
+
+.dark-button {
+    background: rgb(65,65,65);
+    color: white;
+    cursor: pointer;
+}
+
+.report-review-controls {
+    /* position: relative; */
+    width: 638px;
+    padding-left: 11px;
+    background: none;
+    padding-top: 10px;
+    margin-left: 12px;
+    top: -50px;
+    position: relative;
+    height: 59px;
+    /* overflow-y: auto; */
+    /* background: wheat; */
+}
+
+.net-stats {
+    max-width: 625px;
+    max-width: 605px;
+    display: inline-table;
+}
+
+
+.review-tile-1 {
+    background: rgb(50,50,50);
+    margin-top: 22px;
+    margin-right: 8px;
+    margin-bottom: 9px;
+    height: 590px;
+    min-width: 663px;
+    max-width: 700px;
+    display: inline-table;
+}
+
+.review-tile-2 {
+    margin-top: 45px;
+    margin-right: 9px;
+    min-width: 560px;
+    display: inline-table;
+}
+
+.review-tile-3 {
+    background: rgb(50,50,50);
+    margin-top: 8px;
+    margin-bottom: 9px;
+    height: 210px;
+    min-width: 290px;
+}
+
+.ideticon-icon {
+    display: inline-block;
+    position: absolute;
+    top: 133px;
+}
+
+.copy-values {
+    margin-left: 17px;
+    margin-top: 34px;
+}
+
+.tran-btn {
+    position: absolute;
+    top: 137px;
+    /* bottom: 25px; */
+    margin-left: 20px;
+}
+
+.override-label {
+    margin: 0px !important;
+}
+
+.custom-tb {
+    border-radius: 7px;
+    display: inline-block;
+    padding-top: 5px;
+    color: white;
+    width: 150px;
+    width: 464px;
+    /* text-align: center; */
+    clear: both;
+    display: block;
+    height: 39px;
+    margin-top: 5px;
+}
+
+.tran-balance {
+    /* margin-top: 17px; */
+    /* margin-top: 17px; */
+    top: -9px;
+    left: 65px;
+    width: 270px;
+    color: white;
+    position: absolute;
+    display: inline-block;
+    font-size: 20pt;
+}
+
+.transaction-list {
+    display: block;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 60px;
+    width: 633px;
+    height: 444px;
+    overflow-y: scroll;
+}
+
+.transaction-row {
+    background-color: rgb(50,50,50);
+    height: 47px;
+    display: inline-flex;
+    width: 100%;
+}
+
+.green-btn {
+    background: green;
+}
+
+.red-btn {
+    background: red;
+}
+
+.black-btn {
+    background: rgb(40,40,40);
+}
+
+.grey-btn {
+    background: rgb(70,70,70);
+}
+
+.swap-ctrl {
+    margin-top: -40px !important;
+}
+
+.swap-textbox {
+    position: relative;
+    top: 18px;
+    background: rgb(70,70,70);
+    border: none;
+    color: white;
+    overflow: auto;
+}
+
+.swap-pan {
+    display: inline-block;
+    border-radius: 10pt;
+}
+
+.swap-panels {
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
+    margin-top: 51px;
+}
+
+.swap-left {
+    max-width: 250px;
+    min-width: 250px;
+    min-height: 80px;
+}
+
+.swap-btn {
+    margin-left: 20px;
+    margin-top: -2px;
+}
+
+.swap-middle {
+    min-width: 35px;
+    min-height: 35px;
+    margin-bottom: -30px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.swap-right {
+    max-width: 250px;
+    min-width: 250px;
+    min-height: 80px;
+}
+
+.swap-tile {
+    margin-bottom: 22px;
+}
+
+.main-tran-details {
+    color: white;
+    margin-left: 20px;
+    margin-bottom: 24px;
+    margin-top: 32px;
+}
+
+.transaction-type {
+    border-radius: 7px;
+    display: inline-block;
+    padding-top: 5px;
+    color: white;
+    width: 150px;
+    width: 150px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.select-all-cb {
+    float: right;
+    margin-right: 45px;
+    margin-top: 23px;
+    color: white;
+    font-weight: 700;
+}
+
+.transaction-date {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    font-weight: 700;
+}
+
+.transaction-help {
+    color: white;
+    display: block;
+    float: right;
+    margin-top: 11px;
+    margin-left: 290px;
+}
+
+.trans-dd {
+    float: right;
+    margin-top: -45px !important;
+    margin-right: 15px !important;
+}
+
+.earn-dd{
+    top: 35px;
+    right: 10px;
+     float: right;
+    margin-top: -45px !important;
+    margin-bottom: 0px;
+    margin-right: 0px !important;
+}
+
+.note-dd{
+    float: right;
+    margin-top: -45px !important;
+    margin-bottom: 0px;
+    margin-right: 0px !important;
+}
+
+.trans-dd-swap {
+    float: right;
+    margin-top: -5px !important;
+    margin-right: 15px !important;
+}
+
+.trans-tile-2 {
+    background: rgb(50,50,50);
+    margin-top: 33px;
+    margin-right: 8px;
+    margin-bottom: 9px;
+    height: 270px;
+    min-width: 606px;
+    max-width: 700px;
+    display: inline-table;
+}
+
+.trans-tile-1 {
+    background: rgb(50,50,50);
+    margin-top: 8px;
+    margin-bottom: 9px;
+    height: 210px;
+    min-width: 290px;
+}
+
+.time-margin-right {
+    margin-right: 8px;
+}
+
+.bottom-tile-1 {
+    background: rgb(50,50,50);
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-width: 247px;
+    min-height: 211px;
+    height: 260px;
+}
+
+.bottom-tile-2 {
+    background: rgb(50,50,50);
+    margin-right: 9px;
+    margin-bottom: 9px;
+    min-width: 746px;
+    min-height: 211px;
+    height: 260px;
+}
+
+.item-tiles {
+    display: inline-block;
+    width: 88%;
+    height: 93vh;
+    margin-left: 206px;
+    margin-top: -1px;
+}
+
+.margin-for-menu {
+    margin-left: 208px;
+    margin-top: 85px;
+}
+
+.mining-item-tiles {
+    display: inline-block;
+    margin-top: -68px;
+}
+
+.white-text {
+    font-weight: 700;
+    color: white;
+}
+
+.selected {
+    display: inline;
+    color: orange;
+}
+
+.top-bar {
+    display: block;
+    float: right;
+    height: 11px;
+}
+
+.left-menu {
+    display: block;
+    float: left;
+    height: 100vh;
+    min-width: 14%;
+}
+
+.square {
+    float: left;
+    position: relative;
+    width: 30%;
+    padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
+    margin: 1.66%;
+    overflow: hidden;
+}
+
+.left-review-text {
+    margin-top: 1px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 700;
+    float: left;
+}
+
+.already-reviewed {
+    margin-right: 10px;
+    font-style: italic;
+    font-weight: 700;
+    color: green !important;
+}
+
+.stick-right {
+    float: right;
+}
+
+.right-review-text {
+    float: right;
+    margin-bottom: 10px;
+    margin-top: 1px;
+    margin-right: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.trans-content {
+    position: absolute;
+    height: 62%;
+}
+
+.content {
+    position: absolute;
+    height: 80%; /* = 100% - 2*10% padding */
+    width: 90%; /* = 100% - 2*5% padding */
+    padding: 10% 5%;
+}
+
+/**/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 181px;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background: #202020;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    padding-top: 80px;
+    padding-left: 5px;
+}
+
+    /* The navigation menu links */
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 22px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+.side-menu-item {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.cross-activity {
+    text-decoration: none !important;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    position: relative;
+    top: -28px;
+    left: 375px;
+    width: 20px;
+    height: 30px;
+}
+
+.cross {
+    text-decoration: none !important;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    position: relative;
+    top: -28px;
+    left: 360px;
+    width: 20px;
+    height: 30px;
+}
+
+.logout {
+    color: white;
+    margin-right: 34px;
+}
+
+    .logout:hover {
+        color: white;
+    }
+
+.transaction-row:nth-child(even) {
+    background: rgb(60,60,60);
+}
+
+.transaction-row:nth-child(odd) {
+    background: rgb(70,70,70);
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.arrow-down-dd {
+    width: 0;
+    height: 0;
+    content: '';
+    border-width: 50px;
+    border-style: solid;
+    border-color: #ddd transparent transparent transparent;
+}
+
+.grid {
+    position: relative;
+}
+
+.item {
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    z-index: 1;
+    background: #000;
+    color: #fff;
+}
+
+    .item.muuri-item-dragging {
+        z-index: 3;
+    }
+
+    .item.muuri-item-releasing {
+        z-index: 2;
+    }
+
+    .item.muuri-item-hidden {
+        z-index: 0;
+    }
+
+.item-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+    .switch input {
+        display: none;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ca2222;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 22px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 19px;
+        width: 19px;
+        left: 4px;
+        bottom: 4px;
+        top: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #2ab934;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(22px);
+}
+
+/*------ ADDED CSS ---------*/
+.slider:after {
+    content: '-';
+    margin-left: 10px;
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+}
+
+.toggle-switch {
+    height: 28px;
+}
+
+input:checked + .slider:after {
+    content: '+';
+    padding-right: 45px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}
+
+.container-pb {
+    width: 600px;
+}
+
+.progressbar {
+    counter-reset: step;
+    width: 80%;
+    margin-left: 10%;
+    -webkit-padding-start: 0px !important;
+}
+
+    .progressbar li {
+        list-style-type: none;
+        width: 25%;
+        float: left;
+        font-size: 12px;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        color: #7d7d7d;
+    }
+
+        .progressbar li:before {
+            width: 30px;
+            height: 30px;
+            content: counter(step);
+            counter-increment: step;
+            line-height: 30px;
+            border: 2px solid #7d7d7d;
+            display: block;
+            text-align: center;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .progressbar li:after {
+            width: 100%;
+            height: 2px;
+            content: '';
+            position: absolute;
+            background-color: #7d7d7d;
+            top: 15px;
+            left: -50%;
+            z-index: -1;
+        }
+
+        .progressbar li:first-child:after {
+            content: none;
+        }
+
+        .progressbar li.active {
+            color: green;
+        }
+
+            .progressbar li.active:before {
+                border-color: #55b776;
+            }
+
+            .progressbar li.active + li:after {
+                background-color: #55b776;
+            }

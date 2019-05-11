@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[UserMessages]
+(
+	[Id] BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [Message] NVARCHAR(2000) NOT NULL, 
+    [Timestamp] DATETIME NOT NULL DEFAULT GETDATE(), 
+    [Status] NVARCHAR(100) NOT NULL, 
+    [Read] BIT NOT NULL DEFAULT 0, 
+    [UserId] BIGINT NOT NULL, 
+    CONSTRAINT [FK_UserMessages_ToUsers] FOREIGN KEY ([UserId]) REFERENCES [Users]([Id])
+)

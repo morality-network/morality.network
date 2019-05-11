@@ -1,0 +1,13 @@
+﻿@model RateItHome.Models.CurrencyModel
+
+<div class="select @Model.CSS">
+    <span class="placeholder">Select Currency</span>
+    <ul>
+        @foreach (var item in Model.Currencies)
+        {
+            <li data-value="@item.id">@item.name</li>
+        }
+    </ul>
+    <input type="hidden" name="changeme" />
+</div>
+

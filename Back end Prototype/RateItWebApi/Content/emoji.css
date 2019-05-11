@@ -1,0 +1,25 @@
+/* emotion */
+
+.emotion-Icon {
+  position: relative;
+  margin-left: 6px;
+  top: 1px;
+  float: left;
+  cursor: pointer !important;
+  font-size: 18px;
+}
+
+.emotion-area {
+  overflow-y: scroll;
+}
+
+.emotion-area-menu{
+  position: absolute !important;
+  top: -375px !important;
+  padding-top: 5px !important;
+  background: white !important;
+}
+.emotion-area img {
+  margin: 4px;
+  cursor: pointer !important;
+}

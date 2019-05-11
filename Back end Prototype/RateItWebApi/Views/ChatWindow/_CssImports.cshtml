@@ -1,0 +1,16 @@
+﻿<style id="css-imports" type="text/css">
+      @{ 
+          var url = Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~");
+          var faUrl = url + "/fonts/font-awesome-4.7.0/css/font-awesome.css";
+          var fa2Url = url + "/Content/fa-regular.css";
+          var googleUrl = "https://fonts.googleapis.com/icon?family=Material+Icons";
+          var emojiUrl = url + "/Content/emoji.css";
+          var appUrl = url + "/Content/style.css";
+      }
+     @@import "@faUrl" screen;
+     @@import "@fa2Url" screen;
+     @@import "@googleUrl" screen;
+     @@import "@emojiUrl" screen;
+     @@import "@appUrl" screen;
+
+</style>

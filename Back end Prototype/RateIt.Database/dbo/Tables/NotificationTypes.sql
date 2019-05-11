@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[NotificationTypes](
+	[Id] INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[TypeName] NVARCHAR(100) NOT NULL,
+)

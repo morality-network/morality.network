@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[Activitys](
+	[Id] [bigint] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[SubDirectoryId] [bigint] NOT NULL,
+	[UserId] [bigint] NOT NULL,
+	[CommentId] [bigint] NOT NULL,
+	[ActivityText] NVARCHAR(2000) NULL,
+	[Timestamp] [datetime] NOT NULL DEFAULT GETDATE(), 
+    [ActivityTypeId] BIGINT NOT NULL, 
+	[ContentId] BIGINT NOT NULL, 
+    CONSTRAINT [FK_Activitys_ToActivityTypes] FOREIGN KEY ([ActivityTypeId]) REFERENCES [ActivityTypes]([Id]),
+	CONSTRAINT [FK_Activitys_ToContents] FOREIGN KEY ([ContentId]) REFERENCES [Contents]([Id]),
+    CONSTRAINT [FK_Activitys_ToSubDirectorys] FOREIGN KEY ([SubDirectoryId]) REFERENCES [SubDirectorys]([Id]), 
+    CONSTRAINT [FK_Activitys_ToUsers] FOREIGN KEY ([UserId]) REFERENCES [Users]([Id]), 
+    CONSTRAINT [FK_Activitys_ToComments] FOREIGN KEY ([CommentId]) REFERENCES [Comments]([Id]), 
+)

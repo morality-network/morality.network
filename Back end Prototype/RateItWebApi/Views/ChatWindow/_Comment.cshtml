@@ -1,0 +1,59 @@
+﻿@model RateIt.Model.Comment
+
+<div id="cmt-@Model.id" class="cmt-ri">
+    <span class="user-label">User: @Model.fullname Last Active: 12/04/18</span>
+    <span class="reply-icon">
+        <i class="material-icons std-btn-icon">reply</i> Reply
+    </span>
+
+    <div id="cmt-btn-set-@Model.id" class="cmt-btn-set">
+        <span class="mog-icon mog-icon-rate-up" ru-been="false" value="@Model.id">
+            <span class="">
+                <i class="material-icons std-btn-icon">thumb_up</i>
+            </span>
+        </span>
+        <span id="up-txt-@Model.id" class="up-txt">
+            (@(Model.Upvotes.Where(x => x.vote == Convert.ToBoolean((int)RateIt.Services.Enum.Direction.Up)).Count()))
+        </span>
+
+        <span class="mog-icon mog-icon-rate-down" rd-been="false" value="@Model.id">
+            <span class="">
+                <i class="material-icons std-btn-icon">thumb_down</i>
+            </span>
+        </span>
+        <span id="down-txt-@Model.id" class="down-txt">
+            (@(Model.Upvotes.Where(x => x.vote == Convert.ToBoolean((int)RateIt.Services.Enum.Direction.Down)).Count()))
+        </span>
+
+        <span class="mog-icon mog-icon-count" moo-been="false" value="@Model.id">
+            <span class="">
+                <i class="material-icons std-btn-icon">attach_money</i>
+            </span>
+        </span>
+        <span id="moo-txt-@Model.id" class="moo-txt">(0)</span>
+
+        <span class="mog-icon mog-icon-flag" flag-been="false" value="@Model.id">
+            <span class="">
+                <i class="material-icons red-icon std-btn-icon">flag</i>
+            </span>
+        </span>
+        <span id="flag-txt-@Model.id" class="flag-txt">(@(Model.ReportClaims.Count()))</span>
+
+    </div>
+    <span class="cmt-txt-bdy">@Model.content</span>
+    <span class="cmt-ts">@Model.created</span>
+
+    @if (Model.Comments1.Any())
+    {
+        <div id="sub-comments-@Model.id" loadsub-been="false" class="sub-comments" value="@Model.id">
+            <div class="sub-comments-list">
+                <a href="#" class="sc-link">
+                    Load sub comment/s (@Model.Comments1.Count())
+                    <span id="cw-chat" class="">
+                        <i class="fa fa-comment sub-comment-icon"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    }
+</div>

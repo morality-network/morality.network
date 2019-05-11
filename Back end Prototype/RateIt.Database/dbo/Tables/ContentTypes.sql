@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[ContentTypes]
+(
+	[Id] BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [TypeName] NVARCHAR(100) NOT NULL
+)

@@ -1,0 +1,75 @@
+.simple-modal.dark,
+.simple-modal.dark p,
+.simple-modal.dark h1,
+.simple-modal.dark h2,
+.simple-modal.dark h3,
+.simple-modal.dark h4,
+.simple-modal.dark h5,
+.simple-modal.dark h6,
+.simple-modal.dark label,
+.simple-modal.dark input
+{
+  color: #fff;
+}
+
+.simple-modal.dark input
+{
+  background-color: #555;
+  padding: 8px 16px;
+  outline: none;
+  border: 1px solid #aaa;
+}
+
+.simple-modal.dark input:focus
+{
+  border: 1px solid #fff;
+}
+
+.simple-modal.dark a
+{
+  color: #eee;
+}
+
+.simple-modal-background.dark
+{
+  background-color: #eee;
+  opacity: 0.4;
+}
+
+.simple-modal.dark
+{
+  background-color: #666;
+  opacity: 1;
+  box-shadow: 5px 5px 10px #aaa;
+}
+
+.simple-modal.dark .simple-modal-body::-webkit-scrollbar-track
+{
+  background-color: #fff;
+}
+
+.simple-modal.dark .simple-modal-body::-webkit-scrollbar
+{
+  width: 4px;
+  background-color: #fff;
+}
+
+.simple-modal.dark .simple-modal-body::-webkit-scrollbar-thumb
+{
+  background-color: #555;
+  border: 1px solid #555;
+}
+
+.simple-modal.dark .simple-modal-buttons button
+{
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+
+.simple-modal.dark .simple-modal-buttons button:hover
+{
+  color: #555;
+  background-color: #fff;
+  color: #666;
+}

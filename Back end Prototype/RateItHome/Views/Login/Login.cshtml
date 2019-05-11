@@ -1,0 +1,94 @@
+﻿@using RateItHome.Models
+@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Styles.Render("~/images/icons/favicon.ico")
+    @Styles.Render("~/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/fonts/font-awesome-4.7.0/css/font-awesome.min.css")
+    @Styles.Render("~/fonts/iconic/css/material-design-iconic-font.min.css")
+    @Styles.Render("~/vendor/animate/animate.css")
+    @Styles.Render("~/vendor/css-hamburgers/hamburgers.min.css")
+    @Styles.Render("~/vendor/animsition/css/animsition.min.css")
+    @Styles.Render("~/vendor/select2/select2.min.css")
+    @Styles.Render("~/vendor/daterangepicker/daterangepicker.css")
+    @Styles.Render("~/Content/util.css")
+    @Styles.Render("~/Content/main.css")
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+</head>
+<body>
+    <div style="padding-top: 80px;background: #202020;">
+        <div class="mo-login">
+            @Html.Partial("_MoralityLogo")
+        </div>
+        <div class="container-login100" style="background-image: url('/images/back.png');">
+           
+            <div class="wrap-login100">
+           
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @id = "login100-form", @class = "login100-form validate-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("returnUrl","Login/Index")
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+                    if (Model.HasBeenAtLeastOnce)
+                    {
+                        <span class="error-text">
+                            Username or Password incorrect
+                        </span>
+                    }
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        @Html.TextBoxFor(m => m.Email, new { @id = "Username", @class = "input100", @name = "username",  @placeholder = "Username" })
+                     
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+     
+                        @Html.PasswordFor(m => m.Password, new { @id="password" ,@class="input100" ,@type="password" ,@name="pass" ,@placeholder="Password"})
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+
+                        <input id="login" class="b-btn btn" type="submit" value="Login">
+                    </div>
+
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+
+    @Scripts.Render("~/vendor/jquery/jquery-3.2.1.min.js")
+    @Scripts.Render("~/vendor/animsition/js/animsition.min.js")
+    @Scripts.Render("~/vendor/bootstrap/js/popper.js")
+    @Scripts.Render("~/vendor/bootstrap/js/bootstrap.min.js")
+    @Scripts.Render("~/vendor/select2/select2.min.js")
+    @Scripts.Render("~/vendor/daterangepicker/moment.min.js")
+    @Scripts.Render("~/vendor/daterangepicker/daterangepicker.js")
+    @Scripts.Render("~/vendor/countdowntime/countdowntime.js")
+    @Scripts.Render("~/Scripts/login.js")
+</body>
+</html>

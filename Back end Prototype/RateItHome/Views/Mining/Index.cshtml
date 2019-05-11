@@ -1,0 +1,159 @@
+﻿@using RateItHome.Models
+@model MiningViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main col-sm-12" class="black-background">
+    @Html.Partial("_MenuBar")
+    <div class="margin-for-menu">
+
+        <div id="notifications" class="mining-item-tiles">
+
+            <div class="home-tile review-tile-1">
+
+                <h3 style="top: -55px; position: relative;">Report Reviews</h3>
+                <div class="report-review-control-text">
+                    @Html.HiddenFor(m => m.SelectedId, new { @id = "selected-review-id" });
+                    <span id="sel-time-added" class="left-review-text">Time Added - N/A</span>
+                    <span id="sel-review" class="right-review-text">
+                        N/A Reviewed
+                    </span>
+                    <span id="already-reviewed" class="already-reviewed right-review-text" title="You have reviewed already" style="display:none;">
+                        You have already reviewed!
+                        <i class="fa fa-check" style="color:green;"></i>
+                    </span>
+                    <div class="review-real-text">
+                        <div>
+                            <span id="review-sel-text" class="review-real-text">
+                                None Selected. Please select from list below.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="report-review-controls">
+                    <div class="toggle-switch">
+                        <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"></div></label>
+                    </div>
+                    @Html.LabelFor(m => m.IsToxic, "Toxic", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsToxic, new { @class = "ctrl-cb-review" })
+                    @Html.LabelFor(m => m.IsSevereToxic, "Racism", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsSevereToxic, new { @class = "ctrl-cb-review" })
+                    @Html.LabelFor(m => m.IsObscence, "Obscence", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsObscence, new { @class = "ctrl-cb-review" })
+                    @Html.LabelFor(m => m.IsThreat, "Threat", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsThreat, new { @class = "ctrl-cb-review" })
+                    @Html.LabelFor(m => m.IsInsult, "Insult", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsInsult, new { @class = "ctrl-cb-review" })
+                    @Html.LabelFor(m => m.IsIdentityHate, "Hate", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsIdentityHate, new { @class = "ctrl-cb-review" })
+                    @Html.LabelFor(m => m.IsSpam, "Spam", new { @class = "review-choice" })
+                    @Html.CheckBoxFor(m => m.IsSpam, new { @class = "ctrl-cb-review" })
+
+                    <button id="review" type="button" class="btn dark-button">Review</button>
+
+                </div>
+                <div class="report-review-items">
+                    <div class="review-table-control">
+                        <div class="review-ctrl-filter">
+                            @Html.LabelFor(m => m.HideReviews, "Hide Reviews", new { @class = "review-choice" })
+                            @Html.CheckBoxFor(m => m.HideReviews, new { @class = "ctrl-cb-review" })
+                        </div>
+                    </div>
+                    <table id="report-table" class="table-dark">
+
+                        <tr class="report-table-header">
+                            <td>Date Reported</td>
+                            <td>Total Reviews</td>
+                        </tr>
+                        @for (int i = 0; i < Model.TopInvestigations.Count(); i++)
+                        {
+                            <tr>
+                                <td class="i-time">@Model.TopInvestigations[i].time_created.ToString()</td>
+                                <td class="i-review">
+                                    @Model.TopInvestigations[i].ReportConfirms.Count() Reviews
+
+                                    @if (Model.TopInvestigations[i].ReportConfirms.Select(x => x.user_id).Contains(@Model.UserId))
+                                    {
+                                        <span style="color:green;" title="You have reviewed already"><i class="fa fa-check"></i></span>
+                                        @Html.Hidden("already-voted-marker" + i, "true", new { @class = "already-voted-marker" })
+                                    }
+                                    else
+                                    {
+                                        @Html.Hidden("already-voted-marker" + i, "false", new { @class = "already-voted-marker" })
+                                    }
+                                    <span class="sel-marker green-circle stick-right" style="display:none;" />
+
+                                </td>
+                                <td class="i-id" style="display:none;">@Model.TopInvestigations[i].Id</td>
+                                <td class="i-content" style="display:none;">@Model.TopInvestigations[i].Comment.content</td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="net-stats">
+                <div class="home-tile review-tile-2">
+                    <h3 style="top: -55px; position: relative;">Network Statistics</h3>
+                    <div class="mining-item-tiles">
+                        <div class="home-tile review-tile-3 title-margin-right">
+                            <div class="chart-center" id="sparkline_global_review"></div>
+                            <span class="chart-text-abs-t">
+                                Total Reviewed
+                            </span>
+                            <span class="chart-text-abs-v">
+                                14126633346
+                            </span>
+                        </div>
+                        <div class="home-tile review-tile-3">
+                            <div class="chart-center" id="sparkline_global_mine"></div>
+                            <span class="chart-text-abs-t">
+                                Total Mined
+                            </span>
+                            <span class="chart-text-abs-v">
+                                17928979652
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-tile review-tile-2">
+                    <h3 style="top: -55px; position: relative;">Your Statistics</h3>
+                    <div class="mining-item-tiles">
+                        <div class="home-tile review-tile-3 title-margin-right">
+                            <div class="chart-center" id="sparkline_pers_review"></div>
+                            <span class="chart-text-abs-t">
+                                Total Reviewed
+                            </span>
+                            <span class="chart-text-abs-v">
+                                83
+                            </span>
+                        </div>
+                        <div class="home-tile review-tile-3">
+                            <div class="chart-center" id="sparkline_pers_mine"></div>
+                            <span class="chart-text-abs-t">
+                                Total Mined
+                            </span>
+                            <span class="chart-text-abs-v">
+                                45
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/jquery.voteStar.js")
+@Scripts.Render("~/Scripts/jquery.canvasjs.min.js")
+@Scripts.Render("~/Scripts/jquery.sparkline.min.js")
+@Scripts.Render("~/Scripts/jquery.sparkline.min.js")
+@Scripts.Render("~/Scripts/jdenticon-1.8.0.js")
+@Scripts.Render("~/Scripts/mo.js")
+@Scripts.Render("~/Scripts/mining.js")
