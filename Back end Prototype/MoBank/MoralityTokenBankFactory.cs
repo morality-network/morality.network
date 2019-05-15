@@ -14,18 +14,40 @@ namespace Bank
 {
     public class MoralityTokenBankFactory
     {
+        //Token
         public static IMoralityTokenBank GetMoralityTokenBank(MoralityTokenSettings settings)
         {
             var client = Web3Factory.GetWeb3(settings.InfuraAddress, settings.AdminPass);
-            return new MoralityTokenBank(client, settings.ContractAddress, settings.InfuraAddress, settings.Abi, settings.AdminAddress);
+            return new MoralityTokenBank(client, settings.ContractAddress, settings.InfuraAddress, settings.TokenAbi, settings.AdminAddress);
         }
 
         public static IMoralityTokenBank GetMoralityTokenBank(MoralityTokenSettings settings, string userPassword)
         {
             var client = Web3Factory.GetWeb3(settings.InfuraAddress, settings.AdminPass);
-            return new MoralityTokenBank(client, settings.ContractAddress, settings.InfuraAddress, settings.Abi, settings.AdminAddress);
+            return new MoralityTokenBank(client, settings.ContractAddress, settings.InfuraAddress, settings.TokenAbi, settings.AdminAddress);
         }
 
+        //Players
+        public static IMoralityPlayersBank GetMoralityPlayersBank(MoralityTokenSettings settings)
+        {
+            var client = Web3Factory.GetWeb3(settings.InfuraAddress, settings.AdminPass);
+            return new MoralityPlayersBank(client, settings.PlayersAddress, settings.InfuraAddress, settings.PlayersAbi, settings.AdminAddress);
+        }
+
+        public static IMoralityPlayersBank GetMoralityPlayersBank(MoralityTokenSettings settings, string userPassword)
+        {
+            var client = Web3Factory.GetWeb3(settings.InfuraAddress, settings.AdminPass);
+            return new MoralityPlayersBank(client, settings.PlayersAddress, settings.InfuraAddress, settings.PlayersAbi, settings.AdminAddress);
+        }
+
+        //Storage
+        public static IMoralityStorageBank GetMoralityStorageBank(MoralityTokenSettings settings)
+        {
+            var client = Web3Factory.GetWeb3(settings.InfuraAddress, settings.AdminPass);
+            return new MoralityStorageBank(client, settings.StorageAddress, settings.InfuraAddress, settings.StorageAbi, settings.AdminAddress);
+        }
+
+        //Standard
         public static StandardTokenService GetMoralityStandardTokenBank(MoralityTokenSettings settings)
         {
             var web3 = new Web3(settings.InfuraAddress);

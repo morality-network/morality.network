@@ -153,7 +153,9 @@
     <Compile Include="TestDbAsyncEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDbAsyncQueryProvider.cs" />
-    <Compile Include="Token\TokenTests.cs" />
+    <Compile Include="Token\MoralityPlayersTests.cs" />
+    <Compile Include="Token\TokenV5Tests.cs" />
+    <Compile Include="Token\TokenV4Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ContentIdTracker.txt" />

@@ -66,6 +66,7 @@
     <Compile Include="GeoLocation.cs" />
     <Compile Include="IPData.cs" />
     <Compile Include="Mining.cs" />
+    <Compile Include="MintCollectionArguments.cs" />
     <Compile Include="MoralityTokenSettings.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="PageContent.cs" />

@@ -13,5 +13,7 @@ namespace RateIt.Common.Models
         public long SubArticleId { get; set; }
         public long ContentId { get; set; }
         public DateTime Timestamp { get; set; }
+
+        public long Page { get; set; }
     }
 }

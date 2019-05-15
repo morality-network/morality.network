@@ -118,10 +118,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContractFunctions.cs" />
+    <Compile Include="Interfaces\IMoralityPlayersBank.cs" />
+    <Compile Include="Interfaces\IMoralityStorageBank.cs" />
     <Compile Include="Interfaces\IMoralityTokenBank.cs" />
+    <Compile Include="MoralityPlayersBank.cs" />
+    <Compile Include="MoralityPlayersContractFunctions.cs" />
+    <Compile Include="MoralityStorageBank.cs" />
     <Compile Include="MoralityTokenBank.cs" />
     <Compile Include="MoralityTokenBankFactory.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageContractFunctions.cs" />
     <Compile Include="TransferEvent.cs" />
     <Compile Include="Web3Factory.cs" />
   </ItemGroup>
