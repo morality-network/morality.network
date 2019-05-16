@@ -30,12 +30,12 @@ namespace RateIt.TestSuite.Service
         [SetUp]
         public void Setup()
         {
-            var tokenAbi = "[{'constant':true,'inputs':[],'name':'creator','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'name','outputs':[{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'uint256'}],'name':'allContents','outputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'getUniqueContentIdCount','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'contentId','type':'uint256'}],'name':'getContentById','outputs':[{'components':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'','type':'tuple[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'address'}],'name':'moderators','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'totalSupply','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'}],'name':'getAllContentForArticle','outputs':[{'components':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'','type':'tuple[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'address'}],'name':'balances','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'uint256'},{'name':'','type':'uint256'}],'name':'subArticleIndexes','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'amount','type':'uint256'}],'name':'withdraw','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'potentialNewOwner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'decimals','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'burnAmount','type':'uint256'}],'name':'burn','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'addContentViaEvent','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'}],'name':'getAllContentForSubArticle','outputs':[{'components':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'','type':'tuple[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_name','type':'string'},{'name':'_symbol','type':'string'}],'name':'setTokenInformation','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'getAllContentCount','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'_owner','type':'address'}],'name':'balanceOf','outputs':[{'name':'balance','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'burnAddress','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[],'name':'acceptOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'target','type':'address'},{'name':'mintedAmount','type':'uint256'}],'name':'mintToken','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'}],'name':'countContentForSubArticle','outputs':[{'name':'count','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_moderator','type':'address'}],'name':'removeModerator','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'owner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'symbol','outputs':[{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'uint256'},{'name':'','type':'uint256'}],'name':'contentIndexes','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_to','type':'address'},{'name':'_value','type':'uint256'}],'name':'transfer','outputs':[{'name':'success','type':'bool'}],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'_newModerator','type':'address'}],'name':'addModerator','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'getAllContentIds','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'uint256'},{'name':'','type':'uint256'}],'name':'articleIndexes','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'addContent','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'}],'name':'countContentForArticle','outputs':[{'name':'count','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'uint256'}],'name':'contentIdExists','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[],'name':'deprecateContract','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'_newOwner','type':'address'}],'name':'transferOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'','type':'uint256'}],'name':'uniqueContentIds','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'inputs':[{'name':'_totalTokensToMint','type':'uint256'}],'payable':true,'stateMutability':'payable','type':'constructor'},{'payable':true,'stateMutability':'payable','type':'fallback'},{'anonymous':false,'inputs':[{'indexed':false,'name':'sender','type':'address'},{'indexed':false,'name':'amount','type':'uint256'}],'name':'LogFundsReceived','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'balanceBefore','type':'uint256'},{'indexed':false,'name':'amount','type':'uint256'},{'indexed':false,'name':'balanceAfter','type':'uint256'}],'name':'WithdrawLog','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'newName','type':'string'},{'indexed':false,'name':'newSymbol','type':'string'}],'name':'UpdatedTokenInformation','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'contentCreator','type':'address'},{'indexed':true,'name':'articleId','type':'uint256'},{'indexed':true,'name':'subArticleId','type':'uint256'},{'indexed':true,'name':'contentId','type':'uint256'},{'indexed':false,'name':'timestamp','type':'uint256'}],'name':'ContentAdded','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'contentCreator','type':'address'},{'indexed':true,'name':'articleId','type':'uint256'},{'indexed':true,'name':'subArticleId','type':'uint256'},{'indexed':true,'name':'contentId','type':'uint256'},{'indexed':false,'name':'timestamp','type':'uint256'},{'indexed':false,'name':'data','type':'string'}],'name':'ContentAddedViaEvent','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_moderator','type':'address'}],'name':'ModeratorAdded','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_moderator','type':'address'}],'name':'ModeratorRemoved','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_from','type':'address'},{'indexed':true,'name':'_to','type':'address'}],'name':'OwnershipTransferred','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'from','type':'address'},{'indexed':true,'name':'to','type':'address'},{'indexed':false,'name':'value','type':'uint256'}],'name':'Transfer','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'target','type':'address'},{'indexed':false,'name':'mintedAmount','type':'uint256'}],'name':'Minted','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'burner','type':'address'},{'indexed':false,'name':'burnedAmount','type':'uint256'}],'name':'Burned','type':'event'}]";
-            var storageAbi = "[{'constant':true,'inputs':[{'name':'contentId','type':'uint256'}],'name':'getContentById','outputs':[{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'address'}],'name':'moderators','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'},{'name':'page','type':'uint256'}],'name':'getPageForArticle','outputs':[{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'potentialNewOwner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'addContentViaEvent','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'}],'name':'getAllContentIdsForSubArticle','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'},{'name':'page','type':'uint256'}],'name':'getPageForSubArticle','outputs':[{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'getAllContentCount','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[],'name':'acceptOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'}],'name':'countContentForSubArticle','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_moderator','type':'address'}],'name':'removeModerator','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'owner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_newModerator','type':'address'}],'name':'addModerator','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'perPage','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'getAllContentIds','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'addContent','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'}],'name':'getAllContentIdsForArticle','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'}],'name':'countContentForArticle','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_newOwner','type':'address'}],'name':'transferOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'anonymous':false,'inputs':[{'indexed':false,'name':'contentCreator','type':'address'},{'indexed':true,'name':'articleId','type':'uint256'},{'indexed':true,'name':'subArticleId','type':'uint256'},{'indexed':true,'name':'contentId','type':'uint256'},{'indexed':false,'name':'timestamp','type':'uint256'}],'name':'ContentAdded','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'contentCreator','type':'address'},{'indexed':true,'name':'articleId','type':'uint256'},{'indexed':true,'name':'subArticleId','type':'uint256'},{'indexed':true,'name':'contentId','type':'uint256'},{'indexed':false,'name':'timestamp','type':'uint256'},{'indexed':false,'name':'data','type':'string'}],'name':'ContentAddedViaEvent','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_moderator','type':'address'}],'name':'ModeratorAdded','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_moderator','type':'address'}],'name':'ModeratorRemoved','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_from','type':'address'},{'indexed':true,'name':'_to','type':'address'}],'name':'OwnershipTransferred','type':'event'}]";
-            var crowdAbi = "[{'constant':true,'inputs':[],'name':'rate','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'weiRaised','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'wallet','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'beneficiary','type':'address'}],'name':'buyTokens','outputs':[],'payable':true,'stateMutability':'payable','type':'function'},{'constant':true,'inputs':[],'name':'token','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'inputs':[{'name':'rate','type':'uint256'},{'name':'wallet','type':'address'},{'name':'token','type':'address'}],'payable':false,'stateMutability':'nonpayable','type':'constructor'},{'payable':true,'stateMutability':'payable','type':'fallback'},{'anonymous':false,'inputs':[{'indexed':true,'name':'purchaser','type':'address'},{'indexed':true,'name':'beneficiary','type':'address'},{'indexed':false,'name':'value','type':'uint256'},{'indexed':false,'name':'amount','type':'uint256'}],'name':'TokensPurchased','type':'event'}]";
-            var contractAddress = "0xfb74e5ecf5044e743212e8c26d3a1c5ce005424d";
-            var storageAddress = "0x2ba55422e6ec989a92d04d38e578f65c13e75874";
-            var wrapperAddress = "0xee37d0fb069d3ea3c38ea34ee278a21c75341fa2";
+            var tokenAbi = "[{'constant':true,'inputs':[],'name':'creator','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'name','outputs':[{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'totalSupply','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'inLockdown','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'address'}],'name':'balances','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'amount','type':'uint256'}],'name':'withdraw','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'potentialNewOwner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'decimals','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'burnAmount','type':'uint256'}],'name':'burn','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'_name','type':'string'},{'name':'_symbol','type':'string'}],'name':'setTokenInformation','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'_owner','type':'address'}],'name':'balanceOf','outputs':[{'name':'balance','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'burnAddress','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'state','type':'bool'}],'name':'updateLockdownState','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[],'name':'acceptOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'target','type':'address'},{'name':'mintedAmount','type':'uint256'}],'name':'mintToken','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'owner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'symbol','outputs':[{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_to','type':'address'},{'name':'_value','type':'uint256'}],'name':'transfer','outputs':[{'name':'success','type':'bool'}],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[],'name':'deprecateContract','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'_newOwner','type':'address'}],'name':'transferOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'inputs':[{'name':'_totalTokensToMint','type':'uint256'}],'payable':true,'stateMutability':'payable','type':'constructor'},{'payable':true,'stateMutability':'payable','type':'fallback'},{'anonymous':false,'inputs':[{'indexed':false,'name':'sender','type':'address'},{'indexed':false,'name':'amount','type':'uint256'}],'name':'LogFundsReceived','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'balanceBefore','type':'uint256'},{'indexed':false,'name':'amount','type':'uint256'},{'indexed':false,'name':'balanceAfter','type':'uint256'}],'name':'WithdrawLog','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'newName','type':'string'},{'indexed':false,'name':'newSymbol','type':'string'}],'name':'UpdatedTokenInformation','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_from','type':'address'},{'indexed':true,'name':'_to','type':'address'}],'name':'OwnershipTransferred','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'from','type':'address'},{'indexed':true,'name':'to','type':'address'},{'indexed':false,'name':'value','type':'uint256'}],'name':'Transfer','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'target','type':'address'},{'indexed':false,'name':'mintedAmount','type':'uint256'}],'name':'Minted','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'burner','type':'address'},{'indexed':false,'name':'burnedAmount','type':'uint256'}],'name':'Burned','type':'event'}]";
+            var storageAbi = "[{'constant':true,'inputs':[{'name':'contentId','type':'uint256'}],'name':'getContentById','outputs':[{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'','type':'address'}],'name':'moderators','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'},{'name':'page','type':'uint256'}],'name':'getPageForArticle','outputs':[{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'potentialNewOwner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'addContentViaEvent','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'}],'name':'getAllContentIdsForSubArticle','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'},{'name':'page','type':'uint256'}],'name':'getPageForSubArticle','outputs':[{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'},{'name':'','type':'string'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'getAllContentCount','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'getAllArticleIds','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[],'name':'acceptOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'subArticleId','type':'uint256'}],'name':'countContentForSubArticle','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_moderator','type':'address'}],'name':'removeModerator','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'owner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_newModerator','type':'address'}],'name':'addModerator','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'perPage','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'getAllContentIds','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'contentCreator','type':'address'},{'name':'articleId','type':'uint256'},{'name':'subArticleId','type':'uint256'},{'name':'contentId','type':'uint256'},{'name':'timestamp','type':'uint256'},{'name':'data','type':'string'}],'name':'addContent','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'}],'name':'getAllContentIdsForArticle','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[{'name':'articleId','type':'uint256'}],'name':'countContentForArticle','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[],'name':'deprecateContract','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'getAllSubArticleIds','outputs':[{'name':'','type':'uint256[]'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'_newOwner','type':'address'}],'name':'transferOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'anonymous':false,'inputs':[{'indexed':false,'name':'contentCreator','type':'address'},{'indexed':true,'name':'articleId','type':'uint256'},{'indexed':true,'name':'subArticleId','type':'uint256'},{'indexed':true,'name':'contentId','type':'uint256'},{'indexed':false,'name':'timestamp','type':'uint256'}],'name':'ContentAdded','type':'event'},{'anonymous':false,'inputs':[{'indexed':false,'name':'contentCreator','type':'address'},{'indexed':true,'name':'articleId','type':'uint256'},{'indexed':true,'name':'subArticleId','type':'uint256'},{'indexed':true,'name':'contentId','type':'uint256'},{'indexed':false,'name':'timestamp','type':'uint256'},{'indexed':false,'name':'data','type':'string'}],'name':'ContentAddedViaEvent','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_moderator','type':'address'}],'name':'ModeratorAdded','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_moderator','type':'address'}],'name':'ModeratorRemoved','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_from','type':'address'},{'indexed':true,'name':'_to','type':'address'}],'name':'OwnershipTransferred','type':'event'}]";
+            var crowdAbi = "[{'constant':true,'inputs':[],'name':'inLockdown','outputs':[{'name':'','type':'bool'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'rate','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'potentialNewOwner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'weiRaised','outputs':[{'name':'','type':'uint256'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':true,'inputs':[],'name':'wallet','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[{'name':'state','type':'bool'}],'name':'updateLockdownState','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[],'name':'acceptOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'owner','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'constant':false,'inputs':[],'name':'deprecateContract','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':false,'inputs':[{'name':'beneficiary','type':'address'}],'name':'buyTokens','outputs':[],'payable':true,'stateMutability':'payable','type':'function'},{'constant':false,'inputs':[{'name':'_newOwner','type':'address'}],'name':'transferOwnership','outputs':[],'payable':false,'stateMutability':'nonpayable','type':'function'},{'constant':true,'inputs':[],'name':'token','outputs':[{'name':'','type':'address'}],'payable':false,'stateMutability':'view','type':'function'},{'inputs':[{'name':'rate','type':'uint256'},{'name':'wallet','type':'address'},{'name':'token','type':'address'}],'payable':false,'stateMutability':'nonpayable','type':'constructor'},{'payable':true,'stateMutability':'payable','type':'fallback'},{'anonymous':false,'inputs':[{'indexed':true,'name':'purchaser','type':'address'},{'indexed':true,'name':'beneficiary','type':'address'},{'indexed':false,'name':'value','type':'uint256'},{'indexed':false,'name':'amount','type':'uint256'}],'name':'TokensPurchased','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'_from','type':'address'},{'indexed':true,'name':'_to','type':'address'}],'name':'OwnershipTransferred','type':'event'}]";
+            var contractAddress = "0xBEF439bA23F33b803FDD42F5D5569Da768350bF8";
+            var storageAddress = "0x05B8593d229e79f0505879d0bAe990ad067C6df3";
+            var wrapperAddress = "0x841F127Fce10Cc87d966E90d9cE87d314ad289Fa";
             _adminTokenSettings = new MoralityTokenSettings()
             {
                 TokenAbi = tokenAbi,
@@ -64,11 +64,23 @@ namespace RateIt.TestSuite.Service
             _storageBank = MoralityTokenBankFactory.GetMoralityStorageBank(_adminTokenSettings);
         }
 
-        private Common.Models.Comment GetExistingComment()
+        private PageContent GetPageContent(long contentId, long siteId, long subDirectoryId)
         {
-            return new Common.Models.Comment()
+            return new PageContent()
             {
-                ContentId = 3,
+                ContentType = Common.Models.Enums.ContentTypeMap.Comment,
+                ContentId = contentId,
+                SiteId = 3,
+                SubDirectoryId = 34,
+                TimestampCreated = DateTime.Now
+            };
+        }
+
+        private PageContent GetCommentPageContent(long contentId, long siteId, long subDirectoryId)
+        {
+            var comment = new Common.Models.Comment()
+            {
+                ContentId = contentId,
                 CreatedAt = DateTime.Now,
                 CreatedByAdmin = true,
                 ModifiedAt = DateTime.Now,
@@ -81,19 +93,110 @@ namespace RateIt.TestSuite.Service
                 SiteName = "www.google.com",
                 UpvoteCount = 340
             };
+            var pageContent = GetPageContent(contentId, siteId, subDirectoryId);
+            pageContent.ContentType = Common.Models.Enums.ContentTypeMap.Comment;
+            pageContent.Comment = comment;
+            return pageContent;
         }
 
-        private PageContent GetPageContent(Common.Models.Comment comment)
+        private PageContent GetCrowdfundingCampaignPageContent(long contentId, long siteId, long subDirectoryId)
         {
-            return new PageContent()
+            var crowdfund = new Common.Models.CrowdfundingCampaign()
             {
-                ContentType = Common.Models.Enums.ContentTypeMap.Comment,
-                ContentId = comment.ContentId,
-                SiteId = 3,
-                SubDirectoryId = 34,
-                TimestampCreated = DateTime.Now,
-                Comment = comment
+                ContentId = contentId,
+                CreatorId = 321,
+                CreatorName = "Joe from Stoke",
+                Description = "Crowdfund for homeless on cold rainy days in Stoke",
+                Target = 2000.0,
+                StartDate = DateTime.Now.AddMonths(-5),
+                EndDate = DateTime.Now.AddMonths(-3),
+                Name = "Help the homeless",
+                ParticipantCount = 1000,
+                AmountRaisedUSD = 14653.73,
+                MeanDonation = 14.65373,
+                ModeDonation = 30,
+                MedianDonation = 80,
+                CrowdfundEthereumAddress = "0x0000000000000000000000000000000000000000"
             };
+            var pageContent = GetPageContent(contentId, siteId, subDirectoryId);
+            pageContent.ContentType = Common.Models.Enums.ContentTypeMap.CrowdfundingCampaign;
+            pageContent.CrowdFundingCampaign = crowdfund;
+            return pageContent;
+        }
+
+        private PageContent GetPollPageContent(long contentId, long siteId, long subDirectoryId)
+        {
+            var poll = new Common.Models.Poll()
+            {
+                ContentId = contentId,
+                CreatorId = 369,
+                CreatorName = "Jane from Brighton",
+                Description = "Which is the better brand",
+                EndCount = null,
+                StartDate = DateTime.Now.AddMonths(-20),
+                EndDate = DateTime.Now.AddMonths(-5),
+                Name = "Brand survey",
+                ParticipantCount = 1000,
+                Conclusion = "Soap B is the best!",
+                QuestionAnswer = new QuestionAnswer()
+                {
+                    Question = "Which brand of soap is the best?",
+                    Answers = new List<SurveyAnswer>()
+                        {
+                            new SurveyAnswer() { ChoiceText = "Soap A", VoteForChoiceCount = 600 },
+                            new SurveyAnswer() { ChoiceText = "Soap B", VoteForChoiceCount = 400 }
+                        }
+                }
+            };
+            var pageContent = GetPageContent(contentId, siteId, subDirectoryId);
+            pageContent.ContentType = Common.Models.Enums.ContentTypeMap.Poll;
+            pageContent.Polls = poll;
+            return pageContent;
+        }
+
+        private PageContent GetSurveyPageContent(long contentId, long siteId, long subDirectoryId)
+        {
+            var survey = new RateIt.Common.Models.Survey()
+            {
+                ContentId = contentId,
+                CreatorId = 364,
+                CreatorName = "Bob from Hull",
+                Description = "Survey to determine who people will vote for",
+                EndCount = null,
+                StartDate = DateTime.Now.AddMonths(-10),
+                EndDate = DateTime.Now.AddMonths(-2),
+                Name = "Party survey",
+                ParticipantCount = 10000,
+                Conclusion = "I have found out who people would vote for",
+                MainQuestion = "Which party will you vote for and based on what?",
+                QuestionAnswers = new List<QuestionAnswer>()
+                {
+                    new QuestionAnswer()
+                    {
+                        Question = "Whats most important?",
+                        Answers = new List<SurveyAnswer>()
+                        {
+                            new SurveyAnswer() { ChoiceText = "Policy", VoteForChoiceCount = 7000 },
+                            new SurveyAnswer() { ChoiceText = "Prime minister", VoteForChoiceCount = 500 },
+                            new SurveyAnswer() { ChoiceText = "Values", VoteForChoiceCount = 2500 }
+                        }
+                    },
+                    new QuestionAnswer()
+                    {
+                        Question = "Who will you vote for?",
+                        Answers = new List<SurveyAnswer>()
+                        {
+                            new SurveyAnswer() { ChoiceText = "Party A", VoteForChoiceCount = 4500 },
+                            new SurveyAnswer() { ChoiceText = "Party B", VoteForChoiceCount = 3000 },
+                            new SurveyAnswer() { ChoiceText = "Party C", VoteForChoiceCount = 2500 }
+                        }
+                    }
+                }
+            };
+            var pageContent = GetPageContent(contentId, siteId, subDirectoryId);
+            pageContent.ContentType = Common.Models.Enums.ContentTypeMap.Survey;
+            pageContent.Surveys = survey;
+            return pageContent;
         }
 
         //Transfer<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -236,19 +339,21 @@ namespace RateIt.TestSuite.Service
         [Test]
         public void AdminAddContentViaEventTest()
         {
-            var comment = GetExistingComment();
-            var pageContent = GetPageContent(comment);
+            var contentId = 13;
+            var siteId = 1;
+            var subDirectoryId = 2;
+            var pageContent = GetCommentPageContent(contentId, siteId, subDirectoryId);
             var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
-            var transactionHash = AsyncHelper.RunSync(()=> _storageBank.AddContentViaEvent(1, 2, 3, serializedComment));
+            var transactionHash = AsyncHelper.RunSync(()=> _storageBank.AddContentViaEvent(siteId, subDirectoryId, contentId, serializedComment));
             Assert.IsTrue(!string.IsNullOrEmpty(transactionHash));
         }
 
         [Test]
         public void AdminGetContentViaEventTest()
         {
-            var content = AsyncHelper.RunSync(() => _storageBank.GetExactContentEvent(3));
+            var content = AsyncHelper.RunSync(() => _storageBank.GetExactContentEvent(13));
             Assert.IsNotNull(content);
-            Assert.AreEqual(content.ContentId, 3);
+            Assert.AreEqual(content.ContentId, 13);
         }
 
         [Test]
@@ -276,12 +381,56 @@ namespace RateIt.TestSuite.Service
         }
 
         [Test]
-        public void AdminAddNewContentIdContentViaStructTest()
+        public void AdminAddCommentContentTest()
         {
-            var comment = GetExistingComment();
-            var pageContent = GetPageContent(comment);
+            var contentId = 13;
+            var siteId = 1;
+            var subDirectoryId = 2;
+            var pageContent = GetCommentPageContent(contentId, siteId, subDirectoryId);
             var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
-            var transactionHash = AsyncHelper.RunSync(() => _storageBank.AddContent(1, 2, 13, serializedComment));
+            var transactionHash = AsyncHelper.RunSync(() => _storageBank.AddContent(siteId, subDirectoryId, contentId, serializedComment));
+            Assert.IsNotNull(transactionHash);
+            Assert.IsTrue(transactionHash.Length > 0);
+        }
+
+        [Test]
+        public void AdminAddSurveyContentTest()
+        {
+            long contentId = 14;
+            long siteId = 5;
+            long subDirectoryId = 9;
+            var pageContent = GetSurveyPageContent(contentId, siteId, subDirectoryId);
+            pageContent.TimestampCreated = DateTime.Now;
+            var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
+            var transactionHash = AsyncHelper.RunSync(() => _storageBank.AddContent(siteId, subDirectoryId, contentId, serializedComment));
+            Assert.IsNotNull(transactionHash);
+            Assert.IsTrue(transactionHash.Length > 0);
+        }
+
+        [Test]
+        public void AdminAddPollContentTest()
+        {
+            long contentId = 15;
+            long siteId = 5;
+            long subDirectoryId = 9;
+            var pageContent = GetPollPageContent(contentId, siteId, subDirectoryId);
+            pageContent.TimestampCreated = DateTime.Now;
+            var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
+            var transactionHash = AsyncHelper.RunSync(() => _storageBank.AddContent(siteId, subDirectoryId, contentId, serializedComment));
+            Assert.IsNotNull(transactionHash);
+            Assert.IsTrue(transactionHash.Length > 0);
+        }
+
+        [Test]
+        public void AdminAddCrowdfundingCampaignContentTest()
+        {
+            long contentId = 16;
+            long siteId = 5;
+            long subDirectoryId = 9;
+            var pageContent = GetCrowdfundingCampaignPageContent(contentId, siteId, subDirectoryId);
+            pageContent.TimestampCreated = DateTime.Now;
+            var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
+            var transactionHash = AsyncHelper.RunSync(() => _storageBank.AddContent(siteId, subDirectoryId, contentId, serializedComment));
             Assert.IsNotNull(transactionHash);
             Assert.IsTrue(transactionHash.Length > 0);
         }
@@ -355,11 +504,13 @@ namespace RateIt.TestSuite.Service
         public void UserAddContentViaEventTest()
         {
             _storageBank = MoralityTokenBankFactory.GetMoralityStorageBank(_userTokenSettings);
-            var comment = GetExistingComment();
-            var pageContent = GetPageContent(comment);
+            var contentId = ContentIdTracker.NextId();
+            var siteId = 1;
+            var subDirectoryId = 2;
+            var pageContent = GetCommentPageContent(contentId, siteId, subDirectoryId);
             var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
             var transactionHash = Assert.Throws<Nethereum.JsonRpc.Client.RpcResponseException>(
-              () => AsyncHelper.RunSync(() => _storageBank.AddContentViaEvent(1, 2, ContentIdTracker.NextId(), serializedComment))
+              () => AsyncHelper.RunSync(() => _storageBank.AddContentViaEvent(siteId, subDirectoryId, contentId , serializedComment))
             );
         }
 
@@ -367,9 +518,9 @@ namespace RateIt.TestSuite.Service
         public void UserGetContentViaEventTest()
         {
             _storageBank = MoralityTokenBankFactory.GetMoralityStorageBank(_userTokenSettings);
-            var content = AsyncHelper.RunSync(() => _storageBank.GetExactContentEvent(3));
+            var content = AsyncHelper.RunSync(() => _storageBank.GetExactContentEvent(13));
             Assert.IsNotNull(content);
-            Assert.AreEqual(content.ContentId, 3);
+            Assert.AreEqual(content.ContentId, 13);
         }
 
         [Test]
@@ -402,11 +553,13 @@ namespace RateIt.TestSuite.Service
         public void UserAddExistingContentIdContentViaStructTest()
         {
             _storageBank = MoralityTokenBankFactory.GetMoralityStorageBank(_userTokenSettings);
-            var comment = GetExistingComment();
-            var pageContent = GetPageContent(comment);
+            var contentId = 13;
+            var siteId = 1;
+            var subDirectoryId = 2;
+            var pageContent = GetCommentPageContent(contentId, siteId, subDirectoryId);
             var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
             var transactionHash = Assert.Throws<Nethereum.JsonRpc.Client.RpcResponseException>(
-                () => AsyncHelper.RunSync(() => _storageBank.AddContent(1, 2, 10, serializedComment))
+                () => AsyncHelper.RunSync(() => _storageBank.AddContent(siteId, subDirectoryId, contentId, serializedComment))
             );
         }
 
@@ -414,11 +567,13 @@ namespace RateIt.TestSuite.Service
         public void UserAddNewContentIdContentViaStructTest()
         {
             _storageBank = MoralityTokenBankFactory.GetMoralityStorageBank(_userTokenSettings);
-            var comment = GetExistingComment();
-            var pageContent = GetPageContent(comment);
+            var contentId = 13;
+            var siteId = 1;
+            var subDirectoryId = 2;
+            var pageContent = GetCommentPageContent(contentId, siteId, subDirectoryId);
             var serializedComment = new JavaScriptSerializer().Serialize(pageContent);
             var transactionHash = Assert.Throws<Nethereum.JsonRpc.Client.RpcResponseException>(
-                () => AsyncHelper.RunSync(() => _storageBank.AddContent(1, 2, 10, serializedComment))
+                () => AsyncHelper.RunSync(() => _storageBank.AddContent(siteId, subDirectoryId, contentId, serializedComment))
             );
         }
 
