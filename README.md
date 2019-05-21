@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" height="200" src="https://morality.network/images/brand/mo_coin.png">
+  <img width="100" height="100" src="https://morality.network/images/brand/mo_coin.png">
 </p>
 
 # morality.network 
