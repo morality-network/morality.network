@@ -1,6 +1,6 @@
 <p align="center">
-  <img width="80" height="80" src="https://morality.network/images/brand/mo_coin.png">
-</p> 
+  <img width="120" height="120" src="https://morality.network/images/brand/mo_coin.png">
+</p>
 
 # morality.network 
 
