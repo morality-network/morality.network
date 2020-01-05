@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morality.Airdrop.Service", "Morality.Airdrop.Service\Morality.Airdrop.Service.csproj", "{DA61C857-BE5B-437A-9BF8-B2BBEEAECA0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morality.Airdrop.Service.Tests", "Morality.Airdrop.Service.Tests\Morality.Airdrop.Service.Tests.csproj", "{E4B254E9-5FA6-40A2-A9B3-1194A98BEF25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA61C857-BE5B-437A-9BF8-B2BBEEAECA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA61C857-BE5B-437A-9BF8-B2BBEEAECA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA61C857-BE5B-437A-9BF8-B2BBEEAECA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA61C857-BE5B-437A-9BF8-B2BBEEAECA0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B254E9-5FA6-40A2-A9B3-1194A98BEF25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B254E9-5FA6-40A2-A9B3-1194A98BEF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B254E9-5FA6-40A2-A9B3-1194A98BEF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B254E9-5FA6-40A2-A9B3-1194A98BEF25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2D556FB-E68F-4F03-8C82-93AC3011DECC}
+	EndGlobalSection
+EndGlobal
