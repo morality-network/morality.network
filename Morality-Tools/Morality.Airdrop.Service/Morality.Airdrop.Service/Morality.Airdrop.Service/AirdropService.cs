@@ -11,42 +11,38 @@ namespace Morality.Airdrop.Service
         public double MaxX { get; private set; }
         public double MaxAmountToSend { get; private set; }
         private Random _randomGenerator;
-        public Dictionary<int, int> Map { get; private set; }
+        public Dictionary<int, int> Distribution { get; private set; }
 
         public AirdropService(double minMoBound, double maxMoBound, double maxAmount)
         {
             MinX = minMoBound;
             MaxX = maxMoBound;
             MaxAmountToSend = maxAmount;
-            Map = new Dictionary<int, int>();
+            Distribution = new Dictionary<int, int>();
             _randomGenerator = new Random();
         }
 
-        public List<AirDrop> GetAirdrops(List<User> users, int numberOfGiveaways)
+        public IEnumerable<AirDrop> GetAirdrops(List<User> users, int numberOfGiveaways)
         {
-            Map = new Dictionary<int, int>();
-            var winners = new List<AirDrop>();
+            Distribution = new Dictionary<int, int>();
             var totalMo = CalculateTotalMoHeld(users);
             users = GenerateProbabilities(users, totalMo);
             for (int i = 0; i < numberOfGiveaways; i++)
             {
-                var randomNumber = _randomGenerator.Next(0, (int)((double) users.Count * 10.0));
+                var randomNumber = _randomGenerator.Next(0, (int)((double)users.Count * 10.0));
                 double nRandomNumber = randomNumber > 0.0 ? (((double)randomNumber) / ((double)users.Count * 10.0)) : 0.0;
-                var winner = IdentifyWinner(users, nRandomNumber);
-
+                var winnerId = IdentifyWinner(users, nRandomNumber);
                 // Map the outcomes
-                if (Map.ContainsKey(winner))
-                    Map[winner]++;
-                else Map[winner] = 1;
-
+                if (Distribution.ContainsKey(winnerId))
+                    Distribution[winnerId]++;
+                else Distribution[winnerId] = 1;
                 // Return the winners
-                winners.Add(new AirDrop()
+                yield return new AirDrop()
                 {
-                    Id = winner,
+                    Id = winnerId,
                     Amount = _randomGenerator.Next(0, (int)MaxAmountToSend)
-                });
+                };
             }
-            return winners;
         }
 
         public int IdentifyWinner(List<User> users, double value)
