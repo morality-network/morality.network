@@ -78,7 +78,9 @@ namespace Morality.Airdrop.Service
 
         public double BoundValue(double value)
         {
-            if (value <= MinX)
+            if(value == 0)
+                return value;
+            else if (value <= MinX)
                 return MinX;
             else if (value >= MaxX)
                 return MaxX;
