@@ -15,7 +15,7 @@ namespace RateIt.Common.Models
         public ContentTypeMap ContentType { get; set; }
         public Comment Comment { get; set; }
         public Survey Surveys { get; set; }
-        public Poll Polls { get; set; }
+        public Poll Poll { get; set; }
         public CrowdfundingCampaign CrowdFundingCampaign { get; set; }
         public DateTime TimestampCreated { get; set; }
     }

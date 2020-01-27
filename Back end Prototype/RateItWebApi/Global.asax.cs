@@ -22,7 +22,7 @@ namespace RateItWebApi
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-           
+            
             //Database.SetInitializer<RateItWebApi.Models.ApplicationDbContext>(null);
             //Database.SetInitializer<RateItContainer>(null);
         }

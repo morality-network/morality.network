@@ -34,7 +34,7 @@ namespace RateItWebApi.Controllers
             _userService = userService;
         }
 
-        [MoralityAuthenticationFilter]
+        //[MoralityAuthenticationFilter]
         [HttpGet]
         public ActionResult Index(string encodedUrl)
         {
@@ -43,7 +43,7 @@ namespace RateItWebApi.Controllers
                 var user = _userService.GetUserByEmail(User.Identity.Name);
                 var decodedUrl = HttpUtility.UrlDecode(encodedUrl);
                 var currentDirectory = _subDirectoryService.FindOrInsertSite(decodedUrl);
-                var comments = _commentService.GetCommentsBySubDirectory(currentDirectory.Id, 0, 30);
+                var comments = _commentService.GetCommentsBySubDirectory(currentDirectory?.Id ?? -1, 0, 30);
 
                 var commentModel = new CommentListModel()
                 {

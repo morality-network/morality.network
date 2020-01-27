@@ -578,7 +578,31 @@ function initEmoji(){
 	commentBox.addEventListener('click', function () {	
         //Sort the caret out!!!!
 	});	
+}
 
+function launchWindow(){
+	addCSSLinks("css/fontawesome.css");
+	addCSSLinks("css/fa-regular.css");
+	$('head').append('<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">');
+			
+	$('html').append(data);
+	var chatWindow = createDiv("chat-holder-ma","chat-window-ri");		
+	$('html').append(chatWindow);		
+
+    var chatHandle = createDiv("chat-handle","chat-handle");		
+	var rootDiv = createDiv("root-div","root-div");
+	chatWindow.append(rootDiv);
+	chatWindow.append(chatHandle);	
+			
+	var dragIcon = createIcon("fas fa-arrows-alt", "drag-icon-holder");
+	chatHandle.append(dragIcon);
+			
+	var host = document.querySelector('#root-div');
+    var root = host.createShadowRoot();
+    var template = document.querySelector('#main-chat-window');
+    root.appendChild(document.importNode(template.content, true));
+			
+    addEvents();
 }
 
 //Display app
@@ -593,32 +617,10 @@ function displayApp(){
         //headers: {"Authorization": cToken},				
 		async: true,
 		success: function (data) {
-			
-			addCSSLinks("css/fontawesome.css");
-			addCSSLinks("css/fa-regular.css");
-			$('head').append('<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">');
-			
-			$('html').append(data);
-			var chatWindow = createDiv("chat-holder-ma","chat-window-ri");		
-			$('html').append(chatWindow);		
-
-            var chatHandle = createDiv("chat-handle","chat-handle");		
-			var rootDiv = createDiv("root-div","root-div");
-			chatWindow.append(rootDiv);
-			chatWindow.append(chatHandle);	
-			
-			var dragIcon = createIcon("fas fa-arrows-alt", "drag-icon-holder");
-			chatHandle.append(dragIcon);
-			
-			var host = document.querySelector('#root-div');
-            var root = host.createShadowRoot();
-            var template = document.querySelector('#main-chat-window');
-            root.appendChild(document.importNode(template.content, true));
-			
-            addEvents();
+			launchWindow(data);
 		},
 		error: function (data) {
-     		console.log(JSON.stringify(data));	
+     		console.log(data);
 		}        
 	});
 }

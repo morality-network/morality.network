@@ -150,7 +150,7 @@ namespace RateIt.TestSuite.Service
             };
             var pageContent = GetPageContent(contentId, siteId, subDirectoryId);
             pageContent.ContentType = Common.Models.Enums.ContentTypeMap.Poll;
-            pageContent.Polls = poll;
+            pageContent.Poll = poll;
             return pageContent;
         }
 

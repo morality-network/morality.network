@@ -1,23 +1,26 @@
-﻿using AutoMapper;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using Ninject;
-using Ninject.Web.Common;
-using Ninject.Web.Common.WebHost;
-using RateIt.Common.Models;
-using RateIt.Common.Models.Enums;
-using RateIt.Model;
-using RateIt.Repositories.Interfaces;
-using RateIt.Repositories.Repositories;
-using RateIt.Services;
-using RateIt.Services.Interfaces;
-using RateIt.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(RateItWebApi.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(RateItWebApi.App_Start.NinjectWebCommon), "Stop")]
 
 namespace RateItWebApi.App_Start
 {
+    using AutoMapper;
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using Ninject;
+    using Ninject.Web.Common;
+    using Ninject.Web.Common.WebHost;
+    using RateIt.Common.Models;
+    using RateIt.Common.Models.Enums;
+    using RateIt.Model;
+    using RateIt.Repositories.Interfaces;
+    using RateIt.Repositories.Repositories;
+    using RateIt.Services;
+    using RateIt.Services.Interfaces;
+    using RateIt.Utilities;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+
     public static class NinjectWebCommon
     {
         static StandardKernel Kernel;
@@ -166,8 +169,8 @@ namespace RateItWebApi.App_Start
                    .ForMember(dest => dest.SubDirectoryId, opt => opt.MapFrom(src => src.SubDirectory.Id))
                    .ForMember(dest => dest.TimestampCreated, opt => opt.MapFrom(src => src.Timestamp))
                    .ForMember(dest => dest.Comment, opt => opt.MapFrom(src => src.Comments1.FirstOrDefault()))
-                   .ForMember(dest => dest.CrowdFundingCampaigns, opt => opt.MapFrom(src => src.CrowdfundingCampaigns.FirstOrDefault()))
-                   .ForMember(dest => dest.Polls, opt => opt.MapFrom(src => src.Polls.FirstOrDefault()))
+                   .ForMember(dest => dest.CrowdFundingCampaign, opt => opt.MapFrom(src => src.CrowdfundingCampaigns.FirstOrDefault()))
+                   .ForMember(dest => dest.Poll, opt => opt.MapFrom(src => src.Polls.FirstOrDefault()))
                    .ForMember(dest => dest.Surveys, opt => opt.MapFrom(src => src.Surveys.FirstOrDefault()))
                    .ReverseMap();
            

@@ -60,10 +60,7 @@ namespace RateIt.Services
         public Site FindOrInsertSite(string url)
         {
             if (url != null) {
-                //To confirm this is url
-                var uri = new Uri(url);
-                //Now do the stuff
-                var site = GetSiteByUrl(uri.Host);
+                var site = GetSiteByUrl(url);
                 if (site != null)
                     return site;
                 return AddSite(url);

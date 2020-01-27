@@ -1,8 +1,6 @@
 ﻿using RateIt.Services;
 using RateIt.Services.Interfaces;
 using RateItHome.Models;
-using RateItRepository;
-using RateItRepository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,6 +7,7 @@ using RateIt.Services.Interfaces;
 using RateIt.Model;
 using RateIt.Repositories.Interfaces;
 using RateIt.Common.Models.Enums;
+using RateIt.Repositories.Repositories;
 
 namespace RateIt.Services
 {
@@ -17,18 +18,18 @@ namespace RateIt.Services
         private readonly IUserService _userService;
         private readonly INotificationService _notificationService;
         private readonly IContentService _contentService;
-        private readonly ICommentService _commentService;
+        private readonly IRepository<Comment> _commentRepository;
 
         public ReportService(IRepository<ReportClaim> reportClaimRepository, IInvestigationService investigationService,
             IUserService userService, INotificationService notificationService, IContentService contentService,
-            ICommentService commentService)
+            IRepository<Comment> commentRepository)
         {
             _reportClaimRepository = reportClaimRepository;
             _investigationService = investigationService;
             _userService = userService;
             _notificationService = notificationService;
             _contentService = contentService;
-            _commentService = commentService;
+            _commentRepository = commentRepository;
         }
 
         public bool ReportComment(long userId, int commentId)
@@ -36,19 +37,24 @@ namespace RateIt.Services
             var user = _userService.GetUserById(userId);
             if (user != null && HasUserAlreadyReported(userId, commentId))
             {
-                var comment = _commentService.GetCommentById(commentId);
-                var content = comment.Content1;
-                if (content != null) {
-                    var reported = AddReportClaim(userId, commentId);
-                    if (reported) {
-                        if (!_investigationService.DoesInvestigationExistForComment(commentId))
-                            _investigationService.AddInvestigation(userId, commentId);
+                var comment = _commentRepository.GetAll().FirstOrDefault(x => x.Id == commentId);
+                if (comment != null)
+                {
+                    var content = comment.Content1;
+                    if (content != null)
+                    {
+                        var reported = AddReportClaim(userId, commentId);
+                        if (reported)
+                        {
+                            if (!_investigationService.DoesInvestigationExistForComment(commentId))
+                                _investigationService.AddInvestigation(userId, commentId);
 
-                        AddReportClaim(userId, commentId);
-                        _userService.CalculateAndUpdateUserReportStatistics(userId);
-                        _notificationService.AddNotification(NotificationTypeMap.Report, content.Id, comment.CreatorId, 
-                            content.SubDirectoryId, user.Fullname);
-                        return true;
+                            AddReportClaim(userId, commentId);
+                            _userService.CalculateAndUpdateUserReportStatistics(userId);
+                            _notificationService.AddNotification(NotificationTypeMap.Report, content.Id, comment.CreatorId,
+                                content.SubDirectoryId, user.Fullname);
+                            return true;
+                        }
                     }
                 }
             }

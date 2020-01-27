@@ -173,8 +173,8 @@ namespace RateItHome.App_Start
                    .ForMember(dest => dest.SubDirectoryId, opt => opt.MapFrom(src => src.SubDirectory.Id))
                    .ForMember(dest => dest.TimestampCreated, opt => opt.MapFrom(src => src.Timestamp))
                    .ForMember(dest => dest.Comment, opt => opt.MapFrom(src => src.Comments1.FirstOrDefault()))
-                   .ForMember(dest => dest.CrowdFundingCampaigns, opt => opt.MapFrom(src => src.CrowdfundingCampaigns.FirstOrDefault()))
-                   .ForMember(dest => dest.Polls, opt => opt.MapFrom(src => src.Polls.FirstOrDefault()))
+                   .ForMember(dest => dest.CrowdFundingCampaign, opt => opt.MapFrom(src => src.CrowdfundingCampaigns.FirstOrDefault()))
+                   .ForMember(dest => dest.Poll, opt => opt.MapFrom(src => src.Polls.FirstOrDefault()))
                    .ForMember(dest => dest.Surveys, opt => opt.MapFrom(src => src.Surveys.FirstOrDefault()))
                    .ReverseMap();
             });
