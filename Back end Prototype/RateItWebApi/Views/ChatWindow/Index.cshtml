@@ -1,8 +1,9 @@
-﻿@model RateItWebApi.Models.AppModel
+﻿@using System.Web.Mvc.Html;
+@model RateItWebApi.Models.AppModel
 
 <template id="main-chat-window">
 
-    @Html.Hidden("CurrentPageId", @Model.PageId)
+    @Html.Hidden("CurrentPageId", Model.PageId)
     @Html.Hidden("CurrentPage", Model.Comments.Page)
     @Html.Hidden("PerPage", Model.Comments.PerPage)
 

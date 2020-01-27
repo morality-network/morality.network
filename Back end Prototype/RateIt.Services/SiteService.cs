@@ -25,7 +25,7 @@ namespace RateIt.Services
                 var cleanName = GetCleanName(url);
                 if (cleanName != null)
                     return _siteRepository.GetAll()
-                        .FirstOrDefault(x => x.Name == url);
+                        .FirstOrDefault(x => x.Name == cleanName);
             }
             return null;
         }
@@ -44,15 +44,17 @@ namespace RateIt.Services
         {
             if (!string.IsNullOrEmpty(url))
             {
+                // Create site to add
                 var site = new Site()
                 {
                     AccountId = null,
                     Name = GetCleanName(url),
                     Timestamp = DateTime.Now
                 };
+                // Add and return
                 _siteRepository.Add(site);
-                var success = Convert.ToBoolean(_siteRepository.Save());
-                if (success) return site;
+                if (Convert.ToBoolean(_siteRepository.Save())) 
+                    return site;
             }
             return null;
         }

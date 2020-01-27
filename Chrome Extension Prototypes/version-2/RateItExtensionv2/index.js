@@ -4,9 +4,6 @@ var poweredby = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/
 //AppId - visible: chrome://extensions/
 var myid = chrome.runtime.id;
 //var userInfo = getUserDetails();
-
-//Main site
-//var rateit = "https://rateitapp.azurewebsites.net/";
 var rateit = "https://localhost:44322/";
 
 //For display
@@ -580,7 +577,7 @@ function initEmoji(){
 	});	
 }
 
-function launchWindow(){
+function launchWindow(data){
 	addCSSLinks("css/fontawesome.css");
 	addCSSLinks("css/fa-regular.css");
 	$('head').append('<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">');
@@ -612,7 +609,7 @@ function displayApp(){
 	$.ajax({
 		type: "POST",
 		url: url,
-	    data: {},
+	    data: { encodedUrl:"www.google.com" },
 		contentType: "application/x-www-form-urlencoded",
         //headers: {"Authorization": cToken},				
 		async: true,

@@ -34,17 +34,36 @@ namespace RateItWebApi.Controllers
             _userService = userService;
         }
 
+        [HttpPost()]
+        public ActionResult Index(Page page)
+        {
+            return Index(page.EncodedUrl);
+        }
+
         //[MoralityAuthenticationFilter]
-        [HttpGet]
+        [HttpGet()]
         public ActionResult Index(string encodedUrl)
         {
             try
             {
+                encodedUrl = "www.google.com";
+                // Get user and decode url
                 var user = _userService.GetUserByEmail(User.Identity.Name);
                 var decodedUrl = HttpUtility.UrlDecode(encodedUrl);
-                var currentDirectory = _subDirectoryService.FindOrInsertSite(decodedUrl);
-                var comments = _commentService.GetCommentsBySubDirectory(currentDirectory?.Id ?? -1, 0, 30);
 
+                // Basic checks & setup
+                if (string.IsNullOrEmpty(decodedUrl))
+                    throw new Exception("Error creating/matching directory");
+                else if (!decodedUrl.StartsWith("https://") || !decodedUrl.StartsWith("http://"))
+                    decodedUrl = $"https://{decodedUrl}";
+
+                // Get the site/directory
+                var currentDirectory = _subDirectoryService.FindOrInsertSite(decodedUrl);
+                if (currentDirectory == null)
+                    throw new Exception("Error creating/matching directory");
+
+                // Get the comments
+                var comments = _commentService.GetCommentsBySubDirectory(currentDirectory?.Id ?? -1, 0, 30);
                 var commentModel = new CommentListModel()
                 {
                     Page = 0,
@@ -56,10 +75,10 @@ namespace RateItWebApi.Controllers
                 var pageRating = _ratingService.GetRatingBySubDirectoryId(currentDirectory.Id);
                 AppModel model = new AppModel()
                 {
-                    HostName = currentDirectory.Site.Name,
+                    HostName = currentDirectory.Site?.Name,
                     PageName = currentDirectory.Name,
-                    PageRating = pageRating.RatingValue,
-                    PageRatingCount = pageRating.UserRatings.Count(),
+                    PageRating = pageRating?.RatingValue ?? 0,
+                    PageRatingCount = pageRating?.UserRatings.Count() ?? 0,
                     Comments = commentModel,
                     Profile = _mapper.Map<UserProfile>(user),
                     //Loads more to add

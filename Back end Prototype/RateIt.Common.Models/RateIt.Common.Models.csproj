@@ -69,6 +69,7 @@
     <Compile Include="MintCollectionArguments.cs" />
     <Compile Include="MoralityTokenSettings.cs" />
     <Compile Include="Notification.cs" />
+    <Compile Include="Page.cs" />
     <Compile Include="PageContent.cs" />
     <Compile Include="PageContents.cs" />
     <Compile Include="Poll.cs" />

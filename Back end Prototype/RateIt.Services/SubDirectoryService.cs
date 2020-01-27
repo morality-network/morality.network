@@ -26,7 +26,7 @@ namespace RateIt.Services
             if(site != null)
             {
                 var subDirectoryName = CleanSubDirectoryName(url);
-                if (!string.IsNullOrEmpty(subDirectoryName))
+                if (subDirectoryName != null)
                 {
                     var subDirectory = new SubDirectory()
                     {
@@ -35,8 +35,9 @@ namespace RateIt.Services
                         Timestamp = DateTime.Now
                     };
                     _subDirectoryRepository.Add(subDirectory);
-                    _subDirectoryRepository.Save();
-                    return subDirectory;
+                    // Return if saved
+                    if(Convert.ToBoolean(_subDirectoryRepository.Save()))
+                        return subDirectory;
                 }
             }
             return null;

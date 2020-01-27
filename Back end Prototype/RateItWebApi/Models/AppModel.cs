@@ -1,15 +1,16 @@
 ﻿using RateIt.Common.Models;
-using RateIt.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace RateItWebApi.Models
 {
     public class AppModel
     {
+        [Display(Name = "PageId")]
+        public long PageId { get; set; }
+
+        [Display(Name = "PageDescription")]
+        public long PageDescription { get; set; }
+
         [Required]
         [Display(Name = "Comments")]
         public CommentListModel Comments { get; set; }

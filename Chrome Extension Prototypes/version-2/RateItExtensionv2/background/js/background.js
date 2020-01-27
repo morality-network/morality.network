@@ -13,6 +13,7 @@ chrome.identity.getProfileUserInfo(function(userInfo) {
 function registerApp(userInfo){
 	var http = new XMLHttpRequest();
 	var url = rateit + "api/Account/RegisterApp";
+	console.log("here");
 	var params = "Email="+userInfo.email+"&Name="+userInfo.email+"&Password=Vs1-"+chrome.runtime.id+"&ConfirmPassword=Vs1-"+chrome.runtime.id+"&CurrentAppId="+chrome.runtime.id;
 	http.open("POST", url, true);
 	//alert(params);
