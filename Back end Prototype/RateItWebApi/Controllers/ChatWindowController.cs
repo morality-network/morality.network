@@ -46,7 +46,6 @@ namespace RateItWebApi.Controllers
         {
             try
             {
-                encodedUrl = "www.google.com";
                 // Get user and decode url
                 var user = _userService.GetUserByEmail(User.Identity.Name);
                 var decodedUrl = HttpUtility.UrlDecode(encodedUrl);
@@ -54,7 +53,7 @@ namespace RateItWebApi.Controllers
                 // Basic checks & setup
                 if (string.IsNullOrEmpty(decodedUrl))
                     throw new Exception("Error creating/matching directory");
-                else if (!decodedUrl.StartsWith("https://") || !decodedUrl.StartsWith("http://"))
+                else if (!decodedUrl.StartsWith("https://") && !decodedUrl.StartsWith("http://"))
                     decodedUrl = $"https://{decodedUrl}";
 
                 // Get the site/directory
@@ -76,7 +75,7 @@ namespace RateItWebApi.Controllers
                 AppModel model = new AppModel()
                 {
                     HostName = currentDirectory.Site?.Name,
-                    PageName = currentDirectory.Name,
+                    PageName = $"{currentDirectory.Site?.Name}/{currentDirectory.Name}",
                     PageRating = pageRating?.RatingValue ?? 0,
                     PageRatingCount = pageRating?.UserRatings.Count() ?? 0,
                     Comments = commentModel,

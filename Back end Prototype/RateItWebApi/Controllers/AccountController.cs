@@ -81,32 +81,40 @@ namespace RateItWebApi.Controllers
         // POST api/Account/RegisterApp
         [AllowAnonymous]
         [Route("RegisterApp")]
-        public async Task<IHttpActionResult> RegisterApp(RegisterAppBindingModel model)
+        [HttpPost]
+        public async Task<IHttpActionResult> RegisterApp([FromBody]RegisterAppBindingModel model)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var existingUser = await UserManager.FindByEmailAsync(model.Email);
-            //if chrome user doesnt exist
-            if (existingUser == null)
-            {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, CurrentAppId = model.CurrentAppId };
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                if (!result.Succeeded)
-                    return GetErrorResult(result);
+                var existingUser = await UserManager.FindByEmailAsync(model.Email);
+                //if chrome user doesnt exist
+                if (existingUser == null)
+                {
+                    var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, CurrentAppId = model.CurrentAppId };
+                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                    if (!result.Succeeded)
+                        return GetErrorResult(result);
+                }
+                else
+                {
+                    //Already registered but a new extension Id has been produced
+                    existingUser.CurrentAppId = model.CurrentAppId;
+                    IdentityResult resultUsrDetails = await UserManager.UpdateAsync((ApplicationUser)existingUser);
+                    _userService.UpdateAppKey(existingUser.Id, model.CurrentAppId);
+                    if (!resultUsrDetails.Succeeded)
+                        return GetErrorResult(resultUsrDetails);
+                }
+                return Ok();
             }
-            else
+            catch (Exception ex)
             {
-                //Already registered but a new extension Id has been produced
-                existingUser.CurrentAppId = model.CurrentAppId;
-                IdentityResult resultUsrDetails = await UserManager.UpdateAsync((ApplicationUser)existingUser);
-                _userService.UpdateAppKey(existingUser.Id, model.CurrentAppId);
-                if (!resultUsrDetails.Succeeded)
-                    return GetErrorResult(resultUsrDetails);
+                return BadRequest("Error registering user");
             }
-            return Ok();
         }
 
-        [AllowAnonymous]
+        [MoralityAuthenticationFilter]
         [Route("RegisterUser")]
         public async Task<IHttpActionResult> RegisterUser(RegisterBindingModel model)
         {

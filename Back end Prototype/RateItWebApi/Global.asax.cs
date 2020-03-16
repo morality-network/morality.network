@@ -26,6 +26,5 @@ namespace RateItWebApi
             //Database.SetInitializer<RateItWebApi.Models.ApplicationDbContext>(null);
             //Database.SetInitializer<RateItContainer>(null);
         }
-     
     }
 }

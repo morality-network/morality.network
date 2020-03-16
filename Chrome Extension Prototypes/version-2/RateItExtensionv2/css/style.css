@@ -220,8 +220,8 @@
 }
 
 .chat-window-ri{	
-    height: 540px;
-    width: 520px;
+    height: 580px !important;
+    width: 520px !important;
     position: absolute;
     left: 7px;
     top: 122px;

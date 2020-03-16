@@ -5,5 +5,7 @@
     [LastUpdated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [Active] BIT NOT NULL DEFAULT 1, 
     [AccountId] BIGINT NOT NULL, 
-    CONSTRAINT [FK_CreditWallets_ToUsers] FOREIGN KEY ([AccountId]) REFERENCES [Accounts]([Id])
+    [CurrencyId] BIGINT NOT NULL, 
+    CONSTRAINT [FK_CreditWallets_ToUsers] FOREIGN KEY ([AccountId]) REFERENCES [Accounts]([Id]), 
+    CONSTRAINT [FK_CreditWallets_ToCurrency] FOREIGN KEY (CurrencyId) REFERENCES [Currencys]([Id])
 )

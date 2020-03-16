@@ -13,11 +13,11 @@
   overflow-y: scroll;
 }
 
-.emotion-area-menu{
-  position: absolute !important;
-  top: -375px !important;
-  padding-top: 5px !important;
-  background: white !important;
+.emotion-area-menu {
+    position: absolute !important;
+    top: -415px !important;
+    padding-top: 5px !important;
+    background: white !important;
 }
 .emotion-area img {
   margin: 4px;

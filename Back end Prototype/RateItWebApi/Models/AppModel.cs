@@ -9,7 +9,7 @@ namespace RateItWebApi.Models
         public long PageId { get; set; }
 
         [Display(Name = "PageDescription")]
-        public long PageDescription { get; set; }
+        public string PageDescription { get; set; }
 
         [Required]
         [Display(Name = "Comments")]
@@ -34,5 +34,10 @@ namespace RateItWebApi.Models
         [Required]
         [Display(Name = "Profile")]
         public UserProfile Profile { get; set; }
+
+        public AppModel()
+        {
+            PageDescription = "None Set";
+        }
     }
 }

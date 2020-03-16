@@ -27,20 +27,32 @@ namespace RateIt.Services
             {
                 var subDirectoryName = CleanSubDirectoryName(url);
                 if (subDirectoryName != null)
-                {
-                    var subDirectory = new SubDirectory()
-                    {
-                        SiteId = site.Id,
-                        Name = subDirectoryName,
-                        Timestamp = DateTime.Now
-                    };
-                    _subDirectoryRepository.Add(subDirectory);
-                    // Return if saved
-                    if(Convert.ToBoolean(_subDirectoryRepository.Save()))
-                        return subDirectory;
-                }
+                    return AddSubDirectory(site, subDirectoryName);
             }
             return null;
+        }
+
+        public SubDirectory AddSubDirectory(Site site, string subDirectoryName)
+        {
+            var subDirectory = _subDirectoryRepository.GetAll().FirstOrDefault(x => x.Name == subDirectoryName && x.SiteId == site.Id);
+            if (subDirectory == null)
+            {
+                // Then we need to add (first time been)
+                subDirectory = new SubDirectory()
+                {
+                    SiteId = site.Id,
+                    Name = subDirectoryName,
+                    Timestamp = DateTime.Now
+                };
+                _subDirectoryRepository.Add(subDirectory);
+                // Return if saved
+                if (Convert.ToBoolean(_subDirectoryRepository.Save()))
+                    return subDirectory;
+                // Didnt save, return null
+                return null;
+            }
+            // Return existing
+            return subDirectory;
         }
 
         public string CleanSubDirectoryName(string url)
@@ -50,7 +62,7 @@ namespace RateIt.Services
                 var uri = new Uri(url);
                 var subDirectory = uri.AbsolutePath.ToLower();
                 if (subDirectory.Count() == 1 && subDirectory[0] == '/') return string.Empty;
-                return subDirectory;
+                return subDirectory.Replace("/", "");
             }
             return null;
         }

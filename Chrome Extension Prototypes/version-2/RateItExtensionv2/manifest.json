@@ -1,19 +1,23 @@
 {
-    "name": "Rate it",
+    "name": "Morality",
 	"background": {
 		"scripts": [
 			"background/js/background.js"
 		]
     },
 	"browser_action": {
-	   "default_icon": "img/logo.png"
+	   "default_icon": "img/logo-mo.png"
     },
-    "description": "Rate it",
-    "version": "1",
+	"icons": {
+      "16": "img/logo-mo.png",
+      "48": "img/logo-mo.png",
+      "128": "img/logo-mo.png"
+    },
+    "description": "Morality is a platform on which users can quantify the reliability of any information they’re presented with and expose bias",
+    "version": "1.0",
     "manifest_version": 2,
     "content_scripts": [
         {
-
             "matches": [ "<all_urls>"],
             "css":[
 			"css/fa-regular.css",
@@ -37,10 +41,10 @@
 		"img/*"
     ],
     "permissions": [ 
+		"identity",
+        "identity.email",
 		"<all_urls>", 
 		"storage",
 		"tabs", 
-        "http://*/*", 
-		"identity",
-        "identity.email" ]
+        "http://*/*" ]
 }

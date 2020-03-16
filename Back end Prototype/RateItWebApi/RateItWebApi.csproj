@@ -212,9 +212,8 @@
       <HintPath>..\packages\Ninject.Web.WebApi.3.3.0\lib\net45\Ninject.Web.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.WebApi.DependencyResolver, Version=0.1.4758.24814, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.WebApi.DependencyResolver.0.1.4758.24814\lib\net45\Ninject.WebApi.DependencyResolver.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ninject.Web.WebApi.WebHost, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.WebHost.3.3.0\lib\net45\Ninject.Web.WebApi.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="Pagination, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Pagination.1.0.3\lib\net451\Pagination.dll</HintPath>
@@ -380,7 +379,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\readme.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -487,6 +485,7 @@
     <None Include="Properties\PublishProfiles\RateItApp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\RateItApp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="img\wallet-logo-black.png" />
     <Content Include="Scripts\app\moc-tab.js" />
     <Content Include="Scripts\app\profile-tab.js" />
     <Content Include="Scripts\app\config.js" />
@@ -585,6 +584,7 @@
     <Content Include="Views\ChatWindow\_ContentBar.cshtml" />
     <Content Include="Views\ChatWindow\_CssImports.cshtml" />
     <Content Include="Views\ChatWindow\_CommentListLoop.cshtml" />
+    <Content Include="Views\ChatWindow\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

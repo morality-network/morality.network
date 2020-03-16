@@ -126,8 +126,7 @@ function rate(rating){
 	});
 }
 	
-function getToken(id,password){
-		
+function getToken(id,password){	
 	var isAuthorised = false;
 	var loginData = {
 		"username": id,
@@ -176,58 +175,26 @@ function getLocalToken(){
 	}
 }
 
+function doesTokenExist(){
+	var token = getLocalToken();
+	if(!token || token == "[]")
+		return false;
+	return true;
+}
+
 function initAppToken(){
 	var token = "[]";
 	chrome.runtime.sendMessage({method:"getToken"},function(token){
 	  setLocalToken(token);
 	});
 }
-	
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   
+	  
 function createDiv(id, classVal, textVal){
 	return $('<div />', {
             id: id,
 			class: classVal,
 			text: textVal
        });
-}
-
-function createSpan(classVal, textValue){
-	return $('<span />', {
-			class: classVal,
-			text: textValue
-    });
-}
-
-function createIcon(classIcon, classHolder){
-	var icon = $('<i />', {
-			class: classIcon
-    });
-	var iconInHolder = $('<span />', {
-			class: classHolder
-    });
-	iconInHolder.append(icon);
-	return iconInHolder;
-}
-
-function subStrAfterChars(str, chr, pos) {
-    if (pos === 'b') 
-       return str.slice(str.indexOf(chr) + 1);
-    else if (pos === 'a')
-       return str.slice(0, str.indexOf(chr));
-    else
-        return str;
-}
-
-function hashCode(str) {
-  var hash = 0;
-    if (str.length == 0) return hash;
-    for (i = 0; i < str.length; i++) {
-        char = str.charCodeAt(i);
-        hash = ((hash<<5)-hash)+char;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
 }
 
 function addCSSLinks(file){
@@ -249,7 +216,7 @@ function addEvents(){
         $("#chat-holder-ma").draggable({
             containment: "body",
 			//cancel: "#chat-holder-ma"
-			handle: "#chat-handle"
+			handle: "#root-div"
 		});
 	
         //Follow
@@ -282,6 +249,8 @@ function addEvents(){
                 });
             }
         });
+		
+		var pw = "Vs1-"+chrome.runtime.id;
 			
 		setTabSelection();
 		checkForNewListeners();
@@ -578,6 +547,7 @@ function initEmoji(){
 }
 
 function launchWindow(data){
+	
 	addCSSLinks("css/fontawesome.css");
 	addCSSLinks("css/fa-regular.css");
 	$('head').append('<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">');
@@ -585,20 +555,17 @@ function launchWindow(data){
 	$('html').append(data);
 	var chatWindow = createDiv("chat-holder-ma","chat-window-ri");		
 	$('html').append(chatWindow);		
-
-    var chatHandle = createDiv("chat-handle","chat-handle");		
+			
 	var rootDiv = createDiv("root-div","root-div");
 	chatWindow.append(rootDiv);
-	chatWindow.append(chatHandle);	
-			
-	var dragIcon = createIcon("fas fa-arrows-alt", "drag-icon-holder");
-	chatHandle.append(dragIcon);
 			
 	var host = document.querySelector('#root-div');
     var root = host.createShadowRoot();
     var template = document.querySelector('#main-chat-window');
     root.appendChild(document.importNode(template.content, true));
-			
+	
+    root.querySelector("#login-div").querySelectorAll("input").forEach(function(x){$(x).attr("value","test@test.com");});
+	
     addEvents();
 }
 
@@ -606,10 +573,11 @@ function launchWindow(data){
 function displayApp(){	
     //https://localhost:44322/  
 	var url = rateit + "ChatWindow/Index";
+
 	$.ajax({
 		type: "POST",
 		url: url,
-	    data: { encodedUrl:"www.google.com" },
+	    data: { encodedUrl:encodeURIComponent(window.location) },
 		contentType: "application/x-www-form-urlencoded",
         //headers: {"Authorization": cToken},				
 		async: true,
