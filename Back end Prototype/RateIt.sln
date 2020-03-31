@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateItWebApi", "RateItWebApi\RateItWebApi.csproj", "{A66BF71A-9A76-4B7B-ACEE-1C00459DD2B7}"
 EndProject
@@ -30,8 +30,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateIt.Repositories", "RateIt.Repositories\RateIt.Repositories.csproj", "{8DC8554F-C644-4C70-B6B9-2B28287B6A8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectIdentificationTest", "ObjectIdentificationTest\ObjectIdentificationTest.csproj", "{7B664A63-5DAD-4036-89CC-3A5D7A3ACF58}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateIt.Airdrops", "RateIt.Airdrops\RateIt.Airdrops.csproj", "{56FE4B22-2190-441A-BBDE-39F06D859019}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,10 +95,6 @@ Global
 		{7B664A63-5DAD-4036-89CC-3A5D7A3ACF58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B664A63-5DAD-4036-89CC-3A5D7A3ACF58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B664A63-5DAD-4036-89CC-3A5D7A3ACF58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56FE4B22-2190-441A-BBDE-39F06D859019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56FE4B22-2190-441A-BBDE-39F06D859019}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56FE4B22-2190-441A-BBDE-39F06D859019}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56FE4B22-2190-441A-BBDE-39F06D859019}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

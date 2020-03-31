@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e71756003ae74e508b16abfbc15efe98" Name="Diagram1" ZoomLevel="11">
+      <Diagram DiagramId="e71756003ae74e508b16abfbc15efe98" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="MoralityNetworkModel.Account" Width="1.5" PointX="11.875" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MoralityNetworkModel.Activity" Width="1.5" PointX="11.875" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MoralityNetworkModel.Comment" Width="1.5" PointX="14.875" PointY="17.25" IsExpanded="true" />
