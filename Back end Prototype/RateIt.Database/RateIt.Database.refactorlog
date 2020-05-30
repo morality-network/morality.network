@@ -959,4 +959,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UniqueDomain" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b77d519a-88eb-4444-b78d-dbbfa5e62fae" ChangeDateTime="03/31/2020 08:04:09">
+    <Property Name="ElementName" Value="[dbo].[UserConfirmations].[SubscribeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserConfirmations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d8682c89-9c51-4b63-88c6-9a0ae829987e" ChangeDateTime="04/05/2020 08:50:33">
+    <Property Name="ElementName" Value="[dbo].[Currencys].[AdminId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Currencys]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AdminAddress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f0038fdc-0d96-4d3d-9342-5843492347a7" ChangeDateTime="05/10/2020 04:29:32">
+    <Property Name="ElementName" Value="[dbo].[InternalTransactions].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[InternalTransactions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FromUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="39d2484a-73c4-4f49-8671-bdea17b5acb4" ChangeDateTime="05/10/2020 04:29:57">
+    <Property Name="ElementName" Value="[dbo].[InternalTransactions].[IX_InternalTransactions_FromAddress]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[InternalTransactions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_InternalTransactions_ToUser]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dd8f28e6-5af5-4433-96da-d3cf4cdf616d" ChangeDateTime="05/10/2020 09:22:26">
+    <Property Name="ElementName" Value="[dbo].[FK_EthereumWallet_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[EthereumWallet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_EthereumWallet_ToUser]" />
+  </Operation>
 </Operations>

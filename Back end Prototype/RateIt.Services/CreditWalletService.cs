@@ -1,14 +1,10 @@
 ﻿using RateIt.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using RateIt.Utilities;
 using RateIt.Services.Interfaces;
 using RateIt.Repositories.Interfaces;
 using RateIt.Common.Models.Enums;
+using System.Linq;
 
 namespace RateIt.Services
 {
@@ -33,14 +29,8 @@ namespace RateIt.Services
             var userAccount = _accountService.GetAccountForUser(userId);
             if (userAccount != null)
                 return _creditWalletRepository.GetAll()
-                     .FirstOrDefault(x => x.Account?.User?.Id == userId);
+                     .FirstOrDefault(x => x.User?.Id == userId);
             return null;
-        }
-
-        public CreditWallet CreateWalletByAccountId(long accountId)
-        {
-            return _creditWalletRepository.GetAll()
-                .FirstOrDefault(x => x.Account.Id == accountId);
         }
 
         public bool Transfer(long from, long to, double amount)
@@ -55,7 +45,7 @@ namespace RateIt.Services
             if ((wallet != null) && (toWallet != null))
             {
                 //Take money from the from wallet
-                var walletMinusAmount = wallet.CurrentAmount - amount;
+                var walletMinusAmount = wallet.CurrentAmount - (decimal)amount;
                 if (walletMinusAmount < 0)
                     return false;
                 //Continue if is updated
@@ -65,7 +55,7 @@ namespace RateIt.Services
                     //Add transaction record for the from 
                     _creditTransactionService.AddMoCreditsTransaction(to, from, amount, type, null);
                     //Add money to the to wallet
-                    toWallet.CurrentAmount += amount;
+                    toWallet.CurrentAmount += (decimal)amount;
                     var hasUpdatedToWallet = UpdateWallet(toWallet);
                     //Add transaction record to the to
                     if(hasUpdatedToWallet)

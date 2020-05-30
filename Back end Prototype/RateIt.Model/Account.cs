@@ -17,8 +17,6 @@ namespace RateIt.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            this.CreditWallets = new HashSet<CreditWallet>();
-            this.Currencys = new HashSet<Currency>();
             this.PublisherChannels = new HashSet<PublisherChannel>();
         }
     
@@ -33,10 +31,6 @@ namespace RateIt.Model
         public bool IsAdmin { get; set; }
     
         public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditWallet> CreditWallets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Currency> Currencys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PublisherChannel> PublisherChannels { get; set; }
     }

@@ -22,7 +22,9 @@ namespace RateIt.Model
             this.Comments1 = new HashSet<Comment>();
             this.CreditTransactions = new HashSet<CreditTransaction>();
             this.CreditTransactions1 = new HashSet<CreditTransaction>();
+            this.CreditWallets = new HashSet<CreditWallet>();
             this.CrowdfundingCampaigns = new HashSet<CrowdfundingCampaign>();
+            this.GeneralNotifications = new HashSet<GeneralNotification>();
             this.Notifications = new HashSet<Notification>();
             this.PaymentTransfers = new HashSet<PaymentTransfer>();
             this.Polls = new HashSet<Poll>();
@@ -33,6 +35,7 @@ namespace RateIt.Model
             this.Transactions = new HashSet<Transaction>();
             this.Transactions1 = new HashSet<Transaction>();
             this.Upvotes = new HashSet<Upvote>();
+            this.UserConfirmations = new HashSet<UserConfirmation>();
             this.UserContentValidations = new HashSet<UserContentValidation>();
             this.UserMessages = new HashSet<UserMessage>();
             this.UserPollingAnswers = new HashSet<UserPollingAnswer>();
@@ -50,12 +53,14 @@ namespace RateIt.Model
         public string Bio { get; set; }
         public string Comments { get; set; }
         public string CurrentApp { get; set; }
-        public double OverallRating { get; set; }
+        public decimal OverallRating { get; set; }
         public double OverallReportCount { get; set; }
         public double OverallRatingCount { get; set; }
         public double OverallCommentCount { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime LastActiveAt { get; set; }
+        public bool Confirmed { get; set; }
+        public Nullable<System.DateTime> ConfirmedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
@@ -68,7 +73,11 @@ namespace RateIt.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreditTransaction> CreditTransactions1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreditWallet> CreditWallets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CrowdfundingCampaign> CrowdfundingCampaigns { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GeneralNotification> GeneralNotifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -89,6 +98,8 @@ namespace RateIt.Model
         public virtual ICollection<Transaction> Transactions1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Upvote> Upvotes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserConfirmation> UserConfirmations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserContentValidation> UserContentValidations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

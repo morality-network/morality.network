@@ -27,6 +27,8 @@ namespace RateIt.Model
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Activity> Activitys { get; set; }
+        public virtual DbSet<ActivityType> ActivityTypes { get; set; }
+        public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
         public virtual DbSet<ContentTransaction> ContentTransactions { get; set; }
@@ -35,6 +37,7 @@ namespace RateIt.Model
         public virtual DbSet<CreditWallet> CreditWallets { get; set; }
         public virtual DbSet<CrowdfundingCampaign> CrowdfundingCampaigns { get; set; }
         public virtual DbSet<Currency> Currencys { get; set; }
+        public virtual DbSet<GeneralNotification> GeneralNotifications { get; set; }
         public virtual DbSet<Investigation> Investigations { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
@@ -44,6 +47,7 @@ namespace RateIt.Model
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<PollAnswer> PollAnswers { get; set; }
         public virtual DbSet<Poll> Polls { get; set; }
+        public virtual DbSet<PublisherChannel> PublisherChannels { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<ReportClaim> ReportClaims { get; set; }
         public virtual DbSet<ReportConfirm> ReportConfirms { get; set; }
@@ -54,13 +58,14 @@ namespace RateIt.Model
         public virtual DbSet<SystemValue> SystemValues { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Upvote> Upvotes { get; set; }
+        public virtual DbSet<UserConfirmation> UserConfirmations { get; set; }
         public virtual DbSet<UserContentValidation> UserContentValidations { get; set; }
         public virtual DbSet<UserMessage> UserMessages { get; set; }
         public virtual DbSet<UserPollingAnswer> UserPollingAnswers { get; set; }
         public virtual DbSet<UserRating> UserRatings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WithdrawTransfer> WithdrawTransfers { get; set; }
-        public virtual DbSet<ActivityType> ActivityTypes { get; set; }
-        public virtual DbSet<PublisherChannel> PublisherChannels { get; set; }
+        public virtual DbSet<CountryCode> CountryCodes { get; set; }
+        public virtual DbSet<Restriction> Restrictions { get; set; }
     }
 }

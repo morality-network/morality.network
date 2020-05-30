@@ -17,13 +17,13 @@ namespace RateIt.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Content()
         {
+            this.Activitys = new HashSet<Activity>();
             this.Comments1 = new HashSet<Comment>();
             this.CrowdfundingCampaigns = new HashSet<CrowdfundingCampaign>();
             this.Notifications = new HashSet<Notification>();
             this.Polls = new HashSet<Poll>();
             this.Surveys = new HashSet<Survey>();
             this.UserContentValidations = new HashSet<UserContentValidation>();
-            this.Activitys = new HashSet<Activity>();
         }
     
         public long Id { get; set; }
@@ -41,8 +41,11 @@ namespace RateIt.Model
         public bool ReferredViaValidationToAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Activity> Activitys { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments1 { get; set; }
         public virtual ContentType ContentType { get; set; }
+        public virtual PublisherChannel PublisherChannel { get; set; }
         public virtual SubDirectory SubDirectory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CrowdfundingCampaign> CrowdfundingCampaigns { get; set; }
@@ -54,8 +57,5 @@ namespace RateIt.Model
         public virtual ICollection<Survey> Surveys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserContentValidation> UserContentValidations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Activity> Activitys { get; set; }
-        public virtual PublisherChannel PublisherChannel { get; set; }
     }
 }

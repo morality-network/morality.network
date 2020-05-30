@@ -9,10 +9,12 @@
 	[Bio] [nvarchar](max) NULL,
 	[Comments] [nvarchar](max) NULL,
 	[CurrentApp] [nvarchar](max) NOT NULL,
-	[OverallRating] [float] NOT NULL DEFAULT 0,
+	[OverallRating] DECIMAL(18, 8) NOT NULL DEFAULT 0,
 	[OverallReportCount] [float] NOT NULL DEFAULT 0,
 	[OverallRatingCount] [float] NOT NULL DEFAULT 0,
 	[OverallCommentCount] [float] NOT NULL DEFAULT 0,
     [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE(), 
     [LastActiveAt] DATETIME NOT NULL, 
+    [Confirmed] BIT NOT NULL DEFAULT 0, 
+    [ConfirmedAt] DATETIME NULL DEFAULT GETDATE(), 
 )

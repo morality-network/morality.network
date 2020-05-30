@@ -12,21 +12,14 @@ namespace RateIt.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Activity
+    public partial class UserConfirmation
     {
-        public long Id { get; set; }
-        public long SubDirectoryId { get; set; }
+        public int Id { get; set; }
         public long UserId { get; set; }
-        public long CommentId { get; set; }
-        public string ActivityText { get; set; }
-        public System.DateTime Timestamp { get; set; }
-        public long ActivityTypeId { get; set; }
-        public long ContentId { get; set; }
+        public string Token { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public bool Used { get; set; }
     
-        public virtual ActivityType ActivityType { get; set; }
-        public virtual Comment Comment { get; set; }
-        public virtual Content Content { get; set; }
-        public virtual SubDirectory SubDirectory { get; set; }
         public virtual User User { get; set; }
     }
 }

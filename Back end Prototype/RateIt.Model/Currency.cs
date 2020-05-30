@@ -14,16 +14,23 @@ namespace RateIt.Model
     
     public partial class Currency
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Currency()
+        {
+            this.CreditWallets = new HashSet<CreditWallet>();
+        }
+    
         public long Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Abi { get; set; }
         public bool IsTest { get; set; }
         public string Network { get; set; }
-        public long AdminId { get; set; }
+        public string AdminAddress { get; set; }
         public bool Active { get; set; }
         public System.DateTime Timestamp { get; set; }
     
-        public virtual Account Account { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreditWallet> CreditWallets { get; set; }
     }
 }

@@ -59,6 +59,9 @@
     <Compile Include="ActivityType.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Application.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
@@ -81,6 +84,9 @@
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Currency.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralNotification.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Investigation.cs">
@@ -160,6 +166,9 @@
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfirmation.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserContentValidation.cs">

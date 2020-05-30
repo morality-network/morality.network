@@ -12,24 +12,20 @@ namespace RateIt.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CreditWallet
+    public partial class CountryCode
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CreditWallet()
+        public CountryCode()
         {
-            this.PaymentChunks = new HashSet<PaymentChunk>();
+            this.Restrictions = new HashSet<Restriction>();
         }
     
-        public long Id { get; set; }
-        public decimal CurrentAmount { get; set; }
-        public System.DateTime LastUpdated { get; set; }
-        public bool Active { get; set; }
-        public long UserId { get; set; }
-        public long CurrencyId { get; set; }
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string EnglishName { get; set; }
+        public string FrenchName { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PaymentChunk> PaymentChunks { get; set; }
+        public virtual ICollection<Restriction> Restrictions { get; set; }
     }
 }
