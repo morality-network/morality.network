@@ -102,6 +102,11 @@
         <EntityTypeShape EntityType="MoralityNetworkModel.CountryCode" Width="1.5" PointX="5.375" PointY="1.125" />
         <EntityTypeShape EntityType="MoralityNetworkModel.Restriction" Width="1.5" PointX="7.625" PointY="1" />
         <AssociationConnector Association="MoralityNetworkModel.FK_Restrictions_ToCountryCodes" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.EthereumWallet" Width="1.5" PointX="3" PointY="65.875" />
+        <EntityTypeShape EntityType="MoralityNetworkModel.InternalTransaction" Width="1.5" PointX="3" PointY="13.25" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_EthereumWallet_ToUser" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_InternalTransactions_FromUser" />
+        <AssociationConnector Association="MoralityNetworkModel.FK_InternalTransactions_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

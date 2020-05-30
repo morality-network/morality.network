@@ -41,6 +41,9 @@ namespace RateIt.Model
             this.UserPollingAnswers = new HashSet<UserPollingAnswer>();
             this.UserRatings = new HashSet<UserRating>();
             this.WithdrawTransfers = new HashSet<WithdrawTransfer>();
+            this.EthereumWallets = new HashSet<EthereumWallet>();
+            this.InternalTransactions = new HashSet<InternalTransaction>();
+            this.InternalTransactions1 = new HashSet<InternalTransaction>();
         }
     
         public long Id { get; set; }
@@ -110,5 +113,11 @@ namespace RateIt.Model
         public virtual ICollection<UserRating> UserRatings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WithdrawTransfer> WithdrawTransfers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EthereumWallet> EthereumWallets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InternalTransaction> InternalTransactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InternalTransaction> InternalTransactions1 { get; set; }
     }
 }

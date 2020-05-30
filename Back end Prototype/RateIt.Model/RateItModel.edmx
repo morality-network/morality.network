@@ -166,6 +166,18 @@
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="Timestamp" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="EthereumWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EthereumAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Secret" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="ImportedFromPresale" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="GeneralNotifications">
           <Key>
             <PropertyRef Name="Id" />
@@ -177,6 +189,19 @@
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="Display" Type="bit" Nullable="false" />
           <Property Name="SystemData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="InternalTransactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="ToAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ExtData" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="FromUserId" Type="bigint" />
+          <Property Name="ToUserId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Investigations">
           <Key>
@@ -735,6 +760,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EthereumWallet_ToUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="EthereumWallet" Type="Self.EthereumWallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EthereumWallet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GeneralNotifications_ToUsers">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="GeneralNotifications" Type="Self.GeneralNotifications" Multiplicity="*" />
@@ -744,6 +781,30 @@
             </Principal>
             <Dependent Role="GeneralNotifications">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InternalTransactions_FromUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="InternalTransactions" Type="Self.InternalTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InternalTransactions">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InternalTransactions_ToUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="InternalTransactions" Type="Self.InternalTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InternalTransactions">
+              <PropertyRef Name="ToUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1181,7 +1242,9 @@
           <EntitySet Name="CreditWallets" EntityType="Self.CreditWallets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CrowdfundingCampaign" EntityType="Self.CrowdfundingCampaign" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencys" EntityType="Self.Currencys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EthereumWallet" EntityType="Self.EthereumWallet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralNotifications" EntityType="Self.GeneralNotifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InternalTransactions" EntityType="Self.InternalTransactions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Investigations" EntityType="Self.Investigations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
@@ -1286,9 +1349,21 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="CrowdfundingCampaign" EntitySet="CrowdfundingCampaign" />
           </AssociationSet>
+          <AssociationSet Name="FK_EthereumWallet_ToUser" Association="Self.FK_EthereumWallet_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EthereumWallet" EntitySet="EthereumWallet" />
+          </AssociationSet>
           <AssociationSet Name="FK_GeneralNotifications_ToUsers" Association="Self.FK_GeneralNotifications_ToUsers">
             <End Role="Users" EntitySet="Users" />
             <End Role="GeneralNotifications" EntitySet="GeneralNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InternalTransactions_FromUser" Association="Self.FK_InternalTransactions_FromUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="InternalTransactions" EntitySet="InternalTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InternalTransactions_ToUser" Association="Self.FK_InternalTransactions_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="InternalTransactions" EntitySet="InternalTransactions" />
           </AssociationSet>
           <AssociationSet Name="FK_Investigations_ToComments" Association="Self.FK_Investigations_ToComments">
             <End Role="Comments" EntitySet="Comments" />
@@ -1697,6 +1772,20 @@
           <AssociationSet Name="FK_Restrictions_ToCountryCodes" Association="MoralityNetworkModel.FK_Restrictions_ToCountryCodes">
             <End Role="CountryCode" EntitySet="CountryCodes" />
             <End Role="Restriction" EntitySet="Restrictions" />
+          </AssociationSet>
+          <EntitySet Name="EthereumWallets" EntityType="MoralityNetworkModel.EthereumWallet" />
+          <EntitySet Name="InternalTransactions" EntityType="MoralityNetworkModel.InternalTransaction" />
+          <AssociationSet Name="FK_EthereumWallet_ToUser" Association="MoralityNetworkModel.FK_EthereumWallet_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EthereumWallet" EntitySet="EthereumWallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InternalTransactions_FromUser" Association="MoralityNetworkModel.FK_InternalTransactions_FromUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="InternalTransaction" EntitySet="InternalTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InternalTransactions_ToUser" Association="MoralityNetworkModel.FK_InternalTransactions_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="InternalTransaction" EntitySet="InternalTransactions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Account">
@@ -2276,6 +2365,9 @@
           <NavigationProperty Name="UserPollingAnswers" Relationship="MoralityNetworkModel.FK_UserPollingAnswers_ToUsers" FromRole="User" ToRole="UserPollingAnswer" />
           <NavigationProperty Name="UserRatings" Relationship="MoralityNetworkModel.FK_UserRatings_ToUsers" FromRole="User" ToRole="UserRating" />
           <NavigationProperty Name="WithdrawTransfers" Relationship="MoralityNetworkModel.FK_WithdrawTransfers_ToUsers" FromRole="User" ToRole="WithdrawTransfer" />
+          <NavigationProperty Name="EthereumWallets" Relationship="MoralityNetworkModel.FK_EthereumWallet_ToUser" FromRole="User" ToRole="EthereumWallet" />
+          <NavigationProperty Name="InternalTransactions" Relationship="MoralityNetworkModel.FK_InternalTransactions_FromUser" FromRole="User" ToRole="InternalTransaction" />
+          <NavigationProperty Name="InternalTransactions1" Relationship="MoralityNetworkModel.FK_InternalTransactions_ToUser" FromRole="User" ToRole="InternalTransaction" />
         </EntityType>
         <EntityType Name="WithdrawTransfer">
           <Key>
@@ -2971,6 +3063,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EthereumWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EthereumAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Secret" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ImportedFromPresale" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="MoralityNetworkModel.FK_EthereumWallet_ToUser" FromRole="EthereumWallet" ToRole="User" />
+        </EntityType>
+        <EntityType Name="InternalTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ToAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ExtData" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromUserId" Type="Int64" />
+          <Property Name="ToUserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="MoralityNetworkModel.FK_InternalTransactions_FromUser" FromRole="InternalTransaction" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="MoralityNetworkModel.FK_InternalTransactions_ToUser" FromRole="InternalTransaction" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_EthereumWallet_ToUser">
+          <End Type="MoralityNetworkModel.User" Role="User" Multiplicity="1" />
+          <End Type="MoralityNetworkModel.EthereumWallet" Role="EthereumWallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EthereumWallet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InternalTransactions_FromUser">
+          <End Type="MoralityNetworkModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MoralityNetworkModel.InternalTransaction" Role="InternalTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InternalTransaction">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InternalTransactions_ToUser">
+          <End Type="MoralityNetworkModel.User" Role="User" Multiplicity="1" />
+          <End Type="MoralityNetworkModel.InternalTransaction" Role="InternalTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InternalTransaction">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3517,6 +3673,33 @@
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EthereumWallets">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.EthereumWallet">
+              <MappingFragment StoreEntitySet="EthereumWallet">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ImportedFromPresale" ColumnName="ImportedFromPresale" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Secret" ColumnName="Secret" />
+                <ScalarProperty Name="EthereumAddress" ColumnName="EthereumAddress" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternalTransactions">
+            <EntityTypeMapping TypeName="MoralityNetworkModel.InternalTransaction">
+              <MappingFragment StoreEntitySet="InternalTransactions">
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="ExtData" ColumnName="ExtData" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

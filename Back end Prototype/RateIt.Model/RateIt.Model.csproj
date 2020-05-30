@@ -74,6 +74,9 @@
     <Compile Include="ContentType.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CountryCode.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CreditTransaction.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
@@ -86,7 +89,13 @@
     <Compile Include="Currency.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EthereumWallet.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GeneralNotification.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InternalTransaction.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Investigation.cs">
@@ -142,6 +151,9 @@
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ReportConfirm.cs">
+      <DependentUpon>RateItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Restriction.cs">
       <DependentUpon>RateItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Site.cs">

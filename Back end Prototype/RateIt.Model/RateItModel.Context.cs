@@ -67,5 +67,7 @@ namespace RateIt.Model
         public virtual DbSet<WithdrawTransfer> WithdrawTransfers { get; set; }
         public virtual DbSet<CountryCode> CountryCodes { get; set; }
         public virtual DbSet<Restriction> Restrictions { get; set; }
+        public virtual DbSet<EthereumWallet> EthereumWallets { get; set; }
+        public virtual DbSet<InternalTransaction> InternalTransactions { get; set; }
     }
 }
