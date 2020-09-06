@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="180" height="160" src="https://i.postimg.cc/J0mKhXCD/mo.png">
+  <img width="80" height="80" src="https://github.com/morality-network/design/blob/master/Network%20Logo%20(for%20light%20backgrounds%20only).gif">
 </p>
 
 # Morality 1.0 
